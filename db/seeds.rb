@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-User.create!(email: 'admin@exmple.com', password: 'admin@exmple.com', password_confirmation: 'admin@exmple.com')
+User.create!(email: 'admin@example.com', password: 'admin@example.com', password_confirmation: 'admin@example.com')
 
 30.times do
   Course.create!([{

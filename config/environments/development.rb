@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+  # Change this for prod
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :test
 
   # Settings specified here will take precedence over those in config/application.rb.
 
