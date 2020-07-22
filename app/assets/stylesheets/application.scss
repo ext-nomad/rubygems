@@ -3,4 +3,6 @@
 @import "font-awesome";
 @import "./actiontext.scss";
 
+.form-control.is-invalid{ background-image: none; }
+.form-control.is-valid{ background-image: none; }
 // body { background: #f8f0e6; }
