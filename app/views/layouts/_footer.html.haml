@@ -1,0 +1,22 @@
+%hr
+%footer
+  .container
+    .row
+      .col-md-4
+        Copyright
+        ©
+        = Time.now.year
+        CoursePlatform SPb. z 421.78
+        .row
+        .fa.fa-envelope
+        = mail_to 'i.dwanderer@gmail.com'
+        .row
+      .col-md-4
+        Privacy policy
+        .row
+        Terms and coditions
+      .col-md-4
+        About us
+        .row
+        = link_to 'Teach on RG', new_course_path
+%br
