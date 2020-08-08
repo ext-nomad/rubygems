@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# ! NEEDS TO REWORK !
+
 User.create!(email: 'admin@x.com', password: 'admin@x.com', password_confirmation: 'admin@x.com', confirmed_at: DateTime.now)
 
 10.times do |n|
@@ -9,7 +11,6 @@ User.create!(email: 'admin@x.com', password: 'admin@x.com', password_confirmatio
   User.create!(email: email, password: password, password_confirmation: password, confirmed_at: DateTime.now)
 end
 
-# Faker doesnt work cuz of PublicActivity!
 40.times do
   Course.create!([{
                    title: Faker::Educator.subject,

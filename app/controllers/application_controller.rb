@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  after_action :user_activity
 
   include PublicActivity::StoreController # Save current_user @ public activity
 
@@ -21,5 +22,9 @@ class ApplicationController < ActionController::Base
   def user_not_authorized # Pundit
     flash[:alert] = 'You are not authorized to perfom that action'
     redirect_to(request.referrer || root_path)
+  end
+
+  def user_activity
+    current_user.try :touch
   end
 end
