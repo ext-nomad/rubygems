@@ -24,14 +24,16 @@
 .card-group
   .card.card-body
     %h1
-      .fa.fa-graduation-cap
+      .text-center
+        .fa.fa-graduation-cap
     = Course.count
     online courses
     .row
     Explore a variety of fresh topics
   .card.card-body
     %h1
-      .fa.fa-chalkboard-teacher
+      .text-center
+        .fa.fa-chalkboard-teacher
       /.fa-fa-brain
     = Course.distinct.count(:user_id)
     expert instructors
@@ -39,14 +41,16 @@
     Find the right instructor for you
   .card.card-body
     %h1
-      .fa.fa-user-graduate
+      .text-center
+        .fa.fa-user-graduate
     = User.count
     active learners
     .row
     Join the knowledge sharing community
   .card.card-body
     %h1
-      .fa.fa-infinity
+      .text-center
+        .fa.fa-infinity
     Lifetime access
     .row
     Learn on your schedule

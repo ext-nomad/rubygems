@@ -31,4 +31,12 @@ class User < ApplicationRecord
       add_role(:teacher)
     end
   end
+
+  validate :must_have_a_role, on: :update
+
+  private
+
+  def must_have_a_role
+    errors.add(:roles, 'Must have at least one role') unless roles.any?
+  end
 end
