@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Getting Started
+It is a preconfigured Rails application, so you can either download the code
+or clone this repository and add your own repo as a remote to merge in updates.
 
-Things you may want to cover:
+Requirements:
 
-* Ruby-2.7.1@Rails-6.0.3.2
+* Ruby v 2.7.1 +
 
-* System dependencies
+* Rails-6.0.3.2 +
 
-* Configuration
+* Postgresql database
 
-* Database creation
+* Yarn
 
-* Database initialization
+Connected services required:
 
-* How to run the test suite
+In production:
+* AWS S3 - file storage
+* Google analytics code
+* Facebook oauth API
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In develop:
+* Google recaptcha API for signing up
+* Google oauth API
+* Github oauth API
+* Stripe API

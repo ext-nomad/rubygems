@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable
 
+  rolify
+
   def to_s
     email
   end
@@ -16,4 +18,17 @@ class User < ApplicationRecord
   end
 
   has_many :courses
+
+  after_create :assign_default_role
+
+  def assign_default_role
+    if User.count == 1
+      add_role(:admin) if roles.blank?
+      add_role(:student)
+      add_role(:teacher)
+    else
+      add_role(:student) if roles.blank?
+      add_role(:teacher)
+    end
+  end
 end
