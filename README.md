@@ -1,10 +1,11 @@
 # README
 
 Getting Started
+
 It is a preconfigured Rails application, so you can either download the code
 or clone this repository and add your own repo as a remote to merge in updates.
 
-Requirements:
+Requirements
 
 * Ruby v 2.7.1 +
 
@@ -14,14 +15,16 @@ Requirements:
 
 * Yarn
 
-Connected services required:
+Connected services required
 
 In production:
+
 * AWS S3 - file storage
 * Google analytics code
 * Facebook oauth API
 
 In develop:
+
 * Google recaptcha API for signing up
 * Google oauth API
 * Github oauth API
