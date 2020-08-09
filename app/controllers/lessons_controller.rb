@@ -5,20 +5,27 @@ class LessonsController < ApplicationController
     @lessons = Lesson.all
   end
 
-  def show; end
+  def show
+    authorize @lesson
+  end
 
   def new
     @lesson = Lesson.new
+    @course = Course.friendly.find(params[:course_id])
   end
 
-  def edit; end
+  def edit
+    authorize @lesson
+  end
 
   def create
     @lesson = Lesson.new(lesson_params)
-
+    @course = Course.friendly.find(params[:course_id])
+    @lesson.course_id = @course.id
+    authorize @lesson
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
+        format.html { redirect_to course_lesson_path(@course, @lesson), notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new }
@@ -28,9 +35,11 @@ class LessonsController < ApplicationController
   end
 
   def update
+    authorize @lesson
+
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
+        format.html { redirect_to course_lesson_path(@course, @lesson), notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit }
@@ -40,9 +49,11 @@ class LessonsController < ApplicationController
   end
 
   def destroy
+    authorize @lesson
+
     @lesson.destroy
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: 'Lesson was successfully destroyed.' }
+      format.html { redirect_to course_path(@course), notice: 'Lesson was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -51,9 +62,10 @@ class LessonsController < ApplicationController
 
   def set_lesson
     @lesson = Lesson.friendly.find(params[:id])
+    @course = Course.friendly.find(params[:course_id])
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :content, :course_id)
+    params.require(:lesson).permit(:title, :content)
   end
 end
