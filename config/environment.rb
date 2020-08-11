@@ -4,7 +4,7 @@ require_relative 'application'
 # Initialize the Rails application.
 Rails.application.initialize!
 
-# SMTP settings for SendGrid Mailer
+# SMTP settings for SendInBlue Mailer
 ActionMailer::Base.smtp_settings = {
   port: ENV['SIB_SMTP_PORT'],
   address: ENV['SIB_SMTP_ADRESS'],

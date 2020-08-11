@@ -8,6 +8,14 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
 
+  # Setup for exception_notification
+  Rails.application.config.middleware.use ExceptionNotification::Rack, email: {
+    deliver_with: :deliver, # Rails >= 4.2.1 default (can be ignored)
+    email_prefix: '[PREFIX] ',
+    sender_address: %w[RubyGems_ERR <notifier@ext-rubygems.heroku.com>],
+    exception_recipients: %w[i.dwanderer@gmail.com]
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
