@@ -1,3 +1,8 @@
+- content_for :title do
+  RubyGems
+  \|
+  = @course.title
+
 = link_to 'Courses', courses_path
 \/
 = link_to @course.title, course_path(@course)

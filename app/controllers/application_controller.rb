@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   after_action :user_activity
 
+  include Pagy::Backend
   include PublicActivity::StoreController # Save current_user @ public activity
 
   include Pundit

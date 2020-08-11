@@ -8,6 +8,7 @@
     = f.label :description
     = f.rich_text_area :description
     %small= f.error :description, class: 'text-danger'
+    %p
     = f.input :short_description
     / = f.input :language, collection: [ 'English', 'Russian', 'Polish']
     = f.input :language, collection: Course.languages, include_blank: true
