@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_many :courses
+  has_many :enrollments
 
   rolify
   devise :database_authenticatable,

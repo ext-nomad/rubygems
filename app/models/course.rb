@@ -3,6 +3,8 @@
 class Course < ApplicationRecord
   belongs_to :user
   has_many :lessons, dependent: :destroy
+  has_many :enrollments
+
   has_rich_text :description
 
   validates :title,
