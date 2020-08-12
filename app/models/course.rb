@@ -49,6 +49,6 @@ class Course < ApplicationRecord
   tracked owner: proc { |controller, _model| controller.current_user }
 
   def bought(user)
-    enrollments.where(user_id: [user.id], course_id: [id].empty?)
+    enrollments.where(user_id: [user.id], course_id: [id]).empty?
   end
 end
