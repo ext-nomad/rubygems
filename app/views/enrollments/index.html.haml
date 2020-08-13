@@ -10,32 +10,45 @@
       =@enrollments.count
 %p
 
+
+= search_form_for @q do |f|
+  = f.search_field :user_email_cont, placeholder: 'EMail'
+  = f.search_field :course_title_cont, placeholder: 'Course'
+  = f.search_field :price_eq, placeholder: 'Price'
+  = f.search_field :rating_eq, placeholder: 'Rating'
+  = f.search_field :review_cont, placeholder: 'Review'
+  = f.submit
+%p
+.ml-5
+= link_to 'Refresh', enrollments_path, class: 'btn btn-sm btn-secondary'
+
+%br
 .table-responsive
   %table.table.table-bordered.table-striped.table-sm
     %thead
       %tr
         %th ID
-        %th 
+        %th
           .fa.fa-user
-          User
+            = sort_link(@q, :user_email) 
         %th 
           .fa.fa-clock
-          Bought
+            = sort_link(@q, :created_at) 
         %th 
           .fa.fa-graduation-cap
-          Course
+            = sort_link(@q, :course_title) 
         %th
           .fa.fa-dollar-sign
-          Price
+            = sort_link(@q, :price) 
         %th 
           .text-warning.fa.fa-clock
-          Reviewed on
+            = sort_link(@q, :updated_at) 
         %th 
           .text-warning.fa.fa-comment
           Review
         %th 
           .text-warning.fa.fa-star
-          Rating
+            = sort_link(@q, :rating) 
         %th
         %th
         %th
@@ -57,7 +70,5 @@
           %td= link_to 'See review', enrollment
           %td= link_to 'Add review', edit_enrollment_path(enrollment)
           %td= link_to 'Delete enrollment', enrollment, method: :delete, data: { confirm: 'Are you sure?' }
-
 %br
-
-= link_to 'New Enrollment', new_enrollment_path
+!= pagy_bootstrap_nav(@pagy)
