@@ -46,9 +46,13 @@
               = link_to purchased_courses_path, class: "dropdown-item" do
                 .fa.fa-graduation-cap
                 Purchased Courses
+                .badge.badge-danger
+                  = current_user.enrollments.count
               = link_to pending_review_courses_path, class: "dropdown-item" do
                 .fa.fa-star
                 Pending review
+                .badge.badge-danger
+                  = current_user.enrollments.pending_review.count
               -# = link_to activity_path, class: "dropdown-item" do
               -#   .fa.fa-bell
               -#   Activity
@@ -64,9 +68,13 @@
               = link_to created_courses_path, class: "dropdown-item" do
                 .fa.fa-graduation-cap
                 My Courses
+                .badge.badge-danger
+                  = current_user.courses.count
               = link_to my_students_enrollments_path, class: "dropdown-item" do
                 .fa.fa-users
                 My students
+                .badge.badge-danger
+                  = Enrollment.joins(:course).where(courses: {user: current_user}).count
         - if current_user.has_role?(:admin)
           %li.nav-item.dropdown
             %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -76,9 +84,13 @@
               = link_to users_path, class: "dropdown-item" do
                 .fa.fa-users
                 Users
+                .badge.badge-danger
+                  = User.count
               = link_to enrollments_path, class: "dropdown-item" do
                 .fa.fa-lock-open
                 Enrollments
+                .badge.badge-danger
+                  = Enrollment.count
               = link_to activity_path, class: "dropdown-item" do
                 .fa.fa-bell
                 Activity
