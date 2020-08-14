@@ -3,9 +3,17 @@ class EnrollmentsController < ApplicationController
   before_action :set_course, only: %i[new create]
 
   def index
+    @ransack_path = enrollments_path
     @q = Enrollment.ransack(params[:q])
     @pagy, @enrollments = pagy(@q.result.includes(:user))
     authorize @enrollments
+  end
+
+  def my_students
+    @ransack_path = my_students_enrollments_path
+    @q = Enrollment.joins(:course).where(courses: { user: current_user }).ransack(params[:q])
+    @pagy, @enrollments = pagy(@q.result.includes(:user))
+    render 'index'
   end
 
   def show; end
