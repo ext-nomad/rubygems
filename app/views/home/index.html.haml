@@ -61,23 +61,43 @@
     Learn on your schedule
   
 
-
 %hr
 %h2
-  Popular courses
+  .text-center
+    .fa.fa-user-graduate
+    Continue learning
 .card-columns
-  - @courses.each do |course|
+  - @purchased_courses.each do |course|
     = render 'courses/course', course: course 
 %hr
 %h2
-  Top rated courses
+  .text-center
+    .fa.fa-chart-line
+    Popular courses
 .card-columns
-  - @courses.each do |course|
+  - @popular.each do |course|
     = render 'courses/course', course: course 
 %hr
 %h2
-  Latest courses
+  .text-center
+    .fa.fa-star
+    Top rated courses
 .card-columns
-  - @latest_courses.each do |course|
+  - @top_rated.each do |course|
     = render 'courses/course', course: course 
 %hr
+%h2
+  .text-center
+    .fa.fa-clock
+    Latest courses
+.card-columns
+  - @latest.each do |course|
+    = render 'courses/course', course: course 
+%hr
+%h2
+  .text-center
+    .fa.fa-comment
+    What our students have to say
+.card-columns
+  - @latest_good_review.each do |enrollment|
+    = render 'enrollments/enrollment', enrollment: enrollment 

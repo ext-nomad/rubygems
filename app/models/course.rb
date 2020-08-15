@@ -19,6 +19,10 @@ class Course < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  scope :popular, -> { order(enrollments_count: :desc, created_at: :desc).limit(3) }
+  scope :top_rated, -> { order(average_rating: :desc, created_at: :desc).limit(3) }
+  scope :latest, -> { all.order(created_at: :desc).limit(3) }
+
   LANGUAGES = %i[English Russian Polish Spanish].freeze
   LEVELS = %i[Beginner Intermediate Advanced].freeze
 
