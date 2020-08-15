@@ -14,6 +14,7 @@ class Course < ApplicationRecord
             :price,
             presence: true
   validates :description, presence: true, length: { minimum: 5 }
+  validates :title, uniqueness: true
 
   extend FriendlyId
   friendly_id :title, use: :slugged

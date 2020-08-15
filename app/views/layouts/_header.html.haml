@@ -53,9 +53,6 @@
                 Pending review
                 .badge.badge-danger
                   = current_user.enrollments.pending_review.count
-              -# = link_to activity_path, class: "dropdown-item" do
-              -#   .fa.fa-bell
-              -#   Activity
         - if current_user.has_role?(:teacher)
           %li.nav-item.dropdown
             %a#teacherDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -67,7 +64,7 @@
                 New Course
               = link_to created_courses_path, class: "dropdown-item" do
                 .fa.fa-graduation-cap
-                My Courses
+                Created Courses
                 .badge.badge-danger
                   = current_user.courses_count
               = link_to my_students_enrollments_path, class: "dropdown-item" do

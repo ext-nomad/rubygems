@@ -22,7 +22,7 @@ User.create!(email: 'admin@x.com', password: 'admin@x.com', password_confirmatio
 end
 
 60.times do
-  rand_id = Faker::Number.between(from: 2, to: 11)
+  rand_id = Faker::Number.between(from: 2, to: 6)
   Course.create!([{
                    title: Faker::Educator.subject,
                    description: Faker::Movies::Hobbit.quote,
@@ -30,7 +30,7 @@ end
                    short_description: Faker::Quote.famous_last_words,
                    language: 'English',
                    level: 'Beginner',
-                   price: Faker::Number.between(from: 1000, to: 20_000)
+                   price: Faker::Number.between(from: 0, to: 1_000)
                  }])
 end
 PublicActivity.enabled = true
