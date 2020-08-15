@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   has_many :courses
   has_many :enrollments
+  has_many :user_lessons
 
   rolify
   devise :database_authenticatable,
@@ -44,6 +45,10 @@ class User < ApplicationRecord
 
   def buy_course(course)
     enrollments.create(course: course, price: course.price)
+  end
+
+  def view_lesson(lesson)
+    user_lessons.create(lesson: lesson) unless user_lessons.where(lesson: lesson).any?
   end
 
   private

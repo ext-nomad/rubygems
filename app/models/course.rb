@@ -4,6 +4,7 @@ class Course < ApplicationRecord
   belongs_to :user, counter_cache: true
   has_many :lessons, dependent: :destroy
   has_many :enrollments
+  has_many :user_lessons, through: :lessons
 
   has_rich_text :description
 
@@ -46,14 +47,16 @@ class Course < ApplicationRecord
     end
   end
 
-  # hex_secured_slug
+  def progress(user)
+    (user_lessons.where(user: user).count / lessons_count.to_f) * 100 unless lessons_count.zero?
+  end
 
+  # hex_secured_slug
   # friendly_id :generated_slug, use: :slugged
   # def generated_slug
   #   require 'securerandom'
-  #   @random_slug ||= persistented? ? fiendly_id : SecureRandom.hex(4)
+  #   @random_slug ||= persistented? ? friendly_id : SecureRandom.hex(4)
   # end
-
   # def to_s
   #   slug
   # end

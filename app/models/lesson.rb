@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :course, counter_cache: true
+  has_many :user_lessons
   has_rich_text :content
   validates :title,
             :content,
@@ -14,5 +15,10 @@ class Lesson < ApplicationRecord
 
   def to_s
     title
+  end
+
+  def viewed(user)
+    user_lessons.where(user: user).present?
+    # user_lessons.where(user_id: [user.id], lesson_id: [id]).present?
   end
 end
