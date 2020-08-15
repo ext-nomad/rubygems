@@ -11,10 +11,14 @@
       = review_button(course)
   .card-footer
     .text-warning.fa.fa-star
-    = course.average_rating
+    %b= course.average_rating
+    (
+    .fa.fa-user-graduate
+    = course.enrollments_count
+    )
   .card-footer
     .fa.fa-tasks
-    = course.lessons.count
+    = course.lessons_count
   .card-footer
     .row
       .col-md-6
