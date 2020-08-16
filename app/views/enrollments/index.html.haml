@@ -32,13 +32,13 @@
         %th ID
         %th
           .fa.fa-user
-            = sort_link(@q, :user_email) 
+            = sort_link(@q, :user_email, 'User') 
         %th 
           .fa.fa-clock
             = sort_link(@q, :created_at) 
         %th 
           .fa.fa-graduation-cap
-            = sort_link(@q, :course_title) 
+            = sort_link(@q, :course_title, 'Course') 
         %th
           .fa.fa-dollar-sign
             = sort_link(@q, :price) 
@@ -51,6 +51,8 @@
         %th 
           .text-warning.fa.fa-star
             = sort_link(@q, :rating) 
+        %th
+          Progress
         %th
         %th
         %th
@@ -69,8 +71,13 @@
               ago
           %td= enrollment.review
           %td= enrollment.rating
-          %td= link_to 'See review', enrollment
-          %td= link_to 'Add review', edit_enrollment_path(enrollment)
+          %td= number_to_percentage(enrollment.course.progress(enrollment.user), precision: 0)
+          %td
+            - if policy(enrollment).destroy?
+              = link_to 'See review', enrollment
+          %td 
+            - if policy(enrollment).edit?
+              = link_to 'Add review', edit_enrollment_path(enrollment)
           %td= link_to 'Delete enrollment', enrollment, method: :delete, data: { confirm: 'Are you sure?' }
 %br
 != pagy_bootstrap_nav(@pagy)
