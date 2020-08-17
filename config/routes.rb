@@ -4,6 +4,18 @@ Rails.application.routes.draw do
   get 'activity', to: 'home#activity'
   get 'analytics', to: 'home#analytics'
 
+  # get 'charts/users_per_day', to: 'charts#users_per_day'
+  # get 'charts/enrollments_per_day', to: 'charts#enrollments_per_day'
+  # get 'charts/course_popularity', to: 'charts#course_popularity'
+  # get 'charts/money_makers', to: 'charts#money_makers'
+
+  namespace :charts do
+    get 'users_per_day'
+    get 'enrollments_per_day'
+    get 'course_popularity'
+    get 'money_makers'
+  end
+
   devise_for :users
   resources :users, only: %i[index edit show update]
 

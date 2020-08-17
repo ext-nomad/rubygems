@@ -14,6 +14,7 @@
 = link_to @lesson.title, course_lesson_path(@course, @lesson)
 %p
 
+= @lesson.user_lessons.where(user: current_user).first.impressions
 
 .row
   .col-lg-8.order-1.order-lg-1
