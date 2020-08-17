@@ -14,6 +14,28 @@
 = link_to @lesson.title, course_lesson_path(@course, @lesson)
 %p
 
-= render 'lessons/lesson', lesson: @lesson
 
-= link_to 'Back', course_path(@lesson.course)
+.row
+  .col-lg-8.order-1.order-lg-1
+    = render 'lessons/lesson', lesson: @lesson
+    %p
+
+  .col-lg-4.order-0.order-lg-1
+    .sticky-top
+      %ul.list-group
+        %li.list-group-item
+        
+          = link_to course_path(@lesson.course) do
+            .fa.fa-graduation-cap
+            = @lesson.course.title
+          .float-right
+            .fa.fa-spinner
+            = number_to_percentage(@course.progress(current_user), precision: 0)  
+        - @lessons.each do |lesson|
+          - if @lesson.present? && lesson == @lesson
+            %li.list-group-item.list-group-item-success
+              = render 'lessons/lesson_preview', lesson: lesson
+          - else
+            %li.list-group-item
+              = render 'lessons/lesson_preview', lesson: lesson
+    %p
