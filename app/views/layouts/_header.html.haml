@@ -88,6 +88,9 @@
                 Enrollments
                 .badge.badge-danger
                   = Enrollment.count
+              = link_to analytics_path, class: "dropdown-item" do
+                .fa.fa-chart-line
+                Analytics
               = link_to activity_path, class: "dropdown-item" do
                 .fa.fa-bell
                 Activity

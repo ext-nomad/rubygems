@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
@@ -33,11 +34,13 @@ group :test do
 end
 
 gem 'bootstrap', '~> 4.4.1'
+gem 'chartkick'
 gem 'devise'
-gem 'exception_notification'
+gem 'exception_notification', group: :production
 gem 'faker'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'friendly_id', '~> 5.2.4'
+gem 'groupdate'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
 gem 'pagy'

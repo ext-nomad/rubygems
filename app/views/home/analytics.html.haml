@@ -1,0 +1,11 @@
+%h3
+  Users created per day
+= line_chart @users.group_by_day(:created_at).count
+%h3
+  Enrollments created per day
+= column_chart @enrollments.group_by_day(:created_at).count
+%h3
+  Course popularity per day
+-# = pie_chart @courses.group(:enrollments_count).count
+-# = pie_chart @enrollments.joins(:course).group(:'courses.title').count
+= bar_chart @enrollments.joins(:course).group(:'courses.title').count
