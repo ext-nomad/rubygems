@@ -15,8 +15,15 @@ module Rubygems
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    
-    
+
+    # # For rails-erd gem
+    # if Rails.env.development?
+    #   def eager_load!
+    #     Zeitwerk::Loader.eager_load_all
+    #   end
+    # end
+
+    # i18n
     # config.i18n.fallbacks = true
   end
 end

@@ -43,6 +43,9 @@
 /.vscode
 /.idea
 
+# ERD
+erd.pdf
+
 # ripper-tags
 TAGS
 
