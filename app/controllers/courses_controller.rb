@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[show edit update destroy]
+  before_action :set_course, only: %i[show edit update destroy approve unapprove]
 
   def index
     # @courses =
@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     #     @courses = @q.result.includes(:user)
     #   end
     @ransack_path = courses_path
-    @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
+    @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
     # @courses = @ransack_courses.result.includes(:user)
 
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
@@ -41,7 +41,27 @@ class CoursesController < ApplicationController
     render 'index'
   end
 
+  def unapproved
+    @ransack_path = unapproved_courses_path
+    @ransack_courses = Course.unapproved.ransack(params[:courses_search], search_key: :courses_search)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    render 'index'
+  end
+
+  def approve
+    authorize @course, :approve?
+    @course.update_attribute(:approved, true)
+    redirect_to @course, notice: 'Course approved and visible'
+  end
+
+  def unapprove
+    authorize @course, :approve?
+    @course.update_attribute(:approved, false)
+    redirect_to @course, notice: 'Course unapproved and hidden'
+  end
+
   def show
+    authorize @course
     @lessons = @course.lessons
     @enrollments_with_review = @course.enrollments.reviewed
   end
@@ -103,6 +123,6 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:title, :description, :short_description, :price, :language, :level)
+    params.require(:course).permit(:title, :description, :short_description, :price, :published, :language, :level)
   end
 end

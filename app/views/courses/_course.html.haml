@@ -43,9 +43,29 @@
   -#         .fa.fa-chalkboard-teacher
   -#         = link_to course.user.username, user_path(course.user)
 
-  - if current_user && policy(course).edit?
-    .card-footer
-      - if policy(course).owner?
-        = link_to 'Add lesson', new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary'
-      = link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning'
-      = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
+  - if current_user
+    -if policy(course).edit?
+      .card-footer
+        - if policy(course).owner?
+          = link_to 'Add lesson', new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary'
+        = link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning'
+        = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
+    - if policy(course).destroy?
+      .card-footer
+        - if course.published?
+          .badge.badge-success published
+        - else 
+          .badge.badge-danger unpublished
+        
+        - if course.approved?
+          .badge.badge-success approved
+          = link_to 'Unapprove', unapprove_course_path(course), method: :patch, class: 'btn btn-sm btn-danger' if policy(course).approve?
+        - else 
+          .badge.badge-danger unapproved
+          = link_to 'Approve', approve_course_path(course), method: :patch, class: 'btn btn-sm btn-success' if policy(course).approve?
+    -# - if policy(course).approve?
+    -#   .card-footer
+    -#     - if course.approved?
+    -#       = link_to 'Unapprove', unapprove_course_path(course), method: :patch, class: 'btn btn-sm btn-danger'
+    -#     - else 
+    -#       = link_to 'Approve', approve_course_path(course), method: :patch, class: 'btn btn-sm btn-success'

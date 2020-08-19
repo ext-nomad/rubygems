@@ -12,7 +12,7 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.x'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -22,6 +22,7 @@ end
 
 group :development do
   gem 'listen', '~> 3.2'
+  gem 'solargraph'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
@@ -33,13 +34,13 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'bootstrap', '~> 4.4.1'
+gem 'bootstrap', '~> 4.5.2'
 gem 'chartkick'
 gem 'devise'
 gem 'exception_notification', group: :production
 gem 'faker'
-gem 'font-awesome-sass', '~> 5.12.0'
-gem 'friendly_id', '~> 5.2.4'
+gem 'font-awesome-sass', '~> 5.13.0'
+gem 'friendly_id', '~> 5.4.0'
 gem 'groupdate'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
