@@ -1,0 +1,24 @@
+- content_for :title do
+  RubyGems
+  \|
+  = @course.title
+  Analytics
+
+= link_to 'Courses', courses_path
+\/
+= link_to @course.title, course_path(@course)
+\/
+= link_to 'Analytics', analytics_course_path(@course)
+
+%h4.text-center
+  Analytics for #{@course.title}
+
+Enrollments per day, quantity
+= line_chart @course.enrollments.group_by_day(:created_at).count
+Enrollments per day, revenue
+= line_chart @course.enrollments.group_by_day(:created_at).sum(:price)
+Unique user views
+= bar_chart @course.user_lessons.joins(:lesson).group(:'lessons.title').count
+Impressions per lesson
+= bar_chart @course.user_lessons.joins(:lesson).group(:'lessons.title').sum(:impressions)
+
