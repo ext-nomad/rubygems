@@ -33,9 +33,11 @@
       .float-right
         .fa.fa-spinner
         = number_to_percentage(@course.progress(current_user), precision: 0)   
-    - @lessons.each do |lesson|
-      %li.list-group-item
-        = render 'lessons/lesson_preview', lesson: lesson 
+    %ul.list-group.lesson-sortable
+      - @lessons.each do |lesson|
+        = content_tag 'div', id: "lesson-#{lesson.id}", data: { model_name: lesson.class.name.underscore, update_url: course_lesson_sort_path(@course, lesson) } do
+          %li.list-group-item
+            = render 'lessons/lesson_preview', lesson: lesson 
     %p
     %h5
       .fa.fa-comment
