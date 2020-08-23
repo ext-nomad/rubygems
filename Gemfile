@@ -42,6 +42,7 @@ gem 'exception_notification', group: :production
 gem 'faker'
 gem 'font-awesome-sass', '~> 5.13.0'
 gem 'friendly_id', '~> 5.4.0'
+gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'groupdate'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'

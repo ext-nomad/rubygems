@@ -27,6 +27,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+GCS.json
 
 # Default ignored files
 /shelf/

@@ -5,6 +5,7 @@ class Course < ApplicationRecord
   has_many :lessons, dependent: :destroy
   has_many :enrollments, dependent: :restrict_with_error
   has_many :user_lessons, through: :lessons
+  has_one_attached :avatar
 
   has_rich_text :description
 
@@ -25,7 +26,7 @@ class Course < ApplicationRecord
   scope :latest, -> { all.order(created_at: :desc).limit(3) }
   scope :purchased, -> { joins(:enrollments).order(created_at: :desc) }
   scope :published, -> { where(published: true) }
-  scope :unpublished, -> { where(published: false) } 
+  scope :unpublished, -> { where(published: false) }
   scope :approved, -> { where(approved: true) }
   scope :unapproved, -> { where(approved: false) }
 
