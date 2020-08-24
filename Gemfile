@@ -35,6 +35,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'active_storage_validations'
 gem 'bootstrap', '~> 4.5.2'
 gem 'chartkick'
 gem 'devise'

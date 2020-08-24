@@ -11,6 +11,7 @@
       = image_tag @course.avatar, width: '200px'
     .row
     = f.file_field :avatar
+    %small= f.error :avatar, class: 'text-danger'
     .row
     %p
     = f.label :description
