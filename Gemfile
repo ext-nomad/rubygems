@@ -46,6 +46,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'groupdate'
 gem 'haml-rails', '~> 2.0'
+gem 'image_processing'
 gem 'jquery-rails'
 gem 'pagy'
 gem 'public_activity'
