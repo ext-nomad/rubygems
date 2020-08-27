@@ -10,8 +10,12 @@
     = f.rich_text_area :content
     %small= f.error :content, class: "text-danger"
     %p
-    = f.input :video 
+    = f.input :video
+    - if @lesson.video.attached?
+      = @lesson.video.filename
     = f.input :video_thumbnail
+    - if @lesson.video_thumbnail.attached?
+      = @lesson.video_thumbnail.filename
     / = f.association :course
     / = f.input :course_id, input_html: {value: @lesson.course_id || params[:course_id]}, as: :hidden
 
