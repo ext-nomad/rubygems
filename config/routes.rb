@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     end
     resources :lessons do
       put :sort
+      member do
+        delete :delete_video
+      end
     end
     resources :enrollments, only: %i[new create]
   end
