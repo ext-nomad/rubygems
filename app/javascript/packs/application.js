@@ -31,6 +31,8 @@ require("jquery-ui")
 import videojs from 'video.js'
 import 'video.js/dist/video-js.css'
 
+import 'youtube'
+
 // $(function () {
 //   $("#sortable").sortable();
 //   $("#sortable").disableSelection();

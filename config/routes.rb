@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: %i[index edit show update]
-
+  resources :youtube, only: %i[show]
   resources :enrollments do
     get :my_students, on: :collection
   end

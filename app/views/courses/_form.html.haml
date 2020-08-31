@@ -14,9 +14,13 @@
     %small= f.error :avatar, class: 'text-danger'
     .row
     %p
-    = f.label :description
-    = f.rich_text_area :description
-    %small= f.error :description, class: 'text-danger'
+    
+    -# = f.label :description
+    -# = f.rich_text_area :description
+    -# %small= f.error :description, class: 'text-danger'
+
+    = f.input :description, as: :rich_text_area
+
     %p
     = f.input :short_description
     / = f.input :language, collection: [ 'English', 'Russian', 'Polish']
