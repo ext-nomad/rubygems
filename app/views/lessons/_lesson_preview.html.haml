@@ -17,8 +17,15 @@
     = lesson.row_order_rank + 1
     = lesson.title
 
-
 .float-right
+  .fa.fa-comment
+    = lesson.comments_count
   - if current_user && policy(lesson).edit?
+    .fa.fa-eye
+    Unique views:
+    = lesson.user_lessons.count
+    .fa.fa-eye
+    Impressions:
+    = lesson.user_lessons.map(&:impressions).sum
     = link_to 'Edit', edit_course_lesson_path(@course, lesson), class: 'btn btn-sm btn-warning'
     = link_to 'Destroy', [@course, @lesson], method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'

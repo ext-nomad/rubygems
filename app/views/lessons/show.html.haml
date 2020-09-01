@@ -20,6 +20,22 @@
   .col-lg-8.order-1.order-lg-1
     = render 'lessons/lesson', lesson: @lesson
     %p
+    
+    %h4
+      .text-center
+        .fa.fa-comment
+        Comments
+        = @lesson.comments_count
+    .card
+      .card-header
+        New comment
+      .card-body
+        = render 'lessons/comments/form'
+    %p
+
+    - @comments.each do |comment|
+      = render 'lessons/comments/comment', comment: comment
+      %p
 
   .col-lg-4.order-0.order-lg-1
     .sticky-top
@@ -40,12 +56,3 @@
             %li.list-group-item
               = render 'lessons/lesson_preview', lesson: lesson
     %p
-
-All comments:
-= @comments.count
-- @comments.each do |comment|
-  = render 'lessons/comments/comment', comment: comment
-  %p
-.row
-New comment:
-= render 'lessons/comments/form'

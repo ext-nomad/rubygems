@@ -32,6 +32,9 @@
     .row
     Enrollments:
     = user.enrollments_count
+    .row
+    Comments:
+    = user.comments_count
   .card-footer
     Confirmed email?
     - if user.confirmed_at.present?

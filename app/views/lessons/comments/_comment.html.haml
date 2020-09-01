@@ -1,6 +1,8 @@
 .card
+  .card-header
+    = time_ago_in_words(comment.created_at) + ' ' + 'ago'
+    by
+    = link_to comment.user.username, user_path(comment.user)
+    = link_to 'Destroy', [@course, @lesson, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'    
   .card-body
     = comment.content
-  .card-footer
-    = comment.user.username
-    = comment.created_at
