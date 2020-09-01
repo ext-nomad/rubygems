@@ -24,6 +24,8 @@ class LessonsController < ApplicationController
     authorize @lesson
     current_user.view_lesson(@lesson)
     @lessons = @course.lessons.rank(:row_order)
+    @comment = Comment.new
+    @comments = @lesson.comments
   end
 
   def new

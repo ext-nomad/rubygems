@@ -11,9 +11,9 @@
     -# = f.label :content
     -# = f.rich_text_area :content
     -# %small= f.error :content, class: "text-danger"
-   
+
     = f.input :content, as: :rich_text_area
-   
+
     %p
     = f.input :video
     - if @lesson.video.attached?
