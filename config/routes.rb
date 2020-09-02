@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     get 'money_makers'
   end
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
   resources :users, only: %i[index edit show update]
   resources :youtube, only: %i[show]
   resources :enrollments do
