@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, inintial-scale=1.0", :name => "viewport"}/
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    
+    = favicon_link_tag 'logo.png'
     -# %title RubyGems
     %title 
       = content_for?(:title) ? yield(:title) : 'RubyGems' 
@@ -22,5 +22,5 @@
       %p
       = yield
     %br
-    .bg-warning
+    .bg-success
       = render 'layouts/footer'
