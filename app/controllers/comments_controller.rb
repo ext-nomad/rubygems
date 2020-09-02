@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     @course = Course.friendly.find(params[:course_id])
     @lesson = Lesson.friendly.find(params[:lesson_id])
     @comment = Comment.find(params[:id])
+    authorize @comment
     @comment.destroy
     redirect_to course_lesson_path(@course, @lesson), notice: 'Comment was successfully deleted.'
   end

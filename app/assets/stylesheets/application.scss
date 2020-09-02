@@ -3,12 +3,20 @@
 @import "font-awesome";
 @import "./actiontext.scss";
 
-.form-control.is-invalid{ background-image: none; }
-.form-control.is-valid{ background-image: none; }
+.form-control.is-invalid {
+  background-image: none;
+}
+.form-control.is-valid {
+  background-image: none;
+}
 // body { background: #f8f0e6; }
-.ui-state-highlight { height: 3em; line-height: 1.2em; background-color: aqua;}
+.ui-state-highlight {
+  height: 3em;
+  line-height: 1.2em;
+  background-color: aqua;
+}
 
-//simple_form input for rich_text_area
-trix-editor.form-control { 
-  height: auto; 
+//simple_form input height for rich_text_area
+trix-editor.form-control {
+  height: auto;
 }

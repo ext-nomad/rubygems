@@ -23,7 +23,7 @@
   - if current_user && policy(lesson).edit?
     .fa.fa-eye
     Unique views:
-    = lesson.user_lessons.count
+    = lesson.user_lessons_count
     .fa.fa-eye
     Impressions:
     = lesson.user_lessons.map(&:impressions).sum

@@ -36,8 +36,10 @@
           %th= 'last_sign_in_at'.humanize
           %th= 'current_sign_in_ip'.humanize
           %th= 'last_sign_in_ip'.humanize
-          %th= 'courses_count'.humanize
-          %th= 'enrollments_count'.humanize
+          %th= sort_link(@q, :courses_count) # 'courses_count'.humanize
+          %th= sort_link(@q, :enrollments_count) # 'enrollments_count'.humanize
+          %th= sort_link(@q, :comments_count)
+          %th= sort_link(@q, :user_lessons_count)
           %th= 'Confirmed?'
           %th= 'Roles'        
       %tbody
@@ -58,6 +60,8 @@
             %td= user.last_sign_in_ip
             %td= user.courses_count
             %td= user.enrollments_count
+            %td= user.comments_count
+            %td= user.user_lessons_count
             %td= user.confirmed?
             %td
               - user.roles.each do |role|
