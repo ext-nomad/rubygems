@@ -3,11 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-
+require("@rails/ujs").start();
+require("turbolinks").start();
+require("@rails/activestorage").start();
+require("channels");
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -16,44 +15,48 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import "bootstrap"
-require("trix")
-require("@rails/actiontext")
+import "bootstrap";
+require("trix");
+require("@rails/actiontext");
 
-require("chartkick")
-require("chart.js")
+require("chartkick");
+require("chart.js");
 
 // import "../trix-editor-overrides"
 
-require("jquery")
-require("jquery-ui")
+require("jquery");
+require("jquery-ui");
 
-import 'youtube'
+import "youtube";
 
 // $(function () {
 //   $("#sortable").sortable();
 //   $("#sortable").disableSelection();
 // });
 
-$(document).on('turbolinks:load', function () {
-  $('.lesson-sortable').sortable({
-    cursor: 'grabbing',
+$(document).on("turbolinks:load", function () {
+  $(".lesson-sortable").sortable({
+    cursor: "grabbing",
     cursorAt: { left: 10 },
-    placeholder: 'ui-state-highlight',
+    placeholder: "ui-state-highlight",
     update: function (e, ui) {
       let item = ui.item;
       let item_data = item.data();
-      let params = { _method: 'put' };
-      params[item_data.modelName] = { row_order_position: item.index() }
+      let params = { _method: "put" };
+      params[item_data.modelName] = { row_order_position: item.index() };
       $.ajax({
-        type: 'POST',
+        type: "POST",
         url: item_data.updateUrl,
-        dataType: 'json',
-        data: params
+        dataType: "json",
+        data: params,
       });
     },
     stop: function (e, ui) {
-      console.log("stop called when finishing sort of cards")
-    }
+      console.log("stop called when finishing sort of cards");
+    },
+  });
+
+  $("video").bind("contextmenu", function () {
+    return false;
   });
 });
