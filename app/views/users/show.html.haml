@@ -4,3 +4,13 @@
   = @user.username
 
 = render 'users/user', user: @user
+
+%br
+= link_to user_google_oauth2_omniauth_authorize_path, class: 'nav-link' do
+  .fab.fa-google
+  Sign in with Google
+- if @user.uid.present?
+  %br
+  = image_tag @user.image, size: '50x50', alt: "#{@user.email}", class: 'rounded-circle'
+  .row
+  = @user.name
