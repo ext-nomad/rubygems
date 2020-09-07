@@ -14,7 +14,7 @@ class User < ApplicationRecord
          :validatable,
          :trackable,
          :confirmable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
   validate :must_have_a_role, on: :update
   after_create :assign_default_role
