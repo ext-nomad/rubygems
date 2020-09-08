@@ -29,6 +29,8 @@ require("jquery-ui");
 
 import "youtube";
 
+require("selectize");
+
 // $(function () {
 //   $("#sortable").sortable();
 //   $("#sortable").disableSelection();
@@ -59,4 +61,10 @@ $(document).on("turbolinks:load", function () {
   $("video").bind("contextmenu", function () {
     return false;
   });
+
+  if ($(".selectize")) {
+    $(".selectize").selectize({
+      sortField: "text",
+    });
+  }
 });

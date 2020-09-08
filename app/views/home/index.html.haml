@@ -16,6 +16,25 @@
         %span.input-group-append
           %button.btn.btn-primary.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
+    .p-2
+  - else
+    %h3.text-shadow Join to access all the courses 
+    .p-2
+    = link_to 'Register', new_user_registration_path, class: 'btn btn-custompurple btn-lg'
+    = link_to 'Login', new_user_session_path, class: 'btn btn-custompurple btn-lg'
+    .row.mt-1
+    = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-danger btn-lg mr-1' do
+      Continue with
+      .fab.fa-google
+    .row.mt-1
+    = link_to user_github_omniauth_authorize_path, class: 'btn btn-dark btn-lg mr-1' do
+      Continue with
+      .fab.fa-github
+    .row.mt-1
+    = link_to user_vkontakte_omniauth_authorize_path, class: 'btn btn-primary btn-lg mr-1' do
+      Continue with
+      .fab.fa-vk
+
 
   /.form-inline.my-2.my-lg-0
   /  = form_tag(courses_path, method: :get) do

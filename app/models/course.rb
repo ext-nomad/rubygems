@@ -5,6 +5,8 @@ class Course < ApplicationRecord
   has_many :lessons, dependent: :destroy
   has_many :enrollments, dependent: :restrict_with_error
   has_many :user_lessons, through: :lessons
+  has_many :course_tags, dependent: :destroy
+  has_many :tags, through: :course_tags
   has_one_attached :avatar
 
   has_rich_text :description

@@ -2,6 +2,8 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "./actiontext.scss";
+@import "selectize/dist/css/selectize";
+@import "selectize/dist/css/selectize.default";
 
 body {
   background: #2a4054;
@@ -12,6 +14,18 @@ body {
 .jumbotron,
 .list-group-item {
   color: #2a4054;
+}
+
+.purple-background {
+  background-color: #563d7c;
+}
+
+hr {
+  background-color: white;
+}
+
+.table {
+  background: white;
 }
 
 .form-control.is-invalid {
