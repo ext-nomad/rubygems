@@ -39,14 +39,10 @@ class EnrollmentsController < ApplicationController
   def update
     authorize @enrollment
 
-    respond_to do |format|
-      if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @enrollment }
-      else
-        format.html { render :edit }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
-      end
+    if @enrollment.update(enrollment_params)
+      redirect_to @enrollment, notice: 'Enrollment was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -54,10 +50,7 @@ class EnrollmentsController < ApplicationController
     @enrollment.destroy
     authorize @enrollment
 
-    respond_to do |format|
-      format.html { redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed'
   end
 
   private

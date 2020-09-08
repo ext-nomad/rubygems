@@ -14,7 +14,7 @@ class User < ApplicationRecord
          :validatable,
          :trackable,
          :confirmable,
-         :omniauthable, omniauth_providers: %i[google_oauth2 github]
+         :omniauthable, omniauth_providers: %i[google_oauth2 github vkontakte]
 
   validate :must_have_a_role, on: :update
   after_create :assign_default_role
@@ -41,7 +41,11 @@ class User < ApplicationRecord
 
       user.save!
     else
-      user = User.create(email: data['email'], password: Devise.friendly_token[0, 20], confirmed_at: Time.now)
+      user = User.create(
+        email: data['email'],
+        password: Devise.friendly_token[0, 20],
+        confirmed_at: Time.now
+      )
     end
     user
   end

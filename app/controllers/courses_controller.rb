@@ -23,28 +23,42 @@ class CoursesController < ApplicationController
 
   def purchased
     @ransack_path = purchased_courses_path
-    @ransack_courses = Course.joins(:enrollments).where(enrollments: { user: current_user }).ransack(params[:courses_search], search_key: :courses_search)
+    @ransack_courses = Course
+                       .joins(:enrollments)
+                       .where(enrollments: { user: current_user })
+                       .ransack(params[:courses_search],
+                                search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end
 
   def pending_review
     @ransack_path = pending_review_courses_path
-    @ransack_courses = Course.joins(:enrollments).merge(Enrollment.pending_review.where(user: current_user)).ransack(params[:courses_search], search_key: :courses_search)
+    @ransack_courses = Course
+                       .joins(:enrollments)
+                       .merge(Enrollment.pending_review.where(user: current_user))
+                       .ransack(params[:courses_search],
+                                search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end
 
   def created
     @ransack_path = created_courses_path
-    @ransack_courses = Course.where(user: current_user).ransack(params[:courses_search], search_key: :courses_search)
+    @ransack_courses = Course
+                       .where(user: current_user)
+                       .ransack(params[:courses_search],
+                                search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end
 
   def unapproved
     @ransack_path = unapproved_courses_path
-    @ransack_courses = Course.unapproved.ransack(params[:courses_search], search_key: :courses_search)
+    @ransack_courses = Course
+                       .unapproved
+                       .ransack(params[:courses_search],
+                                search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end
@@ -85,37 +99,28 @@ class CoursesController < ApplicationController
     @course.user = current_user
     authorize @course
 
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+    if @course.save
+      redirect_to @course, notice: 'Course was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
     authorize @course
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+
+    if @course.update(course_params)
+      redirect_to @course, notice: 'Course was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     authorize @course
+
     if @course.destroy
-      respond_to do |format|
-        format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      redirect_to courses_url, notice: 'Course was successfully destroyed.'
     else
       redirect_to @course, alert: 'Course has enrollments. Can not be deleted.'
     end
