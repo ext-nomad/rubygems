@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
     # @courses = @ransack_courses.result.includes(:user)
 
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
   end
 
   def purchased
@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -67,7 +67,7 @@ class CoursesController < ApplicationController
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -96,12 +96,12 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
     authorize @course
   end
 
   def edit
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
     authorize @course
   end
 
@@ -113,7 +113,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to @course, notice: 'Course was successfully created.'
     else
-      @tags = Tag.all
+      @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
       render :new
     end
   end
@@ -124,7 +124,7 @@ class CoursesController < ApplicationController
     if @course.update(course_params)
       redirect_to @course, notice: 'Course was successfully updated.'
     else
-      @tags = Tag.all
+      @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
       render :edit
     end
   end

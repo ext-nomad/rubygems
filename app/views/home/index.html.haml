@@ -124,6 +124,17 @@
 %hr
 %h2
   .text-center
+    .fa.fa-cloud
+    Most popular tags
+- @popular_tags.each do |tag|
+  = link_to courses_path(courses_search: { course_tags_tag_id_eq: tag.id }) do
+    .badge.badge-info
+      %h5
+        = tag.name
+        = tag.course_tags_count
+%hr
+%h2
+  .text-center
     .fa.fa-comment
     What our students have to say
 .card-columns

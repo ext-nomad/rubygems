@@ -1,0 +1,10 @@
+Tags:
+%p
+- @tags.each do |tag|
+  .row
+  .badge.badge-info
+    = tag.name
+    = tag.course_tags_count
+    = link_to tag, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
+      .fa.fa-trash
+  %p

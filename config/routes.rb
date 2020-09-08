@@ -21,11 +21,11 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index edit show update]
   resources :youtube, only: %i[show]
+  resources :tags, only: %i[index create destroy]
+
   resources :enrollments do
     get :my_students, on: :collection
   end
-
-  resources :tags, only: :create
 
   resources :courses do
     get :purchased, :pending_review, :created, :unapproved, on: :collection
