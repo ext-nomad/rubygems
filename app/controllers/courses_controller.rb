@@ -18,7 +18,8 @@ class CoursesController < ApplicationController
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
     # @courses = @ransack_courses.result.includes(:user)
 
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
+    @tags = Tag.all
   end
 
   def purchased
@@ -28,7 +29,9 @@ class CoursesController < ApplicationController
                        .where(enrollments: { user: current_user })
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
+    @tags = Tag.all
+
     render 'index'
   end
 
@@ -39,7 +42,9 @@ class CoursesController < ApplicationController
                        .merge(Enrollment.pending_review.where(user: current_user))
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
+    @tags = Tag.all
+
     render 'index'
   end
 
@@ -49,7 +54,9 @@ class CoursesController < ApplicationController
                        .where(user: current_user)
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
+    @tags = Tag.all
+
     render 'index'
   end
 
@@ -59,7 +66,9 @@ class CoursesController < ApplicationController
                        .unapproved
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
+    @tags = Tag.all
+
     render 'index'
   end
 
@@ -87,10 +96,12 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    @tags = Tag.all
     authorize @course
   end
 
   def edit
+    @tags = Tag.all
     authorize @course
   end
 
@@ -102,6 +113,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to @course, notice: 'Course was successfully created.'
     else
+      @tags = Tag.all
       render :new
     end
   end
@@ -112,6 +124,7 @@ class CoursesController < ApplicationController
     if @course.update(course_params)
       redirect_to @course, notice: 'Course was successfully updated.'
     else
+      @tags = Tag.all
       render :edit
     end
   end
