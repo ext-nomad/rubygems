@@ -33,9 +33,10 @@
       = pluralize(@course.lessons_count, 'lesson')
       -# Lessons:
       -# = @course.lessons_count
-      .float-right
-        .fa.fa-spinner
-        = number_to_percentage(@course.progress(current_user), precision: 0)   
+      - unless current_user.enrollments.where(course: @course).first.nil?
+        .float-right
+          -# .fa.fa-spinner
+          = certificate_button(@course)
     %ul.list-group.lesson-sortable
       - @lessons.each do |lesson|
         = content_tag 'div', id: "lesson-#{lesson.id}", data: { model_name: lesson.class.name.underscore, update_url: course_lesson_sort_path(@course, lesson) } do

@@ -36,4 +36,15 @@ module CoursesHelper
       end
     end
   end
+
+  def certificate_button(course)
+    if course.progress(current_user) == 100
+      link_to certificate_enrollment_path(current_user.enrollments.where(course: @course).first, format: :pdf), class: 'btn btn-sm btn-danger' do
+        "<i class='fa fa-file-pdf'></i>".html_safe + ' ' + 'Certificate of Completion'
+      end
+    else
+      "<i class='fa fa-spinner'></i>".html_safe + ' ' + number_to_percentage(@course.progress(current_user), precision: 0).to_s
+
+    end
+  end
 end
