@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 
   resources :enrollments do
     get :my_students, on: :collection
+    member do
+      get :certificate
+    end
   end
 
   resources :courses do
