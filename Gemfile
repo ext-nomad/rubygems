@@ -60,4 +60,5 @@ gem 'recaptcha'
 gem 'rolify'
 gem 'simple_form'
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary', group: :development
+gem 'wkhtmltopdf-heroku', group: :production
