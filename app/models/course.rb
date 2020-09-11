@@ -19,8 +19,8 @@ class Course < ApplicationRecord
             presence: true
   validates :description, presence: true, length: { minimum: 5 }
   validates :title, uniqueness: true
+  validates :avatar, presence: true, on: :update
   validates :avatar,
-            attached: true,
             content_type: %w[image/png image/jpg image/jpeg],
             size: { less_than: 500.kilobytes,
                     message: 'size shoud be under 500 kilobytes' }

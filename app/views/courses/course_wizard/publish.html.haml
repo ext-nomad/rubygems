@@ -1,0 +1,13 @@
+= render 'courses/course_wizard/wizard' do
+  = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
+    .form-inputs
+      = f.label 'Choose tags from presented or make your own:'
+      = f.select :tag_ids, @tags.all.pluck(:name, :id), {}, { multiple: true, class: 'selectize-tags' }
+      %p
+      = f.label 'Do you want to public this course? (Everyone can see it, and enroll) '
+      = f.input :published
+    %br
+    %hr
+    .float-right
+      .form-actions
+        = f.submit 'Finish', class: 'btn btn-success'

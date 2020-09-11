@@ -100,34 +100,37 @@ class CoursesController < ApplicationController
     authorize @course
   end
 
-  def edit
-    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
-    authorize @course
-  end
+  # def edit
+  #   @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
+  #   authorize @course
+  # end
 
   def create
     @course = Course.new(course_params)
     @course.user = current_user
+    @course.description = 'Dummy text'
+    @course.short_description = 'Curriculum description'
+
     authorize @course
 
     if @course.save
-      redirect_to @course, notice: 'Course was successfully created.'
+      redirect_to course_course_wizard_index_path(@course), notice: 'Course was successfully created.'
     else
       @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
       render :new
     end
   end
 
-  def update
-    authorize @course
+  # def update
+  #   authorize @course
 
-    if @course.update(course_params)
-      redirect_to @course, notice: 'Course was successfully updated.'
-    else
-      @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
-      render :edit
-    end
-  end
+  #   if @course.update(course_params)
+  #     redirect_to @course, notice: 'Course was successfully updated.'
+  #   else
+  #     @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     authorize @course

@@ -1,6 +1,29 @@
+- content_for :title do
+  RubyGems
+  \|
+  Editing
+  = @course.title
+
+= link_to 'Courses', courses_path
+\/
+= link_to @course.title, course_path(@course)
+\/
+= link_to "Editing #{step}".humanize, course_course_wizard_path(@course, step)
+
 .card
   .progress
     .progress-bar{style: "width: #{@progress}%"}
+      = number_to_percentage(@progress, precision: 0)
+  .progress
+    - wizard_steps.each do |s|
+      -if current_page?(course_course_wizard_path(@course, s))
+        - @color = 'bg-success'
+      -else 
+        - @color = 'bg-secondary'
+      = link_to course_course_wizard_path(@course, s), class: "progress-bar #{@color}", style: "width: #{@progress}%" do
+        -# = wizard_steps.index(s) + 1
+        = "#{s}".humanize
+
   .card-header
     %h4 
       = "#{step}".humanize
@@ -9,14 +32,33 @@
         = wizard_steps.index(step) + 1
         of
         = wizard_steps.count
+
   .card-body
+    .container.text-danger
+      - if @course.errors.any? 
+        - @course.errors.full_messages.each do |msg|
+          %li= msg
+          %p
     = yield 
-  .card-footer
+
     .float-left
-      = link_to previous_wizard_path, class: 'btn btn-sm btn-info' do
-        .fa.fa-arrow-left
-        Previous
-    .float-right
-      = link_to next_wizard_path, class: 'btn btn-sm btn-info' do
-        Next
-        .fa.fa-arrow-right
+      - if wizard_steps.index(step) > 0
+        = link_to previous_wizard_path, class: 'btn btn-info' do
+          .fa.fa-arrow-left
+          Previous step
+      - else
+        = link_to course_path(@course), class: 'btn btn-danger' do
+          .fa.fa-window-close
+          Cancel
+    -# .float-right
+    -#   - if wizard_steps.index(step) + 1 == wizard_steps.count
+    -#     - if @course.errors.any?
+    -#       = link_to wizard_path(:basic_info), class: 'btn btn-sm btn-danger' do
+    -#         Error
+    -#     - else
+    -#       = link_to next_wizard_path, class: 'btn btn-sm btn-success' do
+    -#         Finish
+    -#   - else
+    -#     = link_to next_wizard_path, class: 'btn btn-sm btn-info' do
+    -#       Next
+    -#       .fa.fa-arrow-right

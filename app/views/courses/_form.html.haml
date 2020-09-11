@@ -6,33 +6,6 @@
   .form-inputs
     = f.input :title
 
-    -# = f.input :tag_ids
-    = f.select :tag_ids, @tags.all.pluck(:name, :id), {}, { multiple: true, class: 'selectize-tags' }
-
-    = f.label :avatar
-    .row
-    - if @course.avatar.attached?
-      = image_tag @course.avatar, width: '200px'
-    .row
-    = f.file_field :avatar
-    %small= f.error :avatar, class: 'text-danger'
-    .row
-    %p
-    
-    -# = f.label :description
-    -# = f.rich_text_area :description
-    -# %small= f.error :description, class: 'text-danger'
-
-    = f.input :description, as: :rich_text_area
-
-    %p
-    = f.input :short_description
-    / = f.input :language, collection: [ 'English', 'Russian', 'Polish']
-    = f.input :language, collection: Course.languages, include_blank: true
-    / = f.input :level, collection: [ 'Beginner', 'Intermediate', 'Advanced']
-    = f.input :level, collection: Course.levels, include_blank: true
-    = f.input :price
-    = f.input :published
 
   .form-actions
     = f.button :submit

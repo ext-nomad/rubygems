@@ -1,2 +1,11 @@
 = render 'courses/course_wizard/wizard' do
-  another thing
+  = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
+    .form-inputs
+      = f.input :language, collection: Course.languages, include_blank: true
+      = f.input :level, collection: Course.levels, include_blank: true
+      = f.input :price
+    %br
+    %hr
+    .float-right
+      .form-actions
+        = f.submit 'Next step', class: 'btn btn-info'

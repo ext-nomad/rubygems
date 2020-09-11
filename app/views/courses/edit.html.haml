@@ -4,6 +4,12 @@
   Editing
   = @course.title
 
+= link_to 'Courses', courses_path
+\/
+= link_to @course.title, course_path(@course)
+\/
+= link_to 'Edit', edit_course_path(@course)
+
 .card
   .card-header
     %h3

@@ -1,2 +1,22 @@
 = render 'courses/course_wizard/wizard' do
-  some thing
+  = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
+    .form-inputs
+      = f.input :title, input_html: { autocomplete: 'off' }
+      = f.label :avatar
+      .row
+      - if @course.avatar.attached?
+        = image_tag @course.avatar, width: '200px'
+      .row
+      = f.file_field :avatar
+      %small= f.error :avatar, class: 'text-danger'
+      .row
+      %p
+      = f.input :description, as: :rich_text_area
+      %p
+      = f.input :short_description
+    %br
+    %hr
+    .float-right
+      .form-actions
+        = f.submit 'Next step', class: 'btn btn-info'
+
