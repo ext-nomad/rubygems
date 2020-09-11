@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[index edit show update]
   resources :youtube, only: %i[show]
   resources :tags, only: %i[index create destroy]
-  resources :course_creator
 
   resources :enrollments do
     get :my_students, on: :collection
@@ -46,5 +45,6 @@ Rails.application.routes.draw do
       end
     end
     resources :enrollments, only: %i[new create]
+    resources :course_wizard, controller: 'courses/course_wizard'
   end
 end
