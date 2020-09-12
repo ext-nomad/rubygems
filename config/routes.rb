@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :courses, except: %i[edit] do
+  resources :courses, except: %i[edit update] do
     get :purchased, :pending_review, :created, :unapproved, on: :collection
     member do
       get :analytics
