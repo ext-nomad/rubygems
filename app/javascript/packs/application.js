@@ -31,6 +31,8 @@ import "youtube";
 
 require("selectize");
 
+import "cocoon-js";
+
 // $(function () {
 //   $("#sortable").sortable();
 //   $("#sortable").disableSelection();

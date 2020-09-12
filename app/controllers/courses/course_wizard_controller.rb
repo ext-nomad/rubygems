@@ -3,7 +3,7 @@ class Courses::CourseWizardController < ApplicationController
   before_action :set_progress, only: %i[show update]
   before_action :set_course, only: %i[show update finish_wizard_path]
 
-  steps :basic_info, :details, :publish
+  steps :landing_page, :basic_info, :details, :lessons, :publish
 
   def show
     @user = current_user
@@ -26,11 +26,7 @@ class Courses::CourseWizardController < ApplicationController
   end
 
   def finish_wizard_path
-    # courses_path
     authorize @course, :edit?
-    # @course.update_attributes(course_params)
-    # @course.save(course_params)
-    # render_wizard @course
     course_path(@course)
   end
 
@@ -49,6 +45,16 @@ class Courses::CourseWizardController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:title, :description, :short_description, :price, :published, :language, :level, :avatar, tag_ids: [])
+    params.require(:course).permit(
+      :title,
+      :description,
+      :short_description,
+      :price, :published,
+      :language,
+      :level,
+      :avatar,
+      tag_ids: [],
+      lessons_attributes: %i[id title content _destroy]
+    )
   end
 end

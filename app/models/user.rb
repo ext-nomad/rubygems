@@ -22,6 +22,10 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: :slugged
 
+  after_create do
+    UserMailer.new_user(self).deliver_later
+  end
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first

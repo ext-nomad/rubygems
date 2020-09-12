@@ -38,6 +38,7 @@ end
 gem 'active_storage_validations'
 gem 'bootstrap', '~> 4.5.2'
 gem 'chartkick'
+gem 'cocoon'
 gem 'devise'
 gem 'exception_notification', group: :production
 gem 'faker'

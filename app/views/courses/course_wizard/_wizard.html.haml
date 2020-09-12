@@ -50,6 +50,12 @@
         = link_to course_path(@course), class: 'btn btn-danger' do
           .fa.fa-window-close
           Cancel
+    - if wizard_steps.index(step) == 0
+      .float-right
+        = link_to next_wizard_path, class: 'btn btn-info' do
+          Next
+          .fa.fa-arrow-right
+
     -# .float-right
     -#   - if wizard_steps.index(step) + 1 == wizard_steps.count
     -#     - if @course.errors.any?
