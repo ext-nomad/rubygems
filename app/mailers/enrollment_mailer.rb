@@ -1,14 +1,19 @@
 class EnrollmentMailer < ApplicationMailer
-  def new_enrollment(enrollment)
+  def student_enrollment(enrollment)
     @enrollment = enrollment
-    @course = @enrollment.course
+
     mail(
       to: @enrollment.user.email,
-      subject: "You have enrolled to: #{@course}"
+      subject: "You have enrolled to: #{@enrollment.course}"
     )
-    # mail(
-    #   to: @enrollment.course.user.email,
-    #   subject: "You have a new student in this course: #{@course}"
-    # )
+  end
+
+  def teacher_enrollment(enrollment)
+    @enrollment = enrollment
+
+    mail(
+      to: @enrollment.course.user.email,
+      subject: "You have a new student in this course: #{@enrollment.course}"
+    )
   end
 end
