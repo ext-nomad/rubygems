@@ -22,6 +22,8 @@ module ApplicationHelper
       "<i class='fa fa-lock-open'></i>".html_safe
     when 'Comment'
       "<i class='fa fa-comment'></i>".html_safe
+    when 'User'
+      "<i class='fa fa-user'></i>".html_safe
     end
   end
 end

@@ -22,6 +22,9 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: :slugged
 
+  include PublicActivity::Model
+  tracked only: %i[create destroy], owner: :itself
+
   after_create do
     UserMailer.new_user(self).deliver_later
   end

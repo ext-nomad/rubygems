@@ -5,9 +5,24 @@
 @import "selectize/dist/css/selectize";
 @import "selectize/dist/css/selectize.default";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
+  margin: 0 0 200px;
   background: #2a4054;
   color: #ebedf0;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  //height: 200px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .card,

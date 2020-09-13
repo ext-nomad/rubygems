@@ -5,7 +5,9 @@
       = f.select :tag_ids, @tags.all.pluck(:name, :id), {}, { multiple: true, class: 'selectize-tags' }
       %p
       = f.label 'Do you want to public this course? (Everyone can see it, and enroll) '
-      = f.input :published
+      .custom-control.custom-switch
+        = f.check_box :published, class: "custom-control-input", id: "publishSwitch1"
+        %label.custom-control-label{:for => "publishSwitch1"} Publish
     %br
     %hr
     .float-right

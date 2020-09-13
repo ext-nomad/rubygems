@@ -1,6 +1,6 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-success
   %a.navbar-brand{:href => "/"}
-    = image_tag 'logo.png', size: '30x30', alt: 'logo', class: 'rounded'
+    = image_tag 'logo.png', size: '30x30', alt: 'logo', alt: "logo", class: 'd-inline-block align-top'
     RubyGems
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
@@ -30,12 +30,13 @@
 
         / Search
         .form-inline
-          = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
-            .input-group
-              = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px;', autocomplete: 'off', placeholder: "Find a course"
-              %span.input-group-append
-                %button.btn.btn-primary.btn-sm{:type => "submit"}
-                  %span.fa.fa-search{"aria-hidden" => "true"}
+          - if @ransack_courses.present?
+            = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+              .input-group
+                = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off
+                %span.input-group-append
+                  %button.btn.btn-primary.btn-sm{:type => "submit"}
+                    %span.fa.fa-search{"aria-hidden" => "true"}
  
       %ul.navbar-nav.mr-auto
         / Dropdown buttons for each role

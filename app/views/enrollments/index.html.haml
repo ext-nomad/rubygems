@@ -62,12 +62,12 @@
         %tr
           %td= enrollment.id
           %td= link_to enrollment.user, user_path(enrollment.user)
-          %td= enrollment.created_at.strftime("%d.%b %Y, %H:%M")
+          %td= enrollment.created_at.strftime("%d.%m %Y, %H:%M")
           %td= link_to enrollment.course, course_path(enrollment.course)
           %td= number_to_currency(enrollment.price)
           %td
             - if enrollment.rating.present?
-              = time_ago_in_words(enrollment.updated_at) 
+              = time_ago_in_words(enrollment.updated_at).strftime("%d.%m %Y, %H:%M")
               ago
           %td= enrollment.review
           %td= enrollment.rating

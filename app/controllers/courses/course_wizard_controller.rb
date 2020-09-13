@@ -3,12 +3,14 @@ class Courses::CourseWizardController < ApplicationController
   before_action :set_progress, only: %i[show update]
   before_action :set_course, only: %i[show update finish_wizard_path]
 
-  steps :landing_page, :basic_info, :details, :lessons, :publish
+  steps :basic_info, :details, :lessons, :publish
 
   def show
     @user = current_user
     authorize @course, :edit?
     case step
+    when :lessons
+      @course.lessons.build unless @course.lessons.any?
     when :publish
       @tags = Tag.all
     end
@@ -18,6 +20,8 @@ class Courses::CourseWizardController < ApplicationController
   def update
     authorize @course, :edit?
     case step
+    when :lessons
+      # @course.lessons.build unless @course.lessons.any?
     when :publish
       @tags = Tag.all
     end
