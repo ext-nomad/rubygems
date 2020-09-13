@@ -36,6 +36,15 @@
     Comments:
     = user.comments_count
   .card-footer
+    Course income:
+    = user.course_income
+    .row
+    Enrollment expenses:
+    = user.enrollment_expenses
+    .row
+    Balance:
+    = user.balance
+  .card-footer
     Confirmed email?
     - if user.confirmed_at.present?
       .badge.badge-success Yes

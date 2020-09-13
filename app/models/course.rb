@@ -67,6 +67,11 @@ class Course < ApplicationRecord
     (user_lessons.where(user: user).count / lessons_count.to_f) * 100 unless lessons_count.zero?
   end
 
+  def calculate_income
+    update_column :income, enrollments.map(&:price).sum
+    user.calculate_course_income
+  end
+
   # hex_secured_slug
   # friendly_id :generated_slug, use: :slugged
   # def generated_slug
