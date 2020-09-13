@@ -22,11 +22,12 @@ class Course < ApplicationRecord
             presence: true
   validates :description, presence: true, length: { minimum: 5 }
   validates :title, uniqueness: true
+  validates :price, numericality: { greater_than_or_equal_to: 0, less_than: 999}
   validates :avatar, presence: true, on: :update
   validates :avatar,
             content_type: %w[image/png image/jpg image/jpeg],
             size: { less_than: 500.kilobytes,
-                    message: 'size shoud be under 500 kilobytes' }
+                    message: 'size should be under 500 kilobytes' }
 
   extend FriendlyId
   friendly_id :title, use: :slugged

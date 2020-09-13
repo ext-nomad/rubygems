@@ -11,7 +11,8 @@
         = link_to @course.title, course_path(@course)
         %hr
         .fa.fa-lock-open
-        Buy course
+        Buy course:
+        = number_to_currency(@course.price)
   .card-body
     .text-center
       - if @course.price.positive?

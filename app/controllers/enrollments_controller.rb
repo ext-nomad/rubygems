@@ -41,6 +41,8 @@ class EnrollmentsController < ApplicationController
   end
 
   def create
+    @enrollment = current_user.buy_course(@course)
+
     if @course.price.positive?
       @amount = (@course.price * 100).to_i
 
@@ -58,11 +60,10 @@ class EnrollmentsController < ApplicationController
 
       @enrollment = current_user.buy_course(@course)
       redirect_to course_path(@course), notice: 'You are enrolled!'
-    else
-      @enrollment = current_user.buy_course(@course)
-      redirect_to course_path(@course), notice: 'You are enrolled!'
-      EnrollmentMailer.new_enrollment(@enrollment).deliver_later
     end
+
+    redirect_to course_path(@course), notice: 'You are enrolled!'
+
     EnrollmentMailer.student_enrollment(@enrollment).deliver_later
     EnrollmentMailer.teacher_enrollment(@enrollment).deliver_later
   rescue Stripe::CardError => e
