@@ -17,8 +17,8 @@ Enrollments per day, quantity
 = line_chart @course.enrollments.group_by_day(:created_at).count
 Enrollments per day, revenue
 = line_chart @course.enrollments.group_by_day(:created_at).sum(:price)
-Unique user views
+Unique user views (how many unique users viewed the lesson)
 = bar_chart @course.user_lessons.joins(:lesson).group(:'lessons.title').count
-Impressions per lesson
+Impressions per lesson (how many times the lesson was opened)
 = bar_chart @course.user_lessons.joins(:lesson).group(:'lessons.title').sum(:impressions)
 

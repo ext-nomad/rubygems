@@ -10,7 +10,7 @@
       = @activities.count
 %p
 
-%ul.list-group
+%ul.list-group.shadow
   - @activities.each do |activity|
     %li.list-group-item
       -# = activity.id
@@ -34,8 +34,8 @@
       -# = activity.key
       = crud_label(activity.key.match(/\.(.*)/)[1])
       by
-      -# = activity.owner
-      = link_to activity.owner, user_path(activity.owner)
+      - if activity.owner.present?
+        = link_to activity.owner, user_path(activity.owner)
       - if activity.parameters.any?
         = activity.parameters
 

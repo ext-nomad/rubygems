@@ -1,16 +1,25 @@
 - content_for :title do
   RubyGems
-  \|
+  \| 
   = @user.username
 
-= render 'users/user', user: @user
-
-%br
-= link_to user_google_oauth2_omniauth_authorize_path, class: 'nav-link' do
-  .fab.fa-google
-  Sign in with Google
-- if @user.uid.present?
-  %br
-  = image_tag @user.image, size: '50x50', alt: "#{@user.email}", class: 'rounded-circle'
-  .row
-  = @user.name
+.row
+  .col-md-6
+    = render 'users/user', user: @user
+    %p
+  .col-md-6
+    .card.shadow
+      .card-header
+        %b Courses: Teaching
+      .card-body
+        - @courses_teaching.each do |course|
+          .row
+          = link_to course.title, course_path(course)
+    %p
+    .card.shadow
+      .card-header
+        %b Courses: Learning
+      .card-body
+        - @courses_learning.each do |enrollment|
+          .row
+          = link_to enrollment.course.title, course_path(enrollment.course)

@@ -1,19 +1,23 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
 @import "./actiontext.scss";
+
 @import "selectize/dist/css/selectize";
 @import "selectize/dist/css/selectize.default";
 
+// Main elements
 html {
   position: relative;
   min-height: 100%;
 }
 
+// #2a4054
 body {
   margin: 0 0 200px;
-  background: #2a4054;
-  color: #ebedf0;
+  background: #f8f0e6;
+  // color: #ebedf0;
 }
 
 footer {
@@ -24,23 +28,28 @@ footer {
   width: 100%;
   overflow: hidden;
 }
-
-.card,
-.jumbotron,
-.list-group-item {
-  color: #2a4054;
-}
-
-.purple-background {
-  background-color: #563d7c;
+trix-editor.form-control {
+  height: auto;
 }
 
 hr {
   background-color: white;
 }
 
+// Override bootstrap elements
+
+// .card,
+// .jumbotron,
+// .list-group-item {
+//   color: #2a4054;
+// }
+
 .table {
   background: white;
+}
+
+.dropdown {
+  z-index: 9999;
 }
 
 .form-control.is-invalid {
@@ -56,7 +65,54 @@ hr {
   background-color: aqua;
 }
 
-//simple_form input height for rich_text_area
-trix-editor.form-control {
+.form-control.is-invalid {
+  background-image: none;
+}
+.form-control.is-valid {
+  background-image: none;
+}
+
+.nested-fields.container.rounded {
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nested-fields.container.rounded:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  z-index: 3;
+}
+
+// Custom elements
+$custompurple: #563d7c;
+
+.text-shadow {
+  text-shadow: 1px 1px black;
+}
+
+.darker {
+  color: darkgrey;
+}
+
+.purple-background {
+  background-color: $custompurple;
+}
+
+.btn-custom-purple {
+  color: #fff;
+  background-color: $custompurple;
+  border-color: $custompurple;
+}
+
+.parallax {
+  background-image: url("bg.jpg");
   height: auto;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }

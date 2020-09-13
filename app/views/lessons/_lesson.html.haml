@@ -1,33 +1,36 @@
-.card
+.card.shadow
   .card-header
     - if lesson.viewed(current_user) == true
       .text-success.fa.fa-check-square
+
     - else
       .text-danger.fa.fa-check-square
-    = link_to lesson.title, course_lesson_path(@course, lesson)
-  - if current_user && policy(lesson).show?
-    .card-body
-      - if @lesson.video.attached?
-        - if @lesson.video_thumbnail.attached?
-          %video(controls='true' poster="#{url_for @lesson.video_thumbnail}" width='100%' preload='metadata' controlslist='nodownload')
-            %source{src: rails_blob_url(@lesson.video), type:"#{@lesson.video.content_type}" }
-        - else 
-          %video(controls='true' width='100%' preload='metadata' controlslist='nodownload')
-            %source{src: rails_blob_url(@lesson.video), type:"#{@lesson.video.content_type}" }
-        %p
-      = lesson.content
+
+    = link_to course_lesson_path(@course, lesson) do
+      %b
+        #{lesson.row_order_rank + 1}.
+      = lesson.title
+  .card-body
+    - if @lesson.video.attached?
+      %video(controls="true" width="100%" preload="metadata" controlslist="nodownload")
+        %source{src: rails_blob_url(@lesson.video), type:"#{@lesson.video.content_type}"}
+
+    = lesson.content
+
   - if current_user && policy(lesson).edit?
     .card-footer
-      = link_to 'Edit', edit_course_lesson_path(@course, lesson), class: 'btn btn-sm btn-warning'
-      = link_to 'Destroy', [@course, @lesson], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
-    .card-footer
-      - unless lesson.prev.nil?
-        .float-left
-          = link_to course_lesson_path(@course, lesson.prev), class: 'btn btn-sm btn-info' do
-            .fa.fa-arrow-left
-            Previous
-      - unless lesson.next.nil?
-        .float-right
-          = link_to course_lesson_path(@course, lesson.next), class: 'btn btn-sm btn-info' do
-            Next
-            .fa.fa-arrow-right
+      = link_to edit_course_lesson_path(@course, lesson), class: 'btn btn-sm btn-warning mr-1' do
+        .fa.fa-edit
+      = link_to [@course, lesson], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
+        .fa.fa-trash
+  .card-footer
+    - unless lesson.prev.nil?
+      .float-left
+        = link_to course_lesson_path(@course, lesson.prev), class: 'btn btn-sm btn-info' do
+          .fa.fa-arrow-left
+          Previous
+    - unless lesson.next.nil?
+      .float-right
+        = link_to course_lesson_path(@course, lesson.next), class: 'btn btn-sm btn-info' do
+          .fa.fa-arrow-right
+          Next

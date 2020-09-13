@@ -10,7 +10,7 @@
 \/
 = link_to "Editing #{step}".humanize, course_course_wizard_path(@course, step)
 
-.card
+.card.shadow
   .progress
     .progress-bar{style: "width: #{@progress}%"}
       = number_to_percentage(@progress, precision: 0)

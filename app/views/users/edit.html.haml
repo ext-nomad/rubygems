@@ -1,4 +1,10 @@
-.card
+- content_for :title do
+  RubyGems
+  \/
+  Edit roles for
+  = @user.username
+
+.card.shadow
   .card-header
     Editing roles for
     = @user.email

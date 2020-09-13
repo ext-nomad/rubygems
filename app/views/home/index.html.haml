@@ -3,8 +3,8 @@
   \|
   Online courses - Learn Anything, On Your Schedule
 
-.jumbotron
-  .display-4
+.jumbotron.shadow.parallax
+  .h1.text-shadow
     What do you want to learn today?
  
   .p-4
@@ -20,8 +20,8 @@
   - else
     %h3.text-shadow Join to access all the courses 
     .p-2
-    = link_to 'Register', new_user_registration_path, class: 'btn btn-custompurple btn-lg'
-    = link_to 'Login', new_user_session_path, class: 'btn btn-custompurple btn-lg'
+    = link_to 'Register', new_user_registration_path, class: 'btn btn-custom-purple btn-lg'
+    = link_to 'Login', new_user_session_path, class: 'btn btn-custom-purple btn-lg'
     .row.mt-1
     = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-danger btn-lg mr-1' do
       Continue with
@@ -45,98 +45,134 @@
   /          %span.fa.fa-search{"aria-hidden" => "true"}
 
 
-.card-group
-  .card.card-body
-    %h1
+.card-group.shadow
+  .card.card-body.parallax
+    %h1.text-shadow
       .text-center
         .fa.fa-graduation-cap
-    = Course.count
-    online courses
+    = pluralize(Course.approved.published.count, 'online courses')
+    -# online courses
     .row
-    Explore a variety of fresh topics
-  .card.card-body
-    %h1
+    %small Explore a variety of fresh topics
+  .card.card-body.parallax
+    %h1.text-shadow
       .text-center
         .fa.fa-chalkboard-teacher
       /.fa-fa-brain
-    = Course.distinct.count(:user_id)
-    expert instructors
+    = pluralize(Course.distinct.count(:user_id), 'expert instructors')
+    -# expert instructors
     .row
-    Find the right instructor for you
-  .card.card-body
-    %h1
+    %small Find the right instructor for you
+  .card.card-body.parallax
+    %h1.text-shadow
       .text-center
         .fa.fa-user-graduate
-    = User.count
-    active learners
+    = pluralize(User.count, 'active learners')
+    -# active learners
     .row
-    Join the knowledge sharing community
-  .card.card-body
-    %h1
+    %small Join the knowledge sharing community
+  .card.card-body.parallax
+    %h1.text-shadow
       .text-center
         .fa.fa-infinity
     Lifetime access
     .row
-    Learn on your schedule
-  
+    %small Learn on your schedule
+
+%p
+
+%h2.text-center.text-shadow
+  .fa.fa-tags
+  Top Categories
+- @popular_tags.each do |tag|
+  = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
+    .mt-1.btn.btn-info
+      = tag.name
+      %span.badge.badge-light
+        = tag.course_tags_count
 
 %hr
 - if current_user
-  %h2
-    .text-center
+  - if current_user.enrollments.any?
+    %h2.text-center
       .fa.fa-user-graduate
-      Continue learning
-  .card-columns
-    - @purchased_courses.each do |course|
-      = render 'courses/course', course: course 
-  .text-right
-    = link_to 'All my purchased courses', purchased_courses_path
-%hr
-%h2
-  .text-center
-    .fa.fa-chart-line
-    Popular courses
-.card-columns
+      = link_to 'Continue learning ', learning_courses_path
+    .row
+      - @learning_courses.each do |course|
+        .col-md-6
+          = render 'courses/course', course: course
+          %p
+    %hr
+  - if current_user.courses.any?
+    %h2.text-center
+      .fa.fa-chalkboard-teacher
+      = link_to 'You are teaching', teaching_courses_path
+    .row
+      - @teaching_courses.each do |course|
+        .col-md-6
+          = render 'courses/course', course: course
+          %p
+    %hr
+
+%h2.text-center
+  .fa.fa-chart-line
+  = link_to 'Popular courses', courses_path(courses_search: {s: 'enrollments_count desc'})
+.row
   - @popular.each do |course|
-    = render 'courses/course', course: course 
-.text-right
-  = link_to 'More popular courses', courses_path(courses_search: { s: 'enrollments_count desc' })
+    .col-md-6
+      = render 'courses/course', course: course
+      %p
 %hr
-%h2
-  .text-center
-    .fa.fa-star
-    Top rated courses
-.card-columns
+
+%h2.text-center
+  .fa.fa-star
+  = link_to 'Top rated courses', courses_path(courses_search: {s: 'average_rating desc'})
+.row
   - @top_rated.each do |course|
-    = render 'courses/course', course: course
-.text-right
-  = link_to 'Best rated courses', courses_path(courses_search: { s: 'average_rating desc' })
+    .col-md-6
+      = render 'courses/course', course: course
+      %p
 %hr
-%h2
-  .text-center
-    .fa.fa-clock
-    Latest courses
-.card-columns
+
+%h2.text-center
+  .fa.fa-clock
+  = link_to 'Latest courses', courses_path(courses_search: {s: 'created_at desc'})
+.row
   - @latest.each do |course|
-    = render 'courses/course', course: course 
-.text-right
-  = link_to 'Most recent courses', courses_path(courses_search: { s: 'created_at desc' })
+    .col-md-6
+      = render 'courses/course', course: course
+      %p
 %hr
-%h2
-  .text-center
-    .fa.fa-cloud
-    Most popular tags
-- @popular_tags.each do |tag|
-  = link_to courses_path(courses_search: { course_tags_tag_id_eq: tag.id }) do
-    .badge.badge-info
-      %h5
-        = tag.name
-        = tag.course_tags_count
-%hr
-%h2
-  .text-center
-    .fa.fa-comment
-    What our students have to say
-.card-columns
+
+%h2.text-center
+  .fa.fa-comment
+  What our students have to say
+.row
   - @latest_good_review.each do |enrollment|
-    = render 'enrollments/enrollment', enrollment: enrollment 
+    .col-md-6
+      = render 'enrollments/enrollment', enrollment: enrollment
+      %p
+%br
+
+.card-group.shadow
+  .card
+    .card-body
+      %b
+        .fa.fa-clock
+        Go at your own pace
+      %small
+        Enjoy lifetime access to courses on RubyGems website
+  .card
+    .card-body
+      %b
+        .far.fa-check-circle
+        Learn from industry experts
+      %small
+        Select from top instructors around the world
+  .card
+    .card-body
+      %b
+        .far.fa-play-circle
+        Find video courses on almost any topic
+      %small
+        Build your library for your career and personal growth

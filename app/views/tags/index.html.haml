@@ -1,10 +1,15 @@
-Tags:
-%p
-- @tags.each do |tag|
-  .row
+%h3.text-center
+  Tags
   .badge.badge-info
-    = tag.name
-    = tag.course_tags_count
-    = link_to tag, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
-      .fa.fa-trash
-  %p
+    = @tags.count
+.card.shadow
+  .card-body
+    - @tags.each do |tag|
+      .row
+      .btn-group
+        = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}), class: "btn btn-lg btn-info mt-1" do
+          = tag.name
+          .badge.badge-light
+            = tag.course_tags_count
+        - if policy(tag).destroy?
+          = link_to 'Destory', tag, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger mt-1"

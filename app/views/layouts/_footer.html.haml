@@ -1,21 +1,26 @@
-%footer.bg-success
+%footer.purple-background.text-light
   .container
+    %br
     .row
       .col-md-4
+        = link_to 'Teach on RG', new_course_path
+        .row
+        RubyGems for business
+        .row
+        About us
+      .col-md-4
+        = link_to 'Privacy policy', privacy_policy_path
+        .row
+        Terms and conditions
+        .row
+        Help and Support
+      .col-md-4
         Copyright
-        ©
+        © 
         = Time.now.year
         CoursePlatform SPb. z 421.78
         .row
         .fa.fa-envelope
         = mail_to 'i.dwanderer@gmail.com'
         .row
-      .col-md-4
-        = link_to 'Privacy policy', privacy_policy_path
-        .row
-        Terms and coditions
-      .col-md-4
-        About us
-        .row
-        = link_to 'Teach on RG', new_course_path
   %br

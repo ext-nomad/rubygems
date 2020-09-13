@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :courses, except: %i[edit update] do
-    get :purchased, :pending_review, :created, :unapproved, on: :collection
+    get :teaching, :pending_review, :learning, :unapproved, on: :collection
     member do
       get :analytics
       patch :approve

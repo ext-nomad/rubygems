@@ -9,7 +9,7 @@
 
 .row
   .col-lg-8.order-1.order-lg-1
-    .jumbotron
+    .jumbotron.shadow
       %h3
         .fa.fa-graduation-cap
         = @course.title
@@ -33,14 +33,14 @@
       = pluralize(@course.lessons_count, 'lesson')
       -# Lessons:
       -# = @course.lessons_count
-      - unless current_user.enrollments.where(course: @course).first.nil?
-        .float-right
-          -# .fa.fa-spinner
-          = certificate_button(@course)
-    %ul.list-group.lesson-sortable
+      -# - unless current_user.enrollments.where(course: @course).first.nil?
+      -#   .float-right
+      -#     -# .fa.fa-spinner
+      -#     = certificate_button(@course)
+    %ul.list-group.lesson-sortable.shadow
       - @lessons.each do |lesson|
         = content_tag 'div', id: "lesson-#{lesson.id}", data: { model_name: lesson.class.name.underscore, update_url: course_lesson_sort_path(@course, lesson) } do
-          %li.list-group-item
+          %li.list-group-item{:style => "cursor: grab;"}
             = render 'lessons/lesson_preview', lesson: lesson 
     %p
     %h5
@@ -65,8 +65,12 @@
 -# .row
 -# All courses tags
 
-.card-columns
-  - Course.all.where.not(id: @course.id).each do |course|
-    .row
+.row
+  - Course.approved.published.where.not(id: @course.id).each do |course|
     - unless @course.tags.pluck(:id).intersection(course.tags.pluck(:id)).count.zero?
-      = render 'courses/course', course: course
+      .col-md-6
+        - @course.tags.pluck(:id).intersection(course.tags.pluck(:id)).each do |x|
+          -# .badge.badge-info
+          -#   = Tag.find_by(id: x)
+        = render 'courses/course', course: course
+        %p
