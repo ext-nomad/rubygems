@@ -22,10 +22,6 @@ class Lesson < ApplicationRecord
             content_type: %w[image/png image/jpg image/jpeg],
             size: { less_than: 500.kilobytes,
                     message: 'size should be under 500 kilobytes' }
-  # validates :video_thumbnail, presence: true, if: :video_present?
-  # def video_present?
-  #   video.present?
-  # end
 
   extend FriendlyId
   friendly_id :title, use: :slugged
@@ -42,7 +38,6 @@ class Lesson < ApplicationRecord
 
   def viewed(user)
     user_lessons.where(user: user).present?
-    # user_lessons.where(user_id: [user.id], lesson_id: [id]).present?
   end
 
   def prev

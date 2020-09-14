@@ -5,13 +5,12 @@ class ApplicationController < ActionController::Base
   after_action :user_activity
 
   include Pagy::Backend
-  include PublicActivity::StoreController # Save current_user @ public activity
+  include PublicActivity::StoreController
 
   include Pundit
   protect_from_forgery
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # Preset searching table
   before_action :set_global_variables, if: :user_signed_in?
 
   def set_global_variables

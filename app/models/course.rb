@@ -73,16 +73,6 @@ class Course < ApplicationRecord
     user.calculate_course_income
   end
 
-  # hex_secured_slug
-  # friendly_id :generated_slug, use: :slugged
-  # def generated_slug
-  #   require 'securerandom'
-  #   @random_slug ||= persistented? ? friendly_id : SecureRandom.hex(4)
-  # end
-  # def to_s
-  #   slug
-  # end
-
   include PublicActivity::Model
   tracked owner: proc { |controller, _model| controller.current_user }
 

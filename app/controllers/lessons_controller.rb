@@ -31,8 +31,6 @@ class LessonsController < ApplicationController
   def new
     @lesson = Lesson.new
     @course = Course.friendly.find(params[:course_id])
-
-    # authorize @lesson
   end
 
   def edit

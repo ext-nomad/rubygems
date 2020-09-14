@@ -1,25 +1,20 @@
 .row
   .col-md-7
     - if current_user
-      /- if lesson.course.bought(current_user) || @course.user == current_user
       - if policy(lesson).show?
         - if lesson.viewed(current_user) == true
           .text-success.fa.fa-check-square
         - else
           .text-danger.fa.fa-check-square
       - else
-        /.fa.fa-check-square
         .fa.fa-lock
       = link_to course_lesson_path(@course, lesson) do 
-        /= lesson.row_order
         %b
           #{lesson.row_order_rank + 1}.
         = lesson.title
     - else
-      /.fa.fa-check-square
       .fa.fa-lock
       = link_to course_lesson_path(@course, lesson) do 
-        /= lesson.row_order
         %b
           #{lesson.row_order_rank + 1}.
         = lesson.title
@@ -31,7 +26,6 @@
       - if policy(lesson).edit?
         .fa.fa-eye
         Viewers:
-        /= lesson.user_lessons.count
         = lesson.user_lessons_count
         .fa.fa-eye
         Impressions:

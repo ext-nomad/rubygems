@@ -5,18 +5,8 @@ class CoursesController < ApplicationController
   before_action :set_course, only: %i[show destroy approve unapprove analytics]
 
   def index
-    # @courses =
-    #   if params[:title]
-    #     Course.where('title ILIKE ?', "%#{params[:title]}%") # case-insensitive
-    #   else
-    #     Course.all
-
-    #     @q = Course.ransack(params[:q])
-    #     @courses = @q.result.includes(:user)
-    #   end
     @ransack_path = courses_path
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
-    # @courses = @ransack_courses.result.includes(:user)
 
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
     @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
@@ -100,11 +90,6 @@ class CoursesController < ApplicationController
     authorize @course
   end
 
-  # def edit
-  #   @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
-  #   authorize @course
-  # end
-
   def create
     @course = Course.new(course_params)
     @course.user = current_user
@@ -120,17 +105,6 @@ class CoursesController < ApplicationController
       render :new
     end
   end
-
-  # def update
-  #   authorize @course
-
-  #   if @course.update(course_params)
-  #     redirect_to @course, notice: 'Course was successfully updated.'
-  #   else
-  #     @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
-  #     render :edit
-  #   end
-  # end
 
   def destroy
     authorize @course

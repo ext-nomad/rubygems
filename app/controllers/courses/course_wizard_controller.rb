@@ -20,8 +20,6 @@ class Courses::CourseWizardController < ApplicationController
   def update
     authorize @course, :edit?
     case step
-    when :lessons
-      # @course.lessons.build unless @course.lessons.any?
     when :publish
       @tags = Tag.all
     end

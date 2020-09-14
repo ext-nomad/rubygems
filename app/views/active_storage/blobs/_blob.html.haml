@@ -17,5 +17,3 @@
       %span.attachment__size= number_to_human_size blob.byte_size
       = link_to rails_blob_path(blob, 'preview'), target: :_blank do
         .fa.fa-download
-      /= link_to blob.filename, rails_blob_path(blob, 'preview'), target: :_blank
-      /= link_to blob.filename, rails_blob_path(blob, 'attachment'), target: :_blank

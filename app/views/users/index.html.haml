@@ -10,15 +10,9 @@
       = @users.count
 %p
 
-/ .card-columns
-/   - @users.each do |user|
-/     = render 'users/user', user: user
-
 .form-inline
   = search_form_for @q do |f|
     = f.search_field :email_cont, placeholder: 'email'
-    -# = f.search_field :sign_in_count_eq, placeholder: 'sign in count'
-    -# = f.search_field :email_or_sign_in_count_eq, placeholder: 'both'
     = f.submit
   .ml-5
   = link_to users_path, class: 'btn btn-sm btn-secondary' do
@@ -30,14 +24,14 @@
         %tr
           %th= 'id'.humanize
           %th= sort_link(@q, :email)
-          %th= sort_link(@q, :created_at) #'created_at'.humanize
+          %th= sort_link(@q, :created_at)
           %th= 'sing_in_count'.humanize
           %th= 'current_sign_in_at'.humanize
           %th= 'last_sign_in_at'.humanize
           %th= 'current_sign_in_ip'.humanize
           %th= 'last_sign_in_ip'.humanize
-          %th= sort_link(@q, :courses_count) # 'courses_count'.humanize
-          %th= sort_link(@q, :enrollments_count) # 'enrollments_count'.humanize
+          %th= sort_link(@q, :courses_count)
+          %th= sort_link(@q, :enrollments_count)
           %th= sort_link(@q, :comments_count)
           %th= sort_link(@q, :user_lessons_count)
           %th= 'Confirmed?'

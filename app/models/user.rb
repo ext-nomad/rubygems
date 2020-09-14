@@ -33,7 +33,6 @@ class User < ApplicationRecord
     data = access_token.info
     user = User.where(email: data['email']).first
 
-    # Uncomment the section below if you want users to be created if they don't exist
     if user
       user.name = access_token.info.name
       user.image = access_token.info.image
@@ -85,7 +84,6 @@ class User < ApplicationRecord
   end
 
   def view_lesson(lesson)
-    # user_lesson = user_lessons.where(lesson: lesson)
     if user_lessons.where(lesson: lesson).any?
       user_lessons.where(lesson: lesson).first.increment!(:impressions)
     else

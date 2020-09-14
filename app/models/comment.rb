@@ -6,8 +6,4 @@ class Comment < ApplicationRecord
   tracked owner: proc { |controller, _model| controller.current_user }
 
   validates :content, presence: true
-
-  # def to_s
-  #   content
-  # end
 end

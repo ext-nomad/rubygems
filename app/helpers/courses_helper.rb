@@ -6,10 +6,6 @@ module CoursesHelper
         link_to 'View analytics', course_path(course), class: 'btn btn-info'
       elsif course.enrollments.where(user: current_user).any?
         certificate_button(course)
-        # link_to course_path(course) do
-        #   # 'Keep learning'
-        #   number_to_percentage(course.progress(current_user), precision: 0)
-        # end
       elsif course.price.positive?
         link_to number_to_currency(course.price), new_course_enrollment_path(course), class: 'btn btn-success'
       else
@@ -40,8 +36,6 @@ module CoursesHelper
 
   def certificate_button(course)
     if course.progress(current_user) == 100
-      # link_to certificate_enrollment_path(current_user.enrollments.where(course: @course).first, format: :pdf), class: 'btn btn-sm btn-danger' do
-      #   "<i class='fa fa-file-pdf'></i>".html_safe + ' ' + 'Certificate of Completion'
       link_to certificate_enrollment_path(course.enrollments.where(user: current_user).first, format: :pdf), class: 'btn btn-sm btn-danger' do
         "<i class='fa fa-file-pdf'></i>".html_safe + ' ' + 'Certificate of Completion'
       end

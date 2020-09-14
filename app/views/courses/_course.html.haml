@@ -6,7 +6,6 @@
   - if course.avatar.attached?
     .card-img-top
       = image_tag course.avatar, height: "auto", width: "100%"
-      -# = image_tag course.avatar.variant(resize_to_limit: [100, 100])
   .card-body
     %small= simple_format(course.short_description)
   .card-footer
@@ -29,24 +28,6 @@
         .text-right
           .fa.fa-chalkboard-teacher
           = link_to course.user.username, user_path(course.user)
-  -# .card-footer
-  -#   .row
-  -#     .col-md-6
-  -#       .fa.fa-globe-europe
-  -#       = course.language
-  -#     .col-md-6
-  -#       .text-right
-  -#         .fa.fa-signal
-  -#         = course.level
-  -# .card-footer
-  -#   .row
-  -#     .col-md-6
-  -#       .far.fa-clock
-  -#       = course.created_at.strftime('%d %b %Y')
-  -#     .col-md-6
-  -#       .text-right
-  -#         .fa.fa-chalkboard-teacher
-  -#         = link_to course.user.username, user_path(course.user)
 
   - if current_user
     -if policy(course).owner?
