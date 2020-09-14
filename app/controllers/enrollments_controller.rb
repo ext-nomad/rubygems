@@ -57,9 +57,6 @@ class EnrollmentsController < ApplicationController
         description: 'RubyGems Premium Content',
         currency: 'usd'
       )
-
-      @enrollment = current_user.buy_course(@course)
-      redirect_to course_path(@course), notice: 'You are enrolled!'
     end
 
     redirect_to course_path(@course), notice: 'You are enrolled!'

@@ -25,13 +25,8 @@
         = lesson.comments_count
       - if policy(lesson).edit?
         .fa.fa-eye
-        Viewers:
+        Uniq viewers:
         = lesson.user_lessons_count
         .fa.fa-eye
         Impressions:
         = lesson.user_lessons.map(&:impressions).sum
-        .row
-        = link_to edit_course_lesson_path(@course, lesson), class: 'btn btn-sm btn-warning mr-1' do
-          .fa.fa-edit
-        = link_to [@course, lesson], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
-          .fa.fa-trash

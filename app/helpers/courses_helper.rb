@@ -3,7 +3,7 @@ module CoursesHelper
     # logic to buy
     if current_user
       if course.user == current_user
-        link_to 'View analytics', course_path(course), class: 'btn btn-info'
+        link_to 'View analytics', analytics_course_path(course), class: 'btn btn-info'
       elsif course.enrollments.where(user: current_user).any?
         certificate_button(course)
       elsif course.price.positive?

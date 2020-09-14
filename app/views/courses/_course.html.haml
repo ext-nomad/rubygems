@@ -36,10 +36,9 @@
 
         = link_to course_course_wizard_index_path(course), class: 'btn btn-sm btn-warning mr-1' do
           .fa.fa-edit
-            Edit
+            Editor
         - if policy(course).destroy?
           = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
-        = link_to 'Analytics', analytics_course_path(course), class: 'btn btn-sm btn-info'
     - if policy(course).admin_or_owner?
       .card-footer
         - if course.published?
