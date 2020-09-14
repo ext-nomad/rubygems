@@ -7,13 +7,11 @@
 @import "selectize/dist/css/selectize";
 @import "selectize/dist/css/selectize.default";
 
-// Main elements
 html {
   position: relative;
   min-height: 100%;
 }
 
-// #2a4054
 body {
   margin: 0 0 200px;
   background: #f8f0e6;
@@ -24,7 +22,6 @@ footer {
   position: absolute;
   left: 0;
   bottom: 0;
-  //height: 200px;
   width: 100%;
   overflow: hidden;
 }
@@ -35,14 +32,6 @@ trix-editor.form-control {
 hr {
   background-color: white;
 }
-
-// Override bootstrap elements
-
-// .card,
-// .jumbotron,
-// .list-group-item {
-//   color: #2a4054;
-// }
 
 .table {
   background: white;
@@ -108,7 +97,7 @@ $custompurple: #563d7c;
 }
 
 .parallax {
-  background-image: url("bg.jpg");
+  background-image: url("https://storage.cloud.google.com/rubygems_bucket/pexels-julia-m-cameron-4144923.jpg");
   height: auto;
   background-attachment: fixed;
   background-position: center;

@@ -7,7 +7,10 @@ class UsersController < ApplicationController
     authorize @users
   end
 
-  def show; end
+  def show
+    @courses_teaching = @user.courses
+    @courses_learning = @user.enrollments.includes(:course)
+  end
 
   def edit
     authorize @course

@@ -5,11 +5,6 @@ Rails.application.routes.draw do
   get 'analytics', to: 'home#analytics'
   get 'privacy_policy', to: 'home#privacy_policy'
 
-  # get 'charts/users_per_day', to: 'charts#users_per_day'
-  # get 'charts/enrollments_per_day', to: 'charts#enrollments_per_day'
-  # get 'charts/course_popularity', to: 'charts#course_popularity'
-  # get 'charts/money_makers', to: 'charts#money_makers'
-
   namespace :charts do
     get 'users_per_day'
     get 'enrollments_per_day'

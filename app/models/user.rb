@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :enrollments, dependent: :nullify
   has_many :user_lessons, dependent: :nullify
   has_many :comments, dependent: :nullify
+  has_many :students, through: :courses, source: :enrollments
 
   rolify
   devise :database_authenticatable,
