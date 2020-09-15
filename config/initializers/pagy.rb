@@ -104,6 +104,7 @@ Pagy::VARS[:overflow] = :empty_page # default  (other options: :last_page and :e
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
 Pagy::VARS[:items] = 6 # default
+Pagy::VARS[:cycle] = true
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables
@@ -136,8 +137,8 @@ Pagy::VARS[:items] = 6 # default
 #
 # load the "de", "en" and "es" built-in locales:
 # (the first passed :locale will be used also as the default_locale)
-# Pagy::I18n.load({locale: 'de'},
-#                 {locale: 'en'},
+Pagy::I18n.load({locale: 'en'},
+                {locale: 'ru'})
 #                 {locale: 'es'})
 #
 # load the "en" built-in locale, a custom "es" locale,

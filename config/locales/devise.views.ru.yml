@@ -27,9 +27,9 @@ ru:
         updated_at: Дата обновления
     models:
       user:
+        one: Пользователь
         few: Пользователя
         many: Пользователей
-        one: Пользователь
         other: Пользователи
   devise:
     confirmations:
@@ -52,7 +52,7 @@ ru:
       confirmation_instructions:
         action: Активировать
         greeting: Здравствуйте, %{recipient}!
-        instruction: 'Вы можете активировать свою учетную запись, нажав ссылку снизу:'
+        instruction: "Вы можете активировать свою учетную запись, нажав ссылку снизу:"
         subject: Инструкции по подтверждению учетной записи
       email_changed:
         greeting: Здравствуйте, %{recipient}!
@@ -65,14 +65,14 @@ ru:
       reset_password_instructions:
         action: Изменить пароль
         greeting: Здравствуйте, %{recipient}!
-        instruction: 'Вы (или кто-то еще) запросили изменение пароля. Для изменения пароля нажмите ссылку ниже:'
+        instruction: "Вы (или кто-то еще) запросили изменение пароля. Для изменения пароля нажмите ссылку ниже:"
         instruction_2: Если вы не запрашивали изменение пароля - проигнорируйте это сообщение
         instruction_3: Ваш пароль не изменится пока вы не нажмете на ссылку и не введете новый.
         subject: Инструкции по восстановлению пароля
       unlock_instructions:
         action: Разблокировать учетную запись
         greeting: Здравствуйте, %{recipient}!
-        instruction: 'Нажмите ссылку для активации учетной записи:'
+        instruction: "Нажмите ссылку для активации учетной записи:"
         message: Ваша учетная запись была заблокирована в связи с превышением лимита неудачных попыток входа.
         subject: Инструкции по разблокировке учетной записи
     omniauth_callbacks:
@@ -97,9 +97,9 @@ ru:
       edit:
         are_you_sure: Вы уверены?
         cancel_my_account: Удалить учетную запись
-        currently_waiting_confirmation_for_email: 'Ожидается подтверждение адреса E-mail: %{email}'
+        currently_waiting_confirmation_for_email: "Ожидается подтверждение адреса E-mail: %{email}"
         leave_blank_if_you_don_t_want_to_change_it: оставьте поле пустым, если не хотите его менять
-        title: Редактировать %{resource}
+        title: Параметры аккаунта
         unhappy: Разочарованы?
         update: Обновить
         we_need_your_current_password_to_confirm_your_changes: введите текущий пароль для подтверждения изменений
@@ -125,7 +125,7 @@ ru:
         didn_t_receive_unlock_instructions: Не получили код разблокировки?
         forgot_your_password: Забыли пароль?
         sign_in: Войти
-        sign_in_with_provider: 'Войти с помощью: %{provider}'
+        sign_in_with_provider: "Войти с помощью: %{provider}"
         sign_up: Регистрация
       minimum_password_length:
         few: "(минимум %{count} знака)"

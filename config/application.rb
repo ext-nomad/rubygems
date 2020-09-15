@@ -8,17 +8,13 @@ module Rubygems
   class Application < Rails::Application
     config.load_defaults 6.0
 
-    # # For rails-erd gem
-    # if Rails.env.development?
-    #   def eager_load!
-    #     Zeitwerk::Loader.eager_load_all
-    #   end
-    # end
+    config.i18n.fallbacks = true
+    config.i18n.default_locale = :en
+    I18n.available_locales = %i[en ru]
+
     config.to_prepare do
-      # youtube embed
       ActionText::ContentHelper.allowed_tags << 'iframe'
 
-      # video previews for action_text
       ActionText::ContentHelper.allowed_attributes.add 'style'
       ActionText::ContentHelper.allowed_attributes.add 'controls'
 
@@ -26,10 +22,5 @@ module Rubygems
       ActionText::ContentHelper.allowed_tags.add 'audio'
       ActionText::ContentHelper.allowed_tags.add 'source'
     end
-
-    #  i18n
-    config.i18n.fallbacks = true
-    config.i18n.default_locale = :ru
-    I18n.available_locales = %i[en ru]
   end
 end

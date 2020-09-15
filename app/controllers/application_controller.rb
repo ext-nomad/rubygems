@@ -3,7 +3,9 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   after_action :user_activity
-  # around_action :switch_locale
+  around_action :switch_locale
+  before_action { @pagy_locale = I18n.locale.to_s || 'en' }
+  # before_action { @pagy_locale = params[:locale] || 'en' }
 
   include Pagy::Backend
   include PublicActivity::StoreController
@@ -22,10 +24,15 @@ class ApplicationController < ActionController::Base
   #   locale = current_user.try(:locale) || I18n.default_locale
   #   I18n.with_locale(locale, &action)
   # end
+  def switch_locale(&action)
+    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+    locale = extract_locale_from_accept_language_header
+    logger.debug "* Locale set to '#{locale}'"
+    I18n.with_locale(locale, &action)
+  end
 
   private
 
-  # Pundit
   def user_not_authorized
     flash[:alert] = 'You are not authorized to perform that action'
     redirect_to(request.referrer || root_path)
@@ -33,5 +40,9 @@ class ApplicationController < ActionController::Base
 
   def user_activity
     current_user.try :touch
+  end
+
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
 end

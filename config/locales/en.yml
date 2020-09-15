@@ -182,7 +182,6 @@ en:
       teacher: "teacher"
     buttons:
       sync: "Sync with Google"
-      # sign: "Signed up %{time} ago"
       edit_roles: "Edit roles"
       "yes": "Yes"
       "no": "No"

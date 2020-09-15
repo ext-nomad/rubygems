@@ -79,7 +79,7 @@ ru:
         price: "Цене"
         rating: "Рейтингу"
         popular: "Популярности"
-        fresh: "Свежести"
+        fresh: "Новизне"
 
     analytics:
       title: "Аналитика для курса: %{t}"
@@ -177,12 +177,11 @@ ru:
       confirmed: "Подтвержденный адрес электронной почты?"
       roles: "Роли"
     role:
-      admin: "админ"
+      admin: "администратор"
       student: "студент"
       teacher: "преподаватель"
     buttons:
       sync: "Синхронизировать с Google"
-      # sign: "Signed up %{time} ago"
       edit_roles: "Изменить роли"
       "yes": "Да"
       "no": "Нет"
@@ -194,7 +193,7 @@ ru:
   placeholders:
     find: "Найти курс"
     title: "Название"
-    tag: "Тэг"
+    tag: "Категория"
     description: "Описание"
     price: "Цена"
     email: "Эл. почта"
