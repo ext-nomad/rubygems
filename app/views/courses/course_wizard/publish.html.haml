@@ -1,10 +1,10 @@
 = render 'courses/course_wizard/wizard' do
   = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
     .form-inputs
-      = f.label 'Choose tags from presented or make your own:'
+      = f.label t('.tags')
       = f.select :tag_ids, @tags.all.pluck(:name, :id), {}, { multiple: true, class: 'selectize-tags' }
       %p
-      = f.label 'Do you want to public this course? (Everyone can see it, and enroll) '
+      = f.label t('.publish')
       .custom-control.custom-switch
         = f.check_box :published, class: "custom-control-input", id: "publishSwitch1"
         %label.custom-control-label{:for => "publishSwitch1"} Publish
@@ -12,4 +12,4 @@
     %hr
     .float-right
       .form-actions
-        = f.submit 'Finish', class: 'btn btn-success'
+        = f.submit t('.finish'), class: 'btn btn-success'

@@ -8,7 +8,7 @@
 \/
 = link_to @course.title, course_path(@course)
 \/
-= link_to "Editing #{step}".humanize, course_course_wizard_path(@course, step)
+= link_to t(".steps.#{step}"), course_course_wizard_path(@course, step)
 
 .card.shadow
   .progress
@@ -21,17 +21,13 @@
       -else 
         - @color = 'bg-secondary'
       = link_to course_course_wizard_path(@course, s), class: "progress-bar #{@color}", style: "width: #{@progress}%" do
-        = "#{s}".humanize
+        = t(".steps.#{s}")
 
   .card-header
     %h4 
-      = "#{step}".humanize
+      = t(".steps.#{step}")
       .float-right
-        Step
-        = wizard_steps.index(step) + 1
-        of
-        = wizard_steps.count
-
+        = t('.phase', current: wizard_steps.index(step) + 1, total: wizard_steps.count)
   .card-body
     .container.text-danger
       - if @course.errors.any? 
@@ -44,8 +40,8 @@
       - if wizard_steps.index(step) > 0
         = link_to previous_wizard_path, class: 'btn btn-info' do
           .fa.fa-arrow-left
-          Previous step
+          = t('.previous')
       - else
         = link_to course_path(@course), class: 'btn btn-danger' do
           .fa.fa-window-close
-          Cancel
+          = t('.cancel')

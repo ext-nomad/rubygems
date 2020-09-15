@@ -1,0 +1,9 @@
+ru:
+  simple_form:
+    "Yes": "Да"
+    "No": "Нет"
+    required:
+      mark: "*"
+      text: "обязательно"
+    error_notification:
+      default_message: "Пожалуйста, поверьте следущие проблемы:"

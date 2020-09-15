@@ -17,33 +17,35 @@
     .sticky-top
       = search_form_for @ransack_courses, as: :courses_search, url: @ransack_path do |f|
         %p
-        = f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-control-sm'
+        = f.search_field :title_cont, placeholder: t('placeholders.title'), class: 'form-control form-control-sm'
         %p
-        = f.search_field :course_tags_tag_name_cont, placeholder: 'Tag name', class: 'form-control form-control-sm'
+        = f.search_field :course_tags_tag_name_cont, placeholder: t('placeholders.tag'), class: 'form-control form-control-sm'
         %p
-        = f.search_field :short_description_cont, placeholder: 'Description', class: 'form-control form-control-sm'
+        = f.search_field :short_description_cont, placeholder: t('placeholders.description'), class: 'form-control form-control-sm'
         %p
-        = f.search_field :price_eq, placeholder: 'Price', class: 'form-control form-control-sm'
+        = f.search_field :price_eq, placeholder: t('placeholders.price'), class: 'form-control form-control-sm'
         %p
-        = f.search_field :user_email_cont, placeholder: 'User email', class: 'form-control form-control-sm'
+        = f.search_field :user_email_cont, placeholder: t('placeholders.email'), class: 'form-control form-control-sm'
         %p
-        = f.label :level
+        = f.label t('.level')
         = f.select :level_cont, Course.levels, include_blank: true
-        = f.label :language
+        %p
+        = f.label t('.language')
         = f.select :language_cont, Course.languages, include_blank: true
-        = f.submit
+        %p
+        = f.submit t('.search')
         .row
-        = link_to 'Refresh', @ransack_path
+        = link_to t('.refresh'), @ransack_path
         %hr
-        Sort by:
+        = t('.sort.by')
         .row
-        = sort_link(@ransack_courses, :price, 'Price')
+        = sort_link(@ransack_courses, :price, t('.sort.price'))
         .row
-        = sort_link(@ransack_courses, :average_rating, 'Top rated')
+        = sort_link(@ransack_courses, :average_rating, t('.sort.rating'))
         .row
-        = sort_link(@ransack_courses, :enrollments_count, 'Most popular')
+        = sort_link(@ransack_courses, :enrollments_count, t('.sort.popular'))
         .row
-        = sort_link(@ransack_courses, :created_at, 'Fresh')
+        = sort_link(@ransack_courses, :created_at, t('.sort.fresh'))
         .row
         
         

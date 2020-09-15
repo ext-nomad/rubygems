@@ -1,33 +1,203 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  layouts:
+    header:
+      home: "Home"
+      learn: "Learn"
+      courses: "All courses"
+      purchased: "Purchased courses"
+      review: "Pending review"
+      teach: "Teach"
+      new: "New course"
+      created: "Created courses"
+      students: "My students"
+      admin: "Admin"
+      unapproved: "Unapproved courses"
+      users: "Users"
+      enrollments: "Enrollments"
+      analytics: "Analytics"
+      activity: "Activity"
+      tags: "Tags"
+      settings: "Account settings"
+      out: "Sign out"
+
+    footer:
+      teach: "Teach on RG"
+      business: "RubyGems for business"
+      policy: "Privacy policy"
+      about: "About us"
+      terms: "Terms and conditions"
+      help: "Help and Support"
+
+  home:
+    index:
+      phrase: "What do you want to learn today?"
+      join: "Join to access all the courses"
+      continue: "Continue with"
+      courses:
+        one: "%{count} online course"
+        few: "%{count} online courses"
+        many: "%{count} online courses"
+        other: "%{count} online courses"
+      explore: "Explore a variety of fresh topics"
+      teachers:
+        one: "%{count} expert instructor"
+        few: "%{count} expert instructors"
+        many: "%{count} expert instructors"
+        other: "%{count} expert instructors"
+      find: "Find the right instructor for you"
+      learners:
+        one: "%{count} active learner"
+        few: "%{count} active learners"
+        many: "%{count} active learners"
+        other: "%{count} active learners"
+      community: "Join the knowledge sharing community"
+      access: "Lifetime access"
+      schedule: "Learn on your schedule"
+      tags: "Top Categories"
+      learning: "Continue learning"
+      teaching: "You are teaching"
+      popular: "Popular courses"
+      top: "Top rated courses"
+      latest: "Latest courses"
+      reviews: "What our students have to say"
+      block:
+        pace: "Go at your own pace"
+        access: "Enjoy lifetime access to courses on RubyGems website"
+        learn: "Learn from industry experts"
+        select: "Select from top instructors around the world"
+        video: "Find video courses on almost any topic"
+        library: "Build your library for your career and personal growth"
+
+  courses:
+    index:
+      level: "Level:"
+      language: "Language"
+      search: "Search"
+      refresh: "Refresh"
+      sort:
+        by: "Sort by:"
+        price: "Price"
+        rating: "Top rated"
+        popular: "Most popular"
+        fresh: "Fresh"
+
+    analytics:
+      title: "Analytics for %{t}"
+      enrollments_q: "Enrollments per day, quantity:"
+      enrollments_r: "Enrollments per day, revenue:"
+      uniq_views: "Unique user views (how many unique users viewed the lesson):"
+      views: "Impressions per lesson (how many times the lesson was opened):"
+
+    course_wizard:
+      wizard:
+        phase: "Step %{current} of %{total}"
+        cancel: "Cancel"
+        next: "Next step"
+        previous: "Previous step"
+        finish: "Finish"
+        remove: "Delete lesson"
+        add_lessons: "Add some lessons"
+        tags: "Choose tags from presented or make your own:"
+        publish: "Do you want to public this course? (Everyone can see it, and enroll)"
+        steps:
+          basic_info: "Basic information"
+          details: "Details"
+          lessons: "Lessons"
+          publish: "Publish"
+
+    show:
+      lesson:
+        one: "%{count} lesson"
+        few: "%{count} lessons"
+        many: "%{count} lessons"
+        other: "%{count} lessons"
+      review:
+        one: "%{count} review"
+        few: "%{count} reviews"
+        many: "%{count} reviews"
+        other: "%{count} reviews"
+      similar: "Similar courses"
+
+  users:
+    index:
+    show:
+      teaching: "Teacher:"
+      learning: "Student:"
+    edit:
+      editing: "Editing roles for"
+      update: "Update user"
+      cancel: "Cancel"
+
+  course:
+    attributes:
+      title: "Title"
+      avatar: "Avatar"
+      description: "Description"
+      short_description: "Short description"
+      language: "Language"
+      level: "Level"
+      price: "Price"
+      tags:
+      published: "published"
+      unpublished: "unpublished"
+      approved: "approved"
+      unapproved: "unapproved"
+    buttons:
+      analytics: "View analytics"
+      free: "Free"
+      check: "Check price"
+      review: "Add a review"
+      reviewed: "Thanks for your review!"
+      certificate: "Certificate of Completion"
+      continue: "Continue learning"
+      buy:
+      add_lesson: "Add lesson"
+      editor: "Course editor"
+      destroy: "Delete"
+      approve: "Approve"
+      unapprove: "Unapprove"
+
+  user:
+    attributes:
+      id: "id"
+      sign_in_ago: "Signed up %{time} ago:"
+      sign_in_count: "Sign in count:"
+      current_sign_in_at: "Current sign in at:"
+      last_sign_in_at: "Last sign in at:"
+      current_sign_in_ip: "Current sign in ip:"
+      last_sign_in_ip.: "Last sign in ip:"
+      course_income: "Course income:"
+      enrollment_expenses: "Enrollment expenses:"
+      balance: "Balance:"
+      courses: "Courses created:"
+      enrollments: "Enrollments:"
+      comments: "Comments:"
+      viewed: "Lessons viewed:"
+      students: "Students:"
+      confirmed: "Confirmed email?"
+      roles: "Roles"
+    role:
+      admin: "admin"
+      student: "student"
+      teacher: "teacher"
+    buttons:
+      sync: "Sync with Google"
+      # sign: "Signed up %{time} ago"
+      edit_roles: "Edit roles"
+      "yes": "Yes"
+      "no": "No"
+
+  session:
+    register: "Register"
+    log_in: "Log in"
+
+  placeholders:
+    find: "Find a course"
+    title: "Title"
+    tag: "Tag name"
+    description: "Description"
+    price: "Price"
+    email: "E-Mail"
+    course: "Course"
+    rating: "Rating"
+    reviews: "Reviews"

@@ -27,7 +27,7 @@
     %p
     %h5
       .fa.fa-tasks
-      = pluralize(@course.lessons_count, 'lesson')
+      = t('.lesson', count: @course.lessons_count)
     %ul.list-group.lesson-sortable.shadow
       - @lessons.each do |lesson|
         = content_tag 'div', id: "lesson-#{lesson.id}", data: { model_name: lesson.class.name.underscore, update_url: course_lesson_sort_path(@course, lesson) } do
@@ -36,7 +36,7 @@
     %p
     %h5
       .fa.fa-comment
-      = pluralize(@enrollments_with_review.count, 'review')
+      = t('.review', count: @enrollments_with_review.count)
 
     - @enrollments_with_review.each do |enrollment|
       = render 'enrollments/enrollment', enrollment: enrollment
@@ -47,7 +47,7 @@
     %p
 
 
-%h4 Similar courses
+%h4=t('.similar')
 .row
   - Course.approved.published.where.not(id: @course.id).each do |course|
     - unless @course.tags.pluck(:id).intersection(course.tags.pluck(:id)).count.zero?

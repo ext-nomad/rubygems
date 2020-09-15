@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def username
-    email.split(/@/).first
+    self.name ||= email.split(/@/).first
   end
 
   def assign_default_role

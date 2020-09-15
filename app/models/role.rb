@@ -13,4 +13,8 @@ class Role < ApplicationRecord
 
   validates :name, presence: true
   validates_uniqueness_of :name
+
+  def to_s
+    I18n.t("user.role.#{name}")
+  end
 end

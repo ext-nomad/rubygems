@@ -12,7 +12,7 @@
 
 .form-inline
   = search_form_for @q do |f|
-    = f.search_field :email_cont, placeholder: 'email'
+    = f.search_field :email_cont, placeholder: t('placeholders.email')
     = f.submit
   .ml-5
   = link_to users_path, class: 'btn btn-sm btn-secondary' do
@@ -22,20 +22,20 @@
     %table.table.table-bordered.table-striped.table-sm
       %thead
         %tr
-          %th= 'id'.humanize
+          %th= t('user.attributes.id')
           %th= sort_link(@q, :email)
           %th= sort_link(@q, :created_at)
-          %th= 'sing_in_count'.humanize
-          %th= 'current_sign_in_at'.humanize
-          %th= 'last_sign_in_at'.humanize
-          %th= 'current_sign_in_ip'.humanize
-          %th= 'last_sign_in_ip'.humanize
+          %th= t('user.attributes.sign_in_count')
+          %th= t('user.attributes.current_sign_in_at')
+          %th= t('user.attributes.last_sign_in_at')
+          %th= t('user.attributes.current_sign_in_ip')
+          %th= t('user.attributes.last_sign_in_ip')
           %th= sort_link(@q, :courses_count)
           %th= sort_link(@q, :enrollments_count)
           %th= sort_link(@q, :comments_count)
           %th= sort_link(@q, :user_lessons_count)
-          %th= 'Confirmed?'
-          %th= 'Roles'        
+          %th= t('user.attributes.confirmed')
+          %th= t('user.attributes.roles')       
       %tbody
         - @users.each do |user|
           %tr
@@ -60,8 +60,8 @@
             %td
               - user.roles.each do |role|
                 .badge.badge-info
-                  = role.name
+                  = role.to_s
               - if policy(user).edit?
-                = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning'
+                = link_to t('user.buttons.edit_roles'), edit_user_path(user), class: 'btn btn-sm btn-warning'
 != pagy_bootstrap_nav(@pagy)
 %br

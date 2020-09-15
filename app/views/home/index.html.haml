@@ -5,34 +5,33 @@
 
 .jumbotron.shadow.parallax
   .h1.text-shadow
-    What do you want to learn today?
- 
+    = t('.phrase')
   .p-4
   
   - if current_user
     = search_form_for @ransack_courses, as: :courses_search,url: courses_path do |f|
       .input-group
-        = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px;', autocomplete: 'off', placeholder: "Find a course"
+        = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px;', autocomplete: 'off', placeholder: t('placeholders.find')
         %span.input-group-append
           %button.btn.btn-primary.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
     .p-2
   - else
-    %h3.text-shadow Join to access all the courses 
+    %h3.text-shadow= t('.join')
     .p-2
-    = link_to 'Register', new_user_registration_path, class: 'btn btn-custom-purple btn-lg'
-    = link_to 'Login', new_user_session_path, class: 'btn btn-custom-purple btn-lg'
+    = link_to t('session.register'), new_user_registration_path, class: 'btn btn-custom-purple btn-lg'
+    = link_to t('session.log_in'), new_user_session_path, class: 'btn btn-custom-purple btn-lg'
     .row.mt-1
     = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-danger btn-lg mr-1' do
-      Continue with
+      = t('.continue')
       .fab.fa-google
     .row.mt-1
     = link_to user_github_omniauth_authorize_path, class: 'btn btn-dark btn-lg mr-1' do
-      Continue with
+      = t('.continue')
       .fab.fa-github
     .row.mt-1
     = link_to user_vkontakte_omniauth_authorize_path, class: 'btn btn-primary btn-lg mr-1' do
-      Continue with
+      = t('.continue')
       .fab.fa-vk
 
 .card-group.shadow
@@ -41,38 +40,38 @@
       .text-center
         .fa.fa-graduation-cap
     .text-center
-      = pluralize(Course.approved.published.count, 'online courses')
+      = t('.courses', count: Course.approved.published.count)
       .row
-      %small Explore a variety of fresh topics
+      %small= t('.explore')
   .card.card-body.parallax
     %h1.text-shadow
       .text-center
         .fa.fa-chalkboard-teacher
     .text-center
-      = pluralize(Course.distinct.count(:user_id), 'expert instructors')
+      = t('.teachers', count: Course.distinct.count(:user_id))
       .row
-      %small Find the right instructor for you
+      %small= t('.find')
   .card.card-body.parallax
     %h1.text-shadow
       .text-center
         .fa.fa-user-graduate
     .text-center
-      = pluralize(User.count, 'active learners')
+      = t('.learners', count: User.count)
       .row
-      %small Join the knowledge sharing community
+      %small= t('.community')
   .card.card-body.parallax
     %h1.text-shadow
       .text-center
         .fa.fa-infinity
     .text-center
-      Lifetime access
+      = t('.access')
       .row
-      %small Learn on your schedule
+      %small= t('.schedule')
 %p
 
 %h2.text-center.text-shadow
   .fa.fa-tags
-  Top Categories
+  = t('.tags')
 - @popular_tags.each do |tag|
   = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
     .mt-1.btn.btn-info
@@ -85,7 +84,7 @@
   - if current_user.enrollments.any?
     %h2.text-center
       .fa.fa-user-graduate
-      = link_to 'Continue learning ', learning_courses_path
+      = link_to t('.learning'), learning_courses_path
     .row
       - @learning_courses.each do |course|
         .col-md-6
@@ -95,7 +94,7 @@
   - if current_user.courses.any?
     %h2.text-center
       .fa.fa-chalkboard-teacher
-      = link_to 'You are teaching', teaching_courses_path
+      = link_to t('.teaching'), teaching_courses_path
     .row
       - @teaching_courses.each do |course|
         .col-md-6
@@ -105,7 +104,7 @@
 
 %h2.text-center
   .fa.fa-chart-line
-  = link_to 'Popular courses', courses_path(courses_search: {s: 'enrollments_count desc'})
+  = link_to t('.popular'), courses_path(courses_search: {s: 'enrollments_count desc'})
 .row
   - @popular.each do |course|
     .col-md-6
@@ -115,7 +114,7 @@
 
 %h2.text-center
   .fa.fa-star
-  = link_to 'Top rated courses', courses_path(courses_search: {s: 'average_rating desc'})
+  = link_to t('.top'), courses_path(courses_search: {s: 'average_rating desc'})
 .row
   - @top_rated.each do |course|
     .col-md-6
@@ -125,7 +124,7 @@
 
 %h2.text-center
   .fa.fa-clock
-  = link_to 'Latest courses', courses_path(courses_search: {s: 'created_at desc'})
+  = link_to t('.latest'), courses_path(courses_search: {s: 'created_at desc'})
 .row
   - @latest.each do |course|
     .col-md-6
@@ -135,7 +134,7 @@
 
 %h2.text-center
   .fa.fa-comment
-  What our students have to say
+  = t('.reviews')
 .row
   - @latest_good_review.each do |enrollment|
     .col-md-6
@@ -146,22 +145,25 @@
 .card-group.shadow
   .card
     .card-body
-      %b
+      .text-center
         .fa.fa-clock
-        Go at your own pace
-      %small
-        Enjoy lifetime access to courses on RubyGems website
+        %b= t('.block.pace')
+        .row
+        %small
+          = t('.block.access')
   .card
     .card-body
-      %b
+      .text-center
         .far.fa-check-circle
-        Learn from industry experts
-      %small
-        Select from top instructors around the world
+        %b= t('.block.learn')
+        .row
+        %small
+          = t('.block.select')
   .card
     .card-body
-      %b
+      .text-center
         .far.fa-play-circle
-        Find video courses on almost any topic
-      %small
-        Build your library for your career and personal growth
+        %b= t('.block.video')
+        .row
+        %small
+          = t('.block.library')

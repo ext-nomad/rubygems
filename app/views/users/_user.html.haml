@@ -10,7 +10,7 @@
     - if user == current_user && user.uid.nil?
       = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-outline-primary btn-sm' do
         .fab.fa-google
-        Sync with Google
+        = t('user.buttons.sync')
       %p
     - if user.image?
       .row
@@ -18,62 +18,60 @@
     .row
     = @user.name
   .card-footer
-    Signed up
-    = time_ago_in_words(user.created_at)
-    ago
+    = t('user.attributes.sign_in_ago', time: time_ago_in_words(user.created_at))
   .card-footer
-    %b= 'sign_in_count'.humanize + ":"
+    %b= t('user.attributes.sign_in_count')
     = user.sign_in_count
     .row
-    %b= 'current_sign_in_at'.humanize + ":"
+    %b= t('user.attributes.current_sign_in_at')
     = user.current_sign_in_at
     .row
-    %b= 'last_sign_in_at'.humanize + ":"
+    %b= t('user.attributes.last_sign_in_at')
     = user.last_sign_in_at
     .row
-    %b= 'current_sign_in_ip'.humanize + ":"
+    %b= t('user.attributes.current_sign_in_ip')
     = user.current_sign_in_ip
     .row
-    %b= 'last_sign_in_ip'.humanize + ":"
+    %b= t('user.attributes.last_sign_in_ip')
     = user.last_sign_in_ip
   .card-footer
-    %b= 'course_income'.humanize + ":"
+    %b= t('user.attributes.course_income')
     = user.course_income
     .row
-    %b= 'enrollment_expenses'.humanize + ":"
+    %b= t('user.attributes.enrollment_expenses')
     = user.enrollment_expenses
     .row
-    %b= 'balance'.humanize + ":"
+    %b= t('user.attributes.balance')
     = user.balance
   .card-footer
     .fa.fa-graduation-cap
-    Courses created:
+    = t('user.attributes.courses')
     = user.courses_count
     .row
     .fa.fa-lock-open
-    Enrollments:
+    = t('user.attributes.enrollments')
     = user.enrollments_count
     .row
     .fa.fa-comment
-    Comments:
+    = t('user.attributes.comments')
     = user.comments_count
     .row
     .fa.fa-eye
-    Lessons viewed:
+    = t('user.attributes.viewed')
     = user.user_lessons_count
     .row
     .fa.fa-user-graduate
-    Students:
+    = t('user.attributes.students')
     = user.students.count
   .card-footer
-    Confirmed email?
+    = t('user.attributes.confirmed')
     - if user.confirmed_at.present?
-      .badge.badge-success Yes
+      .badge.badge-success= t('user.buttons.yes')
     - else
-      .badge.badge-danger No
+      .badge.badge-danger= t('user.buttons.no')
   .card-footer
     - user.roles.each do |role|
       .badge.badge-info
-        = role.name
+        = role.to_s
     - if policy(user).edit?
-      = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning'
+      = link_to t('user.buttons.edit_roles'), edit_user_path(user), class: 'btn btn-sm btn-warning'

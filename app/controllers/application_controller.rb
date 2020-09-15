@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   after_action :user_activity
+  # around_action :switch_locale
 
   include Pagy::Backend
   include PublicActivity::StoreController
@@ -16,6 +17,11 @@ class ApplicationController < ActionController::Base
   def set_global_variables
     @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
   end
+
+  # def switch_locale(&action)
+  #   locale = current_user.try(:locale) || I18n.default_locale
+  #   I18n.with_locale(locale, &action)
+  # end
 
   private
 

@@ -2,4 +2,4 @@
   = f.input :title, input_html: { autocomplete: 'off' }
   = f.input :content, as: :rich_text_area
   .text-right
-    = link_to_remove_association 'Remove lesson', f, class: 'btn btn-danger'
+    = link_to_remove_association t('courses.course_wizard.wizard.remove'), f, class: 'btn btn-danger'

@@ -1,7 +1,7 @@
 = render 'courses/course_wizard/wizard' do
   = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
-    .h3.text-center
-      = pluralize(@course.lessons_count, 'lesson')
+    %h4.text-center
+      = t('.add_lessons')
     %hr
     .form-inputs
       = f.simple_fields_for :lessons do |lesson|
@@ -14,4 +14,4 @@
     %hr
     .float-right
       .form-actions
-        = f.submit 'Next step', class: 'btn btn-info'
+        = f.submit t('.next'), class: 'btn btn-info'

@@ -2,7 +2,7 @@
   = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
     .form-inputs
       = f.input :title, input_html: { autocomplete: 'off' }
-      = f.label :avatar
+      = f.label t('course.attributes.avatar')
       .row
       - if @course.avatar.attached?
         = image_tag @course.avatar, width: '200px'
@@ -18,5 +18,5 @@
     %hr
     .float-right
       .form-actions
-        = f.submit 'Next step', class: 'btn btn-info'
+        = f.submit t('.next'), class: 'btn btn-info'
 

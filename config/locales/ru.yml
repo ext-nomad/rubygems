@@ -1,0 +1,203 @@
+ru:
+  layouts:
+    header:
+      home: "Домой"
+      learn: "Изучать"
+      courses: "Все курсы"
+      purchased: "Приобретенные курсы"
+      review: "Ожидают оценки"
+      teach: "Преподавать"
+      new: "Создать курс"
+      created: "Мои курсы"
+      students: "Мои студенты"
+      admin: "Администратору"
+      unapproved: "Модерация"
+      users: "Пользователи"
+      enrollments: "Покупки"
+      analytics: "Аналитика"
+      activity: "Активность"
+      tags: "Тэги"
+      settings: "Параметры аккаунта"
+      out: "Выйти"
+
+    footer:
+      teach: "Преподавать на RG"
+      business: "RubyGems для бизнеса"
+      policy: "Политика конфиденциальности"
+      about: "О нас"
+      terms: "Условия и положения"
+      help: "Помощь и поддержка"
+
+  home:
+    index:
+      phrase: "Что бы Вы хотели узнать сегодня?"
+      join: "Присоединяйтесь, чтобы получить доступ ко всем курсам"
+      continue: "Продолжить с"
+      courses:
+        one: "%{count} онлайн-курс"
+        few: "%{count} онлайн-курса"
+        many: "%{count} онлайн-курсов"
+        other: "%{count} онлайн-курсов"
+      explore: "Изучите множество свежих тем"
+      teachers:
+        one: "%{count} инструктор"
+        few: "%{count} инструктора"
+        many: "%{count} инструкторов"
+        other: "%{count} инструкторов"
+      find: "Найдите подходящего для Вас инструктора"
+      learners:
+        one: "%{count} студент"
+        few: "%{count} студента"
+        many: "%{count} студентов"
+        other: "%{count} студентов"
+      community: "Присоединяйтесь к сообществу и обменивайтесь знаниями"
+      access: "Пожизненный доступ"
+      schedule: "Учитесь по своему расписанию"
+      tags: "Популярные категории"
+      learning: "Продолжите обучение"
+      teaching: "Ваши курсы"
+      popular: "Популярные курсы"
+      top: "Курсы с самым высоким рейтингом"
+      latest: "Свежие курсы"
+      reviews: "Что говорят наши студенты"
+      block:
+        pace: "Учитесь в своем собственном темпе"
+        access: "Наслаждайтесь пожизненным доступом к курсам на веб-сайте RubyGems"
+        learn: "Учитесь у отраслевых экспертов"
+        select: "Выбирайте из лучших инструкторов со всего мира"
+        video: "Найдите видеокурсы практически на любую тему"
+        library: "Создайте свою библиотеку для своей карьеры и личного роста"
+
+  courses:
+    index:
+      level: "Сложность:"
+      language: "Язык:"
+      search: "Поиск"
+      refresh: "Обновить"
+      sort:
+        by: "Сортировать по:"
+        price: "Цене"
+        rating: "Рейтингу"
+        popular: "Популярности"
+        fresh: "Свежести"
+
+    analytics:
+      title: "Аналитика для курса: %{t}"
+      enrollments_q: "Зачислений в день, кол-во:"
+      enrollments_r: "Зачислений в день, доход:"
+      uniq_views: "Уникальные просмотры пользователей (сколько уникальных пользователей просмотрели урок):"
+      views: "Показов на урок (сколько раз открывался урок):"
+
+    course_wizard:
+      wizard:
+        phase: "Шаг %{current} из %{total}"
+        cancel: "Отмена"
+        next: "Следующий шаг"
+        previous: "Предыдущий шаг"
+        finish: "Сохранить"
+        remove: "Удалить урок"
+        add_lessons: "Добавьте уроки"
+        tags: "Выбирайте теги из представленных или создавайте свои:"
+        publish: "Вы хотите опубликовать этот курс? (Все смогут увидеть и записаться на него)"
+        steps:
+          basic_info: "Основная информация"
+          details: "Детали"
+          lessons: "Уроки"
+          publish: "Публикация"
+
+    show:
+      lesson:
+        one: "%{count} урок"
+        few: "%{count} урока"
+        many: "%{count} уроков"
+        other: "%{count} уроков"
+      review:
+        one: "%{count} обзор"
+        few: "%{count} обзора"
+        many: "%{count} обзоров"
+        other: "%{count} обзоров"
+      similar: "Похожие курсы"
+
+  users:
+    index:
+    show:
+      teaching: "Преподаватель:"
+      learning: "Студент:"
+    edit:
+      editing: "Редактирование ролей для"
+      update: "Обновить пользователя"
+      cancel: "Отмена"
+
+  course:
+    attributes:
+      title: "Название"
+      avatar: "Аватар"
+      description: "Описание"
+      short_description: "Краткое описание"
+      language: "Язык"
+      level: "Сложность"
+      price: "Цена"
+      tags:
+      published: "опубликован"
+      unpublished: "не опубликован"
+      approved: "утвержден"
+      unapproved: "не утвержден"
+    buttons:
+      analytics: "Просмотр аналитики"
+      free: "Бесплатно"
+      check: "Посмотреть цену"
+      review: "Добавить отзыв"
+      reviewed: "Спасибо за отзыв!"
+      certificate: "Сертификат об окончании"
+      continue: "Продолжить обучение"
+      buy:
+      add_lesson: "Добавить урок"
+      editor: "Редактор курса"
+      destroy: "Удалить"
+      approve: "Утвердить"
+      unapprove: "Отозвать"
+
+  user:
+    attributes:
+      id: "id"
+      sign_in_ago: "Зарегистрирован %{time} назад"
+      sign_in_count: "Количество входов:"
+      current_sign_in_at: "Текущий вход в:"
+      last_sign_in_at: "Последний вход в:"
+      current_sign_in_ip: "Текущий IP-адрес входа:"
+      last_sign_in_ip.: "Последний IP-адрес входа:"
+      course_income: "Доход от курса:"
+      enrollment_expenses: "Расходы:"
+      balance: "Баланс:"
+      courses: "Курсов создано:"
+      enrollments: "Купленные курсы:"
+      comments: "Комментариев:"
+      viewed: "Уроков просмотренно:"
+      students: "Студентов:"
+      confirmed: "Подтвержденный адрес электронной почты?"
+      roles: "Роли"
+    role:
+      admin: "админ"
+      student: "студент"
+      teacher: "преподаватель"
+    buttons:
+      sync: "Синхронизировать с Google"
+      # sign: "Signed up %{time} ago"
+      edit_roles: "Изменить роли"
+      "yes": "Да"
+      "no": "Нет"
+
+  session:
+    register: "Регистрация"
+    log_in: "Авторизация"
+
+  placeholders:
+    find: "Найти курс"
+    title: "Название"
+    tag: "Тэг"
+    description: "Описание"
+    price: "Цена"
+    email: "Эл. почта"
+    course: "Курс"
+    rating: "Рейтинг"
+    reviews: "Отзывы"

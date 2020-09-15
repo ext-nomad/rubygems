@@ -10,7 +10,7 @@
   .col-md-6
     .card.shadow
       .card-header
-        %b Courses: Teaching
+        %b= t('.teaching')
       .card-body
         - @courses_teaching.each do |course|
           .row
@@ -18,7 +18,7 @@
     %p
     .card.shadow
       .card-header
-        %b Courses: Learning
+        %b= t('.learning')
       .card-body
         - @courses_learning.each do |enrollment|
           .row

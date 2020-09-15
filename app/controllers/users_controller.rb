@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    authorize @course
+    authorize @user
   end
 
   def update

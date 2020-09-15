@@ -14,11 +14,11 @@
 
 
 = search_form_for @q, url: @ransack_path do |f|
-  = f.search_field :user_email_cont, placeholder: 'EMail'
-  = f.search_field :course_title_cont, placeholder: 'Course'
-  = f.search_field :price_eq, placeholder: 'Price'
-  = f.search_field :rating_eq, placeholder: 'Rating'
-  = f.search_field :review_cont, placeholder: 'Review'
+  = f.search_field :user_email_cont, placeholder: t('placeholders.email')
+  = f.search_field :course_title_cont, placeholder: t('placeholders.course')
+  = f.search_field :price_eq, placeholder: t('placeholders.price')
+  = f.search_field :rating_eq, placeholder: t('placeholders.rating')
+  = f.search_field :review_cont, placeholder: t('placeholders.reviews')
   = f.submit
 %p
 .ml-5

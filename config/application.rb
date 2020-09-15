@@ -26,7 +26,10 @@ module Rubygems
       ActionText::ContentHelper.allowed_tags.add 'audio'
       ActionText::ContentHelper.allowed_tags.add 'source'
     end
-    # i18n
-    # config.i18n.fallbacks = true
+
+    #  i18n
+    config.i18n.fallbacks = true
+    config.i18n.default_locale = :ru
+    I18n.available_locales = %i[en ru]
   end
 end
