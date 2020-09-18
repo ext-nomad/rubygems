@@ -25,8 +25,8 @@
         = lesson.comments_count
       - if policy(lesson).edit?
         .fa.fa-eye
-        Uniq viewers:
+        = t('.uniq_viewers')
         = lesson.user_lessons_count
         .fa.fa-eye
-        Impressions:
+        = t('.views')
         = lesson.user_lessons.map(&:impressions).sum

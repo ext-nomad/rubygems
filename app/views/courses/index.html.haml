@@ -1,13 +1,11 @@
 - content_for :title do
-  RubyGems
+  = t('title.title')
   \|
-  = controller_name.humanize
-  = action_name.humanize
+  = t('title.courses')
 
 %h3
   .text-center
-    = controller_name.humanize + ":"
-    = action_name.humanize
+    = t('title.courses')
     .badge.badge-info
       = @courses.count
 %p

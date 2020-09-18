@@ -67,6 +67,11 @@ en:
         select: "Select from top instructors around the world"
         video: "Find video courses on almost any topic"
         library: "Build your library for your career and personal growth"
+    analytics:
+      new_users: "New users per day"
+      new_enrollments: "New enrollments per day"
+      most_courses: "Most enrolled courses"
+      paid: "Most paid courses"
 
   courses:
     index:
@@ -118,6 +123,22 @@ en:
         other: "%{count} reviews"
       similar: "Similar courses"
 
+  lessons:
+    show:
+      comments: "Comments"
+      new_comment: "New comment"
+    lesson:
+      prev: "Previous"
+      next: "Next"
+    lesson_preview:
+      uniq_viewers: "Uniq viewers:"
+      views: "Views:"
+
+  enrollments:
+    edit:
+      add: "Add a review"
+      reviewing: "Reviewing"
+
   users:
     index:
     show:
@@ -165,7 +186,7 @@ en:
       current_sign_in_at: "Current sign in at:"
       last_sign_in_at: "Last sign in at:"
       current_sign_in_ip: "Current sign in ip:"
-      last_sign_in_ip.: "Last sign in ip:"
+      last_sign_in_ip: "Last sign in ip:"
       course_income: "Course income:"
       enrollment_expenses: "Enrollment expenses:"
       balance: "Balance:"
@@ -200,3 +221,29 @@ en:
     course: "Course"
     rating: "Rating"
     reviews: "Reviews"
+
+  title:
+    title: "RubyGems"
+    phrase: "Online courses - Learn Anything, On Your Schedule"
+    course: "Course"
+    courses: "Courses"
+    lesson: "Lesson"
+    lessons: "Lessons"
+    analytics: "Analytics"
+    activity: "Activity"
+    enrollments: "Enrollments"
+    new_lesson: "New lesson"
+    new_course: "New course"
+    editing_lesson: "Editing lesson"
+    editing_course: "Editing course"
+    users: "Users"
+    tags: "Tags"
+    add_comment: "Add comment to lesson"
+
+  global:
+    en: ":English"
+    confirmation: "Are you sure?"
+    buttons:
+      destroy: "Destroy"
+      back: "Back"
+      show: "Show"

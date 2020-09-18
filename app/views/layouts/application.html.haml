@@ -8,7 +8,7 @@
     %meta{author: 'Eugene Avdonat'}/
     = favicon_link_tag 'logo.png'
     %title 
-      = content_for?(:title) ? yield(:title) : 'RubyGems' 
+      = content_for?(:title) ? yield(:title) : t('title.title') 
 
     = csrf_meta_tags
     = csp_meta_tag

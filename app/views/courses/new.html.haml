@@ -1,12 +1,12 @@
 - content_for :title do
-  RubyGems
+  = t('title.title')
   \|
-  New course
+  = t('title.new_course')
 
 .card.shadow
   .card-header
     %h3.text-center
       .fa.fa-graduation-cap
-      New course
+      = t('title.new_course')
   .card-body
     = render 'form'

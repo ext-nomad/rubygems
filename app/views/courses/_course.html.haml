@@ -35,13 +35,14 @@
   - if current_user
     -if policy(course).owner?
       .card-footer
-        = link_to t('course.buttons.add_lesson'), new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary'
-
-        = link_to course_course_wizard_index_path(course), class: 'btn btn-sm btn-warning mr-1' do
-          .fa.fa-edit
-            = t('course.buttons.editor')
+        .btn-group
+          = link_to t('course.buttons.add_lesson'), new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary mt-1'
+          = link_to t('course.buttons.editor'), course_course_wizard_index_path(course), class: 'btn btn-sm btn-warning mt-1'
         - if policy(course).destroy?
-          = link_to t('course.buttons.destroy'), course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
+          .float-right
+            = link_to course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger mt-1' do
+              .fa.fa-trash
+              -# = t('course.buttons.destroy')
     - if policy(course).admin_or_owner?
       .card-footer
         - if course.published?

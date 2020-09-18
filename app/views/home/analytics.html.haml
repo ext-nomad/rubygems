@@ -1,31 +1,31 @@
 - content_for :title do
-  RubyGems 
+  = t('title.title')
   \| 
-  Analytics
+  = t('title.analytics')
 
 %h4.text-center
-  New users per day
+  = t('.new_users')
 .card.shadow
   .card-body
     = line_chart charts_users_per_day_path
 %p
 
 %h4.text-center
-  New enrollments per day
+  = t('.new_enrollments')
 .card.shadow
   .card-body
     = column_chart charts_enrollments_per_day_path
 %p
 
 %h4.text-center
-  Most enrolled courses
+  = t('.most_courses')
 .card.shadow
   .card-body
     = bar_chart charts_course_popularity_path
 %p
 
 %h4.text-center
-  Most paid courses
+  = t('.paid')
 .card.shadow
   .card-body
     = bar_chart charts_money_makers_path

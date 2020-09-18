@@ -16,7 +16,7 @@ ru:
       enrollments: "Покупки"
       analytics: "Аналитика"
       activity: "Активность"
-      tags: "Тэги"
+      tags: "Категории"
       settings: "Параметры аккаунта"
       out: "Выйти"
 
@@ -67,6 +67,11 @@ ru:
         select: "Выбирайте из лучших инструкторов со всего мира"
         video: "Найдите видеокурсы практически на любую тему"
         library: "Создайте свою библиотеку для своей карьеры и личного роста"
+    analytics:
+      new_users: "Новых пользователей в день:"
+      new_enrollments: "Новые записи в день:"
+      most_courses: "Самые популярные курсы:"
+      paid: "Самые высокоопдачиваемые курсы:"
 
   courses:
     index:
@@ -97,7 +102,7 @@ ru:
         finish: "Сохранить"
         remove: "Удалить урок"
         add_lessons: "Добавьте уроки"
-        tags: "Выбирайте теги из представленных или создавайте свои:"
+        tags: "Выбирайте категории из представленных или создавайте свои:"
         publish: "Вы хотите опубликовать этот курс? (Все смогут увидеть и записаться на него)"
         steps:
           basic_info: "Основная информация"
@@ -117,6 +122,22 @@ ru:
         many: "%{count} обзоров"
         other: "%{count} обзоров"
       similar: "Похожие курсы"
+
+  lessons:
+    show:
+      comments: "Комментарии"
+      new_comment: "Новый комментарий"
+    lesson:
+      prev: "Предыдущий урок"
+      next: "Следующий урок"
+    lesson_preview:
+      uniq_viewers: "Уникальные посетители:"
+      views: "Просмотров:"
+
+  enrollments:
+    edit:
+      add: "Добавить отзыв"
+      reviewing: "Обзор"
 
   users:
     index:
@@ -165,8 +186,8 @@ ru:
       current_sign_in_at: "Текущий вход в:"
       last_sign_in_at: "Последний вход в:"
       current_sign_in_ip: "Текущий IP-адрес входа:"
-      last_sign_in_ip.: "Последний IP-адрес входа:"
-      course_income: "Доход от курса:"
+      last_sign_in_ip: "Последний IP-адрес входа:"
+      course_income: "Доходы:"
       enrollment_expenses: "Расходы:"
       balance: "Баланс:"
       courses: "Курсов создано:"
@@ -200,3 +221,29 @@ ru:
     course: "Курс"
     rating: "Рейтинг"
     reviews: "Отзывы"
+
+  title:
+    title: "RubyGems"
+    phrase: "Онлайн-курсы - изучайте что угодно по своему расписанию"
+    course: "Курс"
+    courses: "Курсы"
+    lesson: "Урок"
+    lessons: "Уроки"
+    analytics: "Аналитика"
+    activity: "Активность"
+    enrollments: "Зачисления"
+    new_lesson: "Новый урок"
+    new_course: "Новый курс"
+    editing_lesson: "Редактирование урока"
+    editing_course: "Редактирование курса"
+    users: "Пользователи"
+    tags: "Категории"
+    add_comment: "Добавить комментарий к уроку"
+
+  global:
+    en: ":English"
+    confirmation: "Вы уверен?"
+    buttons:
+      destroy: "Удалить"
+      back: "Назад"
+      show: "Просмотр"

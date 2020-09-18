@@ -1,20 +1,18 @@
 - content_for :title do
-  RubyGems
+  = t('title.title')
   \/
-  Course
+  = t('title.course')
   = @course.title
   \/
-  Lesson
+  = t('title.lesson')
   = @lesson.title
 
-= link_to 'Courses', courses_path
+= link_to t('title.courses'), courses_path
 \/
 = link_to @lesson.course.title, course_path(@lesson.course)
 \/
 = link_to @lesson.title, course_lesson_path(@course, @lesson)
 %p
-
--# = @lesson.user_lessons.where(user: current_user).first.impressions
 
 .row
   .col-lg-8.order-1.order-lg-1
@@ -24,11 +22,11 @@
     %h4
       .text-center
         .fa.fa-comment
-        Comments
+        = t('.comments')
         = @lesson.comments_count
     .card.shadow
       .card-header
-        New comment
+        = t('.new_comment')
       .card-body
         = render 'lessons/comments/form'
     %p

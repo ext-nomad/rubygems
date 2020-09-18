@@ -1,5 +1,5 @@
 %h3.text-center
-  Tags
+  = t('title.tags')
   .badge.badge-info
     = @tags.count
 .card.shadow
@@ -12,4 +12,4 @@
           .badge.badge-light
             = tag.course_tags_count
         - if policy(tag).destroy?
-          = link_to 'Destory', tag, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger mt-1"
+          = link_to t('global.buttons.destroy'), tag, method: :delete, data: { confirm: t('global.confirmation') }, class: "btn btn-lg btn-danger mt-1"

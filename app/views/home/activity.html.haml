@@ -1,11 +1,11 @@
 - content_for :title do
-  RubyGems
+  = t('title.title')
   \|
-  Activity
+  = t('title.activity')
 
 %h3
   .text-center
-    Activity
+    = t('title.activity')
     .badge.badge-info
       = @activities.count
 %p

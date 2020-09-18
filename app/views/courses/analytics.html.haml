@@ -1,14 +1,14 @@
 - content_for :title do
-  RubyGems
+  = t('title.title')
   \|
   = @course.title
-  Analytics
+  = t('title.analytics')
 
-= link_to 'Courses', courses_path
+= link_to t('title.courses'), courses_path
 \/
 = link_to @course.title, course_path(@course)
 \/
-= link_to 'Analytics', analytics_course_path(@course)
+= link_to t('title.analytics'), analytics_course_path(@course)
 
 %h4.text-center
   = t('.title', t: @course.title)

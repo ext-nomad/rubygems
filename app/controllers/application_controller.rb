@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   after_action :user_activity
   around_action :switch_locale
-  before_action { @pagy_locale = I18n.locale.to_s || 'en' }
-  # before_action { @pagy_locale = params[:locale] || 'en' }
 
   include Pagy::Backend
   include PublicActivity::StoreController
@@ -20,14 +18,10 @@ class ApplicationController < ActionController::Base
     @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
   end
 
-  # def switch_locale(&action)
-  #   locale = current_user.try(:locale) || I18n.default_locale
-  #   I18n.with_locale(locale, &action)
-  # end
   def switch_locale(&action)
-    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     locale = extract_locale_from_accept_language_header
     logger.debug "* Locale set to '#{locale}'"
+    @pagy_locale = locale
     I18n.with_locale(locale, &action)
   end
 

@@ -20,13 +20,14 @@ import "youtube";
 require("selectize");
 
 import "cocoon-js";
+import { data } from "jquery";
 
 $(document).on("turbolinks:load", function () {
   $(".lesson-sortable").sortable({
     cursor: "grabbing",
     cursorAt: { left: 10 },
     placeholder: "ui-state-highlight",
-    update: function (e, ui) {
+    update: function (_e, ui) {
       let item = ui.item;
       let item_data = item.data();
       let params = { _method: "put" };
@@ -38,7 +39,7 @@ $(document).on("turbolinks:load", function () {
         data: params,
       });
     },
-    stop: function (e, ui) {
+    stop: function (_e, _ui) {
       console.log("stop called when finishing sort of cards");
     },
   });
@@ -46,12 +47,6 @@ $(document).on("turbolinks:load", function () {
   $("video").bind("contextmenu", function () {
     return false;
   });
-
-  if ($(".selectize")) {
-    $(".selectize").selectize({
-      sortField: "text",
-    });
-  }
 
   $(".selectize-tags").selectize({
     create: function (input, callback) {

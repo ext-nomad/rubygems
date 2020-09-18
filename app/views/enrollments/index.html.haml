@@ -1,13 +1,12 @@
 - content_for :title do
-  RubyGems
+  = t('title.title')
   \|
   = action_name.humanize
-  enrollments
+  = t('title.enrollments')
 
 %h3
   .text-center
-    = controller_name.humanize + ":"
-    = action_name.humanize
+    = t('title.enrollments') + ":"
     .badge.badge-info
       =@enrollments.count
 %p

@@ -1,8 +1,8 @@
 .card.shadow
   .card-header
-    Add comment to lesson:
+    = t('title.add_comment')
     = @lesson
   .card-body
     = render 'lessons/comments/form'
   .card-footer
-    = link_to 'Back to lesson', course_lesson_path(@course, @lesson)
+    = link_to t('global.buttons.back'), course_lesson_path(@course, @lesson)
