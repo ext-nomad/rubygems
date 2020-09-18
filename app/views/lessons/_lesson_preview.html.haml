@@ -20,13 +20,16 @@
         = lesson.title
   .col-md-5
     %small
-      - if lesson.comments.any?
-        .fa.fa-comment
-        = lesson.comments_count
       - if policy(lesson).edit?
         .fa.fa-eye
         = t('.uniq_viewers')
         = lesson.user_lessons_count
+        .row
         .fa.fa-eye
         = t('.views')
         = lesson.user_lessons.map(&:impressions).sum
+        .row
+      - if lesson.comments.any?
+        .fa.fa-comment
+        = lesson.comments_count
+

@@ -52,6 +52,5 @@
   - Course.approved.published.where.not(id: @course.id).each do |course|
     - unless @course.tags.pluck(:id).intersection(course.tags.pluck(:id)).count.zero?
       .col-md-6
-        - @course.tags.pluck(:id).intersection(course.tags.pluck(:id)).each do |x|
-          = render 'courses/course', course: course
-        %p
+        = render 'courses/course', course: course
+      %p
