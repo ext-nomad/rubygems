@@ -26,4 +26,13 @@ module ApplicationHelper
       "<i class='fa fa-user'></i>".html_safe
     end
   end
+
+  def boolean_label(value)
+    case value
+    when true
+      content_tag(:span, t('user.buttons.yes'), class: 'badge badge-success')
+    when false
+      content_tag(:span, t('user.buttons.no'), class: 'badge badge-danger')
+    end
+  end
 end

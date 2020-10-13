@@ -65,10 +65,7 @@
     = user.students.count
   .card-footer
     = t('user.attributes.confirmed')
-    - if user.confirmed_at.present?
-      .badge.badge-success= t('user.buttons.yes')
-    - else
-      .badge.badge-danger= t('user.buttons.no')
+    = boolean_label(user.confirmed?)
   .card-footer
     - user.roles.each do |role|
       .badge.badge-info

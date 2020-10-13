@@ -56,7 +56,7 @@
             %td= user.enrollments_count
             %td= user.comments_count
             %td= user.user_lessons_count
-            %td= user.confirmed?
+            %td= boolean_label(user.confirmed?)
             %td
               - user.roles.each do |role|
                 .badge.badge-info
