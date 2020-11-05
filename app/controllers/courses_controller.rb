@@ -2,7 +2,7 @@
 
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_course, only: %i[show destroy approve unapprove analytics]
+  before_action :set_course, only: %i[show destroy approve analytics]
 
   def index
     @ransack_path = courses_path
@@ -64,14 +64,14 @@ class CoursesController < ApplicationController
 
   def approve
     authorize @course, :approve?
-    @course.update_attribute(:approved, true)
-    redirect_to @course, notice: 'Course approved and visible'
-  end
-
-  def unapprove
-    authorize @course, :approve?
-    @course.update_attribute(:approved, false)
-    redirect_to @course, notice: 'Course unapproved and hidden'
+    if @course.approved?
+      @course.update_attribute(:approved, false)
+      flash[:alert] = 'Course unapproved and hidden'
+    else
+      @course.update_attribute(:approved, true)
+      flash[:notice] = 'Course approved and visible'
+    end
+    redirect_to @course
   end
 
   def analytics
