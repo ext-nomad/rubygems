@@ -177,6 +177,8 @@ en:
       destroy: "Delete"
       approve: "Approve"
       unapprove: "Unapprove"
+      publish: "Publish"
+      unpublish: "Unpublish"
 
   user:
     attributes:

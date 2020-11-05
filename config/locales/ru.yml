@@ -177,6 +177,8 @@ ru:
       destroy: "Удалить"
       approve: "Утвердить"
       unapprove: "Отозвать"
+      publish: "Опубликовать"
+      unpublish: "Снять с публикации"
 
   user:
     attributes:
