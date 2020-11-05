@@ -2,6 +2,7 @@
   "name": "rubygems",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.0.3-2",
     "@rails/activestorage": "^6.0.0",

@@ -35,14 +35,12 @@ group :test do
 end
 
 gem 'active_storage_validations'
-gem 'bootstrap', '~> 4.5.2'
 gem 'chartkick'
 gem 'cocoon'
 gem 'devise'
 gem 'devise-i18n'
 gem 'exception_notification', group: :production
 gem 'faker'
-gem 'font-awesome-sass', '~> 5.13.0'
 gem 'friendly_id', '~> 5.4.0'
 gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'groupdate'

@@ -14,13 +14,3 @@ ActionMailer::Base.smtp_settings = {
   authentication: :plain,
   enable_starttls_auto: true
 }
-
-# ActionMailer::Base.smtp_settings = {
-#   port: ENV['SIB_SMTP_PORT'],
-#   address: ENV['SIB_SMTP_ADRESS'],
-#   user_name: ENV['SIB_SMTP_LOGIN'],
-#   password: ENV['SIB_SMTP_PASSWORD'],
-#   domain: 'ext-rubygems.herokuapp.com',
-#   authentication: :plain,
-#   enable_starttls_auto: true
-# }

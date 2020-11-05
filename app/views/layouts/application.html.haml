@@ -13,13 +13,15 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     - if Rails.env.production?
       = render 'layouts/google_analytics'
   %body
     = render 'layouts/header'
-    = render 'layouts/messages'
     .container
+      %p
+      = render 'layouts/messages'
       %p
       = yield
     %br

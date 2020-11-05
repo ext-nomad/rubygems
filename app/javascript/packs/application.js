@@ -3,21 +3,25 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 
-import "bootstrap";
+require("stylesheets/custom.scss");
+
+require("jquery");
+require("jquery-ui");
+
 require("trix");
 require("@rails/actiontext");
 
 require("chartkick");
 require("chart.js");
 
-// import "../trix-editor-overrides"
+import "bootstrap/dist/js/bootstrap";
+import "bootstrap/dist/css/bootstrap";
 
-require("jquery");
-require("jquery-ui");
+import "@fortawesome/fontawesome-free/css/all";
+
+import "selectize/dist/js/standalone/selectize";
 
 import "youtube";
-
-require("selectize");
 
 import "cocoon-js";
 import { data } from "jquery";

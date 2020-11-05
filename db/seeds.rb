@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# ? NEEDS TO REWORK !
+# ! NEEDS TO REWORK !
 
 PublicActivity.enabled = false
 
