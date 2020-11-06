@@ -2,7 +2,7 @@
 
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_course, only: %i[show destroy approve analytics]
+  before_action :set_course, only: %i[show destroy approve publish analytics]
 
   def index
     @ransack_path = courses_path
@@ -70,6 +70,18 @@ class CoursesController < ApplicationController
     else
       @course.update_attribute(:approved, true)
       flash[:notice] = 'Course approved and visible'
+    end
+    redirect_to @course
+  end
+
+  def publish
+    authorize @course, :owner?
+    if @course.published?
+      @course.update_attribute(:published, false)
+      flash[:alert] = 'Course unpublished'
+    else
+      @course.update_attribute(:published, true)
+      flash[:notice] = 'Course published'
     end
     redirect_to @course
   end

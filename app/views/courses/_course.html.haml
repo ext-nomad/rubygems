@@ -45,35 +45,33 @@
               -# = t('course.buttons.destroy')
     - if policy(course).admin_or_owner?
       .card-footer
-        .custom-control.custom-switch
+        - if policy(course).owner?
           - if course.published?
-            %input#customSwitch1.custom-control-input{:disabled => "disabled", :checked => "checked", :type => "checkbox"}
+            = link_to publish_course_path(course), method: :patch do
+              .custom-control.custom-switch
+                %input#customSwitch1.custom-control-input{:type => "checkbox", :checked => "checked"}
+                %label.custom-control-label{:for => "customSwitch1"} 
+                  = t('course.buttons.unpublish')
           - else
-            %input#customSwitch2.custom-control-input{:disabled => "disabled", :type => "checkbox"}
-          %label.custom-control-label{:for => "Published"} 
-            = t('course.buttons.unpublish')
+            = link_to publish_course_path(course), method: :patch do
+              .custom-control.custom-switch
+                %input#customSwitch1.custom-control-input{:type => "checkbox"}
+                %label.custom-control-label{:for => "customSwitch1"} 
+                  = t('course.buttons.publish')
         .row
         - if policy(course).approve?
           - if course.approved?
             = link_to approve_course_path(course), method: :patch do
               .custom-control.custom-switch
-                %input#customSwitch1.custom-control-input{:type => "checkbox", :checked => "checked"}
-                %label.custom-control-label{:for => "customSwitch1"} 
+                %input#customSwitch2.custom-control-input{:type => "checkbox", :checked => "checked"}
+                %label.custom-control-label{:for => "customSwitch2"} 
                   = t('course.buttons.unapprove')
           - else
             = link_to approve_course_path(course), method: :patch do
               .custom-control.custom-switch
-                %input#customSwitch1.custom-control-input{:type => "checkbox"}
-                %label.custom-control-label{:for => "customSwitch1"} 
+                %input#customSwitch2.custom-control-input{:type => "checkbox"}
+                %label.custom-control-label{:for => "customSwitch2"} 
                   = t('course.buttons.approve')
-        - else
-          .custom-control.custom-switch
-            - if course.approved?
-              %input#customSwitch1.custom-control-input{:disabled => "disabled", :checked => "checked", :type => "checkbox"}
-            - else
-              %input#customSwitch2.custom-control-input{:disabled => "disabled", :type => "checkbox"}
-            %label.custom-control-label{:for => "Published"} 
-              = t('course.buttons.publish')
   - if course.tags.any?
     .card-footer
       - course.tags.each do |tag|

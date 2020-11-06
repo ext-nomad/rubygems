@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     member do
       get :analytics
       patch :approve
+      patch :publish
     end
     resources :lessons, except: %i[index] do
       resources :comments, except: %i[index]
