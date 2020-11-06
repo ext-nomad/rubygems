@@ -22,7 +22,7 @@ class Course < ApplicationRecord
             presence: true
   validates :description, presence: true, length: { minimum: 5 }
   validates :title, uniqueness: true
-  validates :price, numericality: { greater_than_or_equal_to: 0, less_than: 999}
+  validates :price, numericality: { greater_than_or_equal_to: 0, less_than: 999 }
   validates :avatar, presence: true, on: :update
   validates :avatar,
             content_type: %w[image/png image/jpg image/jpeg],
@@ -78,5 +78,18 @@ class Course < ApplicationRecord
 
   def bought(user)
     enrollments.where(user_id: [user.id], course_id: [id]).empty?
+  end
+
+  def similar_courses
+    self.class
+        .joins(:tags)
+        .where.not(id: id)
+        .where(tags: { id: tags.ids })
+        .select(
+          'courses.*',
+          'COUNT(tags.*) AS tags_in_common'
+        )
+        .group(:id)
+        .order(tags_in_common: :desc)
   end
 end

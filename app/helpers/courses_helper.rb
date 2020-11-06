@@ -41,7 +41,6 @@ module CoursesHelper
     else
       link_to course_path(course), class: 'btn btn-sm btn-info' do
         t('course.buttons.continue')
-        # "<i class='fa fa-spinner'></i>".html_safe + ' ' + number_to_percentage(course.progress(current_user), precision: 0)
       end
     end
   end
