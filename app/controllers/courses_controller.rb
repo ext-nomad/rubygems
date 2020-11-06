@@ -3,13 +3,12 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_course, only: %i[show destroy approve publish analytics]
+  before_action :set_tags, only: %i[index learning teaching pending_review unapproved new create]
+  before_action :prepare_index, only: %i[index learning teaching pending_review unapproved]
 
   def index
     @ransack_path = courses_path
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
-
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
   end
 
   def learning
@@ -19,8 +18,6 @@ class CoursesController < ApplicationController
                        .where(enrollments: { user: current_user })
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -31,8 +28,6 @@ class CoursesController < ApplicationController
                        .where(user: current_user)
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -44,8 +39,6 @@ class CoursesController < ApplicationController
                        .merge(Enrollment.pending_review.where(user: current_user))
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -56,8 +49,6 @@ class CoursesController < ApplicationController
                        .unapproved
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
-    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
 
     render 'index'
   end
@@ -98,7 +89,6 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
-    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
     authorize @course
   end
 
@@ -113,7 +103,6 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to course_course_wizard_index_path(@course), notice: 'Course was successfully created.'
     else
-      @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
       render :new
     end
   end
@@ -132,6 +121,14 @@ class CoursesController < ApplicationController
 
   def set_course
     @course = Course.friendly.find(params[:id])
+  end
+
+  def set_tags
+    @tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc)
+  end
+
+  def prepare_index
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, course_tags: :tag))
   end
 
   def course_params
