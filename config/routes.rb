@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  get 'home/index'
-  get 'activity', to: 'home#activity'
-  get 'analytics', to: 'home#analytics'
-  get 'privacy_policy', to: 'home#privacy_policy'
+  root 'static_pages#landing_page'
+  get 'activity', to: 'static_pages#activity'
+  get 'analytics', to: 'static_pages#analytics'
+  get 'privacy', to: 'static_pages#privacy'
+  get 'terms', to: 'static_pages#terms'
+  get 'support', to: 'static_pages#support'
+  get 'about', to: 'static_pages#about'
 
   namespace :charts do
     get 'users_per_day'

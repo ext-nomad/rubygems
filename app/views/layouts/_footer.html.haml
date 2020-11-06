@@ -7,13 +7,13 @@
         .row
         = t('.business')
         .row
-        = t('.about')
+        = link_to t('.about'), about_path
       .col-md-4
-        = link_to t('.policy'), privacy_policy_path
+        = link_to t('.policy'), privacy_path
         .row
-        = t('.terms')
+        = link_to t('.terms'), terms_path
         .row
-        = t('.help')
+        = link_to t('.help'), support_path
       .col-md-4
         | © A.E.V., 
         = "#{Time.now.year}"
