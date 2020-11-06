@@ -35,4 +35,24 @@ module ApplicationHelper
       content_tag(:span, t('user.buttons.no'), class: 'badge badge-danger')
     end
   end
+
+  def active_link_to(name, path)
+    content_tag(:li, class: "#{'active font-weight-bold' if current_page?(path)} nav-item") do
+      link_to name, path, class: 'nav-link'
+    end
+  end
+
+  def long_active_link_to(path)
+    content_tag(:li, class: "#{'active font-weight-bold' if current_page?(path)} nav-item") do
+      link_to path, class: 'nav-link' do
+        yield
+      end
+    end
+  end
+
+  def dropdown_active_link(path)
+    link_to path, class: "dropdown-item #{'active' if current_page?(path)}" do
+      yield
+    end
+  end
 end
