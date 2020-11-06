@@ -8,21 +8,21 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
 
   namespace :charts do
-    get 'users_per_day'
-    get 'enrollments_per_day'
-    get 'course_popularity'
     get 'money_makers'
+    get 'users_per_day'
+    get 'course_popularity'
+    get 'enrollments_per_day'
   end
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
     sessions: 'users/sessions',
+    registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resources :tags, only: %i[index create destroy]
   resources :users, only: %i[index edit show update]
   resources :youtube, only: %i[show]
-  resources :tags, only: %i[index create destroy]
 
   resources :enrollments do
     get :my_students, on: :collection

@@ -28,8 +28,8 @@ en:
       terms: "Terms and conditions"
       help: "Help and Support"
 
-  home:
-    index:
+  static_pages:
+    landing_page:
       phrase: "What do you want to learn today?"
       join: "Join to access all the courses"
       continue: "Continue with"
