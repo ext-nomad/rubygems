@@ -64,7 +64,7 @@ class EnrollmentsController < ApplicationController
     EnrollmentMailer.student_enrollment(@enrollment).deliver_later
     EnrollmentMailer.teacher_enrollment(@enrollment).deliver_later
   rescue Stripe::CardError => e
-    flash[:error] = e.message
+    flash[:alert] = e.message
     redirect_to new_course_enrollment_path(@course)
   end
 
