@@ -4,11 +4,11 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_course, only: %i[show destroy approve publish analytics]
   before_action :set_tags, only: %i[index learning teaching pending_review unapproved new create]
-  before_action :prepare_index, only: %i[index learning teaching pending_review unapproved]
 
   def index
     @ransack_path = courses_path
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
+    prepare_index
   end
 
   def learning
@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
                        .where(enrollments: { user: current_user })
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-
+    prepare_index
     render 'index'
   end
 
@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
                        .where(user: current_user)
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-
+    prepare_index
     render 'index'
   end
 
@@ -39,6 +39,7 @@ class CoursesController < ApplicationController
                        .merge(Enrollment.pending_review.where(user: current_user))
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
+    prepare_index
     render 'index'
   end
 
@@ -48,7 +49,7 @@ class CoursesController < ApplicationController
                        .unapproved
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-
+    prepare_index
     render 'index'
   end
 
