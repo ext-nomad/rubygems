@@ -39,7 +39,6 @@ class CoursesController < ApplicationController
                        .merge(Enrollment.pending_review.where(user: current_user))
                        .ransack(params[:courses_search],
                                 search_key: :courses_search)
-
     render 'index'
   end
 
