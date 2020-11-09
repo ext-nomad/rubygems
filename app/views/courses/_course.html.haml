@@ -1,8 +1,8 @@
 - unless current_page?(course_path(course))
-  .card.shadow
+  .card.shadow.transform.mb-4
     .card-header
-      .fa.fa-fa-graduation-cap
-      = link_to course.title, course_path(course), class: 'stretched-link'
+      .text-center
+        = link_to course.title, course_path(course), class: 'stretched-link'
     
     - if course.avatar.attached?
       .card-img-top
@@ -32,7 +32,6 @@
 -else
   .card.shadow
     .card-header
-      .fa.fa-fa-graduation-cap
       = link_to course.title, course_path(course)
     
     - if course.avatar.attached?

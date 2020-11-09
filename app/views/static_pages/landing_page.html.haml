@@ -13,7 +13,7 @@
       .input-group.d-flex.justify-content-center
         = f.search_field :title_cont, class: 'form-control-sm', style: 'width: 300px;', autocomplete: 'off', placeholder: t('placeholders.find')
         %span.input-group-append
-          %button.btn.btn-primary.btn-sm{:type => "submit"}
+          %button.btn.btn-outline-light.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
     .p-2
   - else
@@ -75,63 +75,68 @@
 .d-flex.justify-content-center
   - @popular_tags.each do |tag|
     = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
-      .mt-1.btn.btn-info.mr-1
+      .mt-1.btn.btn-outline-info.mr-1
         = tag.name
-        %span.badge.badge-light
+        %span.badge.badge-info
           = tag.course_tags_count
+%hr.mb-4.mt-5
 
-%hr
 - if current_user
   - if current_user.enrollments.any?
-    %h2.text-center
-      .fa.fa-user-graduate
-      = link_to t('.learning'), learning_courses_path
+    .text-center.mb-4
+      = link_to learning_courses_path, class: 'btn btn-lg btn-outline-dark' do
+        .fa.fa-user-graduate
+        = t('.learning')
     .row
       - @learning_courses.each do |course|
         .col-md-6
           = render 'courses/course', course: course
           %p
-    %hr
+    %hr.mb-4
   - if current_user.courses.any?
-    %h2.text-center
-      .fa.fa-chalkboard-teacher
-      = link_to t('.teaching'), teaching_courses_path
+    .text-center.mb-4
+      = link_to teaching_courses_path, class: 'btn btn-lg btn-outline-dark' do
+        .fa.fa-chalkboard-teacher
+        = t('.teaching')
     .row
       - @teaching_courses.each do |course|
         .col-md-6
           = render 'courses/course', course: course
           %p
-    %hr
+    %hr.mb-4
 
-%h2.text-center
-  .fa.fa-chart-line
-  = link_to t('.popular'), courses_path(courses_search: {s: 'enrollments_count desc'})
+.text-center.mb-4
+  = link_to courses_path(courses_search: {s: 'enrollments_count desc'}), class: 'btn btn-lg btn-outline-dark' do
+    .fa.fa-chart-line
+    = t('.popular')
 .row
   - @popular.each do |course|
     .col-md-6
       = render 'courses/course', course: course
       %p
-%hr
+%hr.mb-4
 
-%h2.text-center
-  .fa.fa-star
-  = link_to t('.top'), courses_path(courses_search: {s: 'average_rating desc'})
+.text-center.mb-4
+  = link_to courses_path(courses_search: {s: 'average_rating desc'}), class: 'btn btn-lg btn-outline-dark' do
+    .fa.fa-star
+    = t('.top')
 .row
   - @top_rated.each do |course|
     .col-md-6
       = render 'courses/course', course: course
       %p
-%hr
+%hr.mb-4
 
-%h2.text-center
-  .fa.fa-clock
-  = link_to t('.latest'), courses_path(courses_search: {s: 'created_at desc'})
+.text-center.mb-4
+  = link_to courses_path(courses_search: {s: 'created_at desc'}), class: 'btn btn-lg btn-outline-dark' do
+    .fa.fa-clock
+    = t('.latest')
 .row
   - @latest.each do |course|
     .col-md-6
       = render 'courses/course', course: course
       %p
-%hr
+%hr.mb-4
 
 %h2.text-center
   .fa.fa-comment
