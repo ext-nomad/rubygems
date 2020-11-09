@@ -47,7 +47,7 @@
               %a#teacherDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                 .fa.fa-chalkboard-teacher
                 = t('.teach')
-              .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "teacherDropdown"}
+              .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "teacherDropdown"}
                 = dropdown_active_link(new_course_path) do
                   .fa.fa-plus
                   = t('.new')
@@ -67,7 +67,7 @@
               %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                 .fa.fa-cog
                 = t('.admin')
-              .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "adminDropdown"}
+              .dropdown-menu.dropdown-menu-center{"aria-labelledby" => "adminDropdown"}
                 = dropdown_active_link(unapproved_courses_path) do
                   .fa.fa-graduation-cap
                   = t('.unapproved')

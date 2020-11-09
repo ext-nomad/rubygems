@@ -5,8 +5,6 @@
       .col-md-4
         = link_to t('.teach'), new_course_path
         .row
-        = t('.business')
-        .row
         = link_to t('.about'), about_path
       .col-md-4
         = link_to t('.policy'), privacy_path
@@ -15,9 +13,9 @@
         .row
         = link_to t('.help'), support_path
       .col-md-4
-        | © A.E.V., 
+        © A.E.V., 
         = "#{Time.now.year}"
-        |  SPb. @ 59.799,30.637
+        SPb. @ 59.799,30.637
         .row
         .fa.fa-envelope
         = mail_to 'i.dwanderer@gmail.com'

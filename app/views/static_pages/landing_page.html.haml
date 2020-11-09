@@ -4,14 +4,14 @@
   = t('title.phrase')
 
 .jumbotron.shadow.parallax
-  .h1.text-shadow
+  .h1.text-center.text-shadow
     = t('.phrase')
   .p-4
   
   - if current_user
     = search_form_for @ransack_courses, as: :courses_search,url: courses_path do |f|
-      .input-group
-        = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px;', autocomplete: 'off', placeholder: t('placeholders.find')
+      .input-group.d-flex.justify-content-center
+        = f.search_field :title_cont, class: 'form-control-sm', style: 'width: 300px;', autocomplete: 'off', placeholder: t('placeholders.find')
         %span.input-group-append
           %button.btn.btn-primary.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
@@ -69,15 +69,16 @@
       %small= t('.schedule')
 %p
 
-%h2.text-center.text-shadow
+%h2.text-center.text-shadow.mt-5
   .fa.fa-tags
   = t('.tags')
-- @popular_tags.each do |tag|
-  = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
-    .mt-1.btn.btn-info
-      = tag.name
-      %span.badge.badge-light
-        = tag.course_tags_count
+.d-flex.justify-content-center
+  - @popular_tags.each do |tag|
+    = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
+      .mt-1.btn.btn-info.mr-1
+        = tag.name
+        %span.badge.badge-light
+          = tag.course_tags_count
 
 %hr
 - if current_user

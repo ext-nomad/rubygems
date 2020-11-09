@@ -63,5 +63,6 @@
           = render 'courses/course', course: course 
           %p
     %p
-    != pagy_bootstrap_nav(@pagy)
+    .d-flex.justify-content-center
+      != pagy_bootstrap_nav(@pagy)
 %br

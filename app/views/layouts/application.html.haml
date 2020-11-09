@@ -19,14 +19,13 @@
       = render 'layouts/google_analytics'
 
   %body
-    %header
+    %header.mb-5
       = render 'layouts/header'
     %main
       .container
-        %p
-        = render 'layouts/messages'
-        %p
+        .d-flex.justify-content-center
+          = render 'layouts/messages'
+
         = yield
-      %br
-    %footer
+    %footer.mt-5
       = render 'layouts/footer'
