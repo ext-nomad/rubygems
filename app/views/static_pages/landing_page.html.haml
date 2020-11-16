@@ -9,7 +9,7 @@
   .p-4
   
   - if current_user
-    = search_form_for @ransack_courses, as: :courses_search,url: courses_path do |f|
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
       .input-group.d-flex.justify-content-center
         = f.search_field :title_cont, class: 'form-control-sm', style: 'width: 300px;', autocomplete: 'off', placeholder: t('placeholders.find')
         %span.input-group-append

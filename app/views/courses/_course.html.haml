@@ -9,7 +9,8 @@
         = image_tag course.avatar, height: "220px", width: "100%"
 
     .card-body
-      %small= simple_format(course.short_description).truncate(100)
+      .text-center
+        %small= simple_format(course.short_description).truncate(100)
     .card-footer
       .row
         .col-md-6
