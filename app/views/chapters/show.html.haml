@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @chapter.title
+%p
+  %b Row order:
+  = @chapter.row_order
+%p
+  %b Course:
+  = @chapter.course
+
+= link_to 'Edit', edit_chapter_path(@chapter)
+\|
+= link_to 'Back', chapters_path
