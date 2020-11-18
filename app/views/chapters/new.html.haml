@@ -1,5 +1,24 @@
-%h1 New chapter
+- content_for :title do
+  = t('title.title')
+  \/
+  = t('title.course')
+  = @course.title
+  \/
+  = t('title.new_chapter')
 
-= render 'form'
 
-= link_to 'Back', chapters_path
+= link_to t('title.courses'), courses_path
+\/
+= link_to @course.title, course_path(@course)
+\/
+= t('title.new_chapter')
+
+.card.shadow
+  .card-header
+    %h3
+      .far.fa.fa-check-square
+      = t('title.new_chapter')
+  .card-body
+    = render 'form'
+  .card-footer
+    = link_to t('global.buttons.back'), course_path(@course)

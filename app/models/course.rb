@@ -2,11 +2,13 @@
 
 class Course < ApplicationRecord
   belongs_to :user, counter_cache: true
+  has_many :chapters, dependent: :destroy, inverse_of: :course
   has_many :lessons, dependent: :destroy, inverse_of: :course
   has_many :enrollments, dependent: :restrict_with_error
   has_many :user_lessons, through: :lessons
   has_many :course_tags, dependent: :destroy
   has_many :tags, through: :course_tags
+
   has_rich_text :description
   has_one_attached :avatar
 

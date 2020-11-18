@@ -1,7 +1,25 @@
-%h1 Editing chapter
+- content_for :title do
+  = t('title.title')
+  \/
+  = t('title.course')
+  = @course.title
+  \/
+  = t('title.editing_chapter')
 
-= render 'form'
 
-= link_to 'Show', @chapter
-\|
-= link_to 'Back', chapters_path
+= link_to t('title.courses'), courses_path
+\/
+= link_to @course.title, course_path(@course)
+\/
+= link_to t('title.editing_chapter'), edit_course_chapter_path(@course, @chapter)
+%p
+
+.card.shadow
+  .card-header
+    %h3
+      .far.fa.fa-check-square
+      = t('title.editing_chapter')
+  .card-body
+    = render 'form'
+  .card-footer
+    = link_to t('global.buttons.back'), course_path(@course)
