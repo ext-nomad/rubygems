@@ -1,11 +1,5 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter, only: %i[show edit update destroy]
-
-  def index
-    @chapters = Chapter.all
-  end
-
-  def show; end
+  before_action :set_chapter, only: %i[edit update destroy]
 
   def new
     @chapter = Chapter.new
