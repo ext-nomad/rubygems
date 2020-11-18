@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[index edit show update]
   resources :youtube, only: %i[show]
 
-  resources :chapters
+  resources :chapters, except: %i[index show]
 
   resources :enrollments do
     get :my_students, on: :collection
