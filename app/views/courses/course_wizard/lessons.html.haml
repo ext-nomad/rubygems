@@ -6,7 +6,6 @@
     .form-inputs
       = f.simple_fields_for :lessons do |lesson|
         = render 'lesson_fields', f: lesson
-        %hr
       .links.text-center
         = link_to_add_association 'Add new lesson', f, :lessons, class: 'btn btn-success'
         

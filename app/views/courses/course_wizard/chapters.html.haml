@@ -6,7 +6,6 @@
     .form-inputs
       = f.simple_fields_for :chapters do |chapter|
         = render 'chapter_fields', f: chapter
-        %hr
       .links.text-center
         = link_to_add_association 'Add new chapter', f, :chapters, class: 'btn btn-success'
         
