@@ -12,6 +12,9 @@ class Course < ApplicationRecord
   has_rich_text :description
   has_one_attached :avatar
 
+  accepts_nested_attributes_for :chapters,
+                                reject_if: :all_blank,
+                                allow_destroy: true
   accepts_nested_attributes_for :lessons,
                                 reject_if: :all_blank,
                                 allow_destroy: true

@@ -100,13 +100,16 @@ en:
         next: "Next step"
         previous: "Previous step"
         finish: "Finish"
-        remove: "Delete lesson"
+        remove_chapter: "Delete chapter"
+        remove_lesson: "Delete lesson"
+        add_chapters: "Add some chapters"
         add_lessons: "Add some lessons"
         tags: "Choose tags from presented or make your own:"
         publish: "Do you want to public this course? (Everyone can see it, and enroll)"
         steps:
           basic_info: "Basic information"
           details: "Details"
+          chapters: "Chapters"
           lessons: "Lessons"
           publish: "Publish"
 

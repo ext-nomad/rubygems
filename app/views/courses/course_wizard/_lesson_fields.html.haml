@@ -1,5 +1,6 @@
 .nested-fields
   = f.input :title, input_html: { autocomplete: 'off' }
+  = f.association :chapter, collection: @course.chapters, include_blank: false
   = f.input :content, as: :rich_text_area
   .text-right
-    = link_to_remove_association t('courses.course_wizard.wizard.remove'), f, class: 'btn btn-danger'
+    = link_to_remove_association t('courses.course_wizard.wizard.remove_lesson'), f, class: 'btn btn-sm btn-danger'

@@ -1,0 +1,17 @@
+= render 'courses/course_wizard/wizard' do
+  = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
+    %h4.text-center
+      = t('.add_chapters')
+    %hr
+    .form-inputs
+      = f.simple_fields_for :chapters do |chapter|
+        = render 'chapter_fields', f: chapter
+        %hr
+      .links.text-center
+        = link_to_add_association 'Add new chapter', f, :chapters, class: 'btn btn-success'
+        
+    %br
+    %hr
+    .float-right
+      .form-actions
+        = f.submit t('.next'), class: 'btn btn-info'
