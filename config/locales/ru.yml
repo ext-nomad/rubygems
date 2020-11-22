@@ -175,6 +175,7 @@ ru:
       certificate: "Сертификат об окончании"
       continue: "Продолжить обучение"
       buy:
+      add_chapter: "Добавить главу"
       add_lesson: "Добавить урок"
       editor: "Редактор курса"
       destroy: "Удалить"

@@ -45,12 +45,15 @@
             = @lesson.course.title
           .float-right
             .fa.fa-spinner
-            = number_to_percentage(@course.progress(current_user), precision: 0)  
-        - @lessons.each do |lesson|
-          - if @lesson.present? && lesson == @lesson
-            %li.list-group-item.list-group-item-success
-              = render 'lessons/lesson_preview', lesson: lesson
-          - else
-            %li.list-group-item
-              = render 'lessons/lesson_preview', lesson: lesson
+            = number_to_percentage(@course.progress(current_user), precision: 0)
+        - @chapters.each do |chapter|
+          .list-group-item.shadow
+            = render 'chapters/chapter_preview', chapter: chapter
+            - chapter.lessons.rank(:row_order).each do |lesson|
+              - if @lesson.present? && lesson == @lesson
+                %li.list-group-item.list-group-item-info
+                  = render 'lessons/lesson_preview', lesson: lesson
+              - else
+                .list-group-item.list-group-item
+                  = render 'lessons/lesson_preview', lesson: lesson
     %p

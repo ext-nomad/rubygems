@@ -175,6 +175,7 @@ en:
       certificate: "Certificate of Completion"
       continue: "Continue learning"
       buy:
+      add_chapter: "Add chapter"
       add_lesson: "Add lesson"
       editor: "Course editor"
       destroy: "Delete"

@@ -37,6 +37,10 @@ class Lesson < ApplicationRecord
     title
   end
 
+  def impressions_count
+    user_lessons.map(&:impressions).sum
+  end
+
   def viewed(user)
     user_lessons.where(user: user).present?
   end

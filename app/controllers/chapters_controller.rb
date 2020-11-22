@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
   before_action :set_chapter, only: %i[edit update destroy]
-  before_action :set_course, only: %i[new create update destroy]
+  before_action :set_course, only: %i[new create edit update destroy]
 
   def new
     @chapter = Chapter.new

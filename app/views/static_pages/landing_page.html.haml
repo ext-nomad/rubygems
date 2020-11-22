@@ -3,8 +3,8 @@
   \|
   = t('title.phrase')
 
-.jumbotron.shadow.parallax
-  .h1.text-center.text-shadow
+.jumbotron.text-center.shadow.parallax
+  .h1.text-shadow
     = t('.phrase')
   .p-4
   
@@ -19,18 +19,18 @@
   - else
     %h3.text-shadow= t('.join')
     .p-2
-    = link_to t('session.register'), new_user_registration_path, class: 'btn btn-custom-purple btn-lg'
-    = link_to t('session.log_in'), new_user_session_path, class: 'btn btn-custom-purple btn-lg'
+    = link_to t('session.register'), new_user_registration_path, class: 'btn btn-custom-purple btn-lg mb-4 mr-2'
+    = link_to t('session.log_in'), new_user_session_path, class: 'btn btn-custom-purple btn-lg mb-4 ml-2'
     .row.mt-1
-    = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-danger btn-lg mr-1' do
+    = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-warning btn-sm mb-1' do
       = t('.continue')
       .fab.fa-google
     .row.mt-1
-    = link_to user_github_omniauth_authorize_path, class: 'btn btn-dark btn-lg mr-1' do
+    = link_to user_github_omniauth_authorize_path, class: 'btn btn-dark btn-sm mb-1' do
       = t('.continue')
       .fab.fa-github
     .row.mt-1
-    = link_to user_vkontakte_omniauth_authorize_path, class: 'btn btn-primary btn-lg mr-1' do
+    = link_to user_vkontakte_omniauth_authorize_path, class: 'btn btn-primary btn-sm mb-1' do
       = t('.continue')
       .fab.fa-vk
 

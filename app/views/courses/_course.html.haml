@@ -34,7 +34,11 @@
   .card.shadow
     .card-header
       = link_to course.title, course_path(course)
-    
+      - if policy(course).destroy?
+        .float-right
+          = link_to course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
+            = t('course.buttons.destroy')
+            .fa.fa-trash
     - if course.avatar.attached?
       .card-img-top
         = image_tag course.avatar, height: "220px", width: "100%"
@@ -67,14 +71,14 @@
     - if current_user
       -if policy(course).owner?
         .card-footer
-          .btn-group
-            = link_to t('course.buttons.add_lesson'), new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary mt-1'
-            = link_to t('course.buttons.editor'), course_course_wizard_index_path(course), class: 'btn btn-sm btn-warning mt-1'
-          - if policy(course).destroy?
-            .float-right
-              = link_to course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger mt-1' do
-                .fa.fa-trash
-                -# = t('course.buttons.destroy')
+          .text-center
+            .btn-group
+              = link_to new_course_chapter_path(course, @chapter), class: 'btn btn-sm btn-success mt-1' do
+                %small=t('course.buttons.add_chapter')
+              = link_to new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary mt-1' do
+                %small=t('course.buttons.add_lesson')
+              = link_to course_course_wizard_index_path(course), class: 'btn btn-sm btn-warning mt-1' do
+                %small=t('course.buttons.editor')
       - if policy(course).admin_or_owner?
         .card-footer
           - if policy(course).owner?

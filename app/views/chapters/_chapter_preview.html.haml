@@ -1,0 +1,18 @@
+%h5
+  %b
+    .far.fa-bookmark
+    #{chapter.row_order_rank + 1}. 
+    = chapter.title
+
+    - if current_user && policy(chapter.course).edit?
+      .float-right
+        = link_to edit_course_chapter_path(@course, chapter), class: 'badge badge-warning mr-1' do
+          .fa.fa-edit
+        = link_to [@course, chapter], method: :delete, data: { confirm: 'Are you sure?' }, class: 'badge badge-danger' do
+          .fa.fa-trash
+
+%h6
+  .fa.fa-tasks
+  = t('courses.show.lesson', count: chapter.lessons_count)
+
+

@@ -10,6 +10,21 @@
       %b
         #{lesson.row_order_rank + 1}.
       = lesson.title
+    .float-right.small
+      - if policy(lesson).edit?
+        - if lesson.comments.any?
+          .fa.fa-comment
+          = lesson.comments_count
+
+        .fa.fa-eye
+        = t('lessons.lesson_preview.uniq_viewers')
+        = lesson.user_lessons_count
+
+        .fa.fa-eye
+        = t('lessons.lesson_preview.views')
+        = lesson.user_lessons.map(&:impressions).sum
+
+
   .card-body
     - if @lesson.video.attached?
       %video(controls="true" width="100%" preload="metadata" controlslist="nodownload")

@@ -24,8 +24,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[index edit show update]
   resources :youtube, only: %i[show]
 
-  resources :chapters, except: %i[index show]
-
   resources :enrollments do
     get :my_students, on: :collection
     member do
@@ -40,6 +38,11 @@ Rails.application.routes.draw do
       patch :approve
       patch :publish
     end
+
+    resources :chapters, except: %i[index show] do
+      put :sort
+    end
+
     resources :lessons, except: %i[index] do
       resources :comments, except: %i[index]
       put :sort
