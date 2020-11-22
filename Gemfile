@@ -35,6 +35,7 @@ group :test do
 end
 
 gem 'active_storage_validations'
+gem 'aws-sdk-s3', require: false
 gem 'chartkick'
 gem 'cocoon'
 gem 'devise'
@@ -42,7 +43,6 @@ gem 'devise-i18n'
 gem 'exception_notification', group: :production
 gem 'faker'
 gem 'friendly_id', '~> 5.4.0'
-gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'groupdate'
 gem 'haml-rails', '~> 2.0'
 gem 'image_processing'
