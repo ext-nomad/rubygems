@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     end
 
     resources :lessons, except: %i[index] do
-      resources :comments, except: %i[index]
+      resources :comments, except: %i[index show]
       put :sort
       member do
         delete :delete_video

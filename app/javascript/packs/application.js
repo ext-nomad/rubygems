@@ -27,24 +27,52 @@ import "cocoon-js";
 import { data } from "jquery";
 
 $(document).on("turbolinks:load", function () {
-  $(".lesson-sortable").sortable({
+  $(".chapter-sortable").sortable({
+    axis: "y",
     cursor: "grabbing",
-    cursorAt: { left: 10 },
     placeholder: "ui-state-highlight",
-    update: function (_e, ui) {
+
+    update: function (_, ui) {
       let item = ui.item;
-      let item_data = item.data();
+      let itemData = item.data();
       let params = { _method: "put" };
-      params[item_data.modelName] = { row_order_position: item.index() };
+
+      params[itemData.modelName] = { row_order_position: item.index() };
+
       $.ajax({
         type: "POST",
-        url: item_data.updateUrl,
+        url: itemData.updateUrl,
         dataType: "json",
         data: params,
       });
     },
-    stop: function (_e, _ui) {
-      console.log("stop called when finishing sort of cards");
+  });
+
+  $(".lesson-sortable").sortable({
+    axis: "y",
+    cursor: "grabbing",
+    placeholder: "ui-state-highlight",
+    connectWith: ".lesson-sortable",
+
+    update: function (_, ui) {
+      if (ui.sender) return;
+
+      let item = ui.item;
+      let itemData = item.data();
+      let chapterID = item.parents(".ui-sortable-handle").eq(0).data().id;
+      let params = { _method: "put" };
+
+      params[itemData.modelName] = {
+        row_order_position: item.index(),
+        chapter_id: chapterID,
+      };
+
+      $.ajax({
+        type: "POST",
+        url: itemData.updateUrl,
+        dataType: "json",
+        data: params,
+      });
     },
   });
 

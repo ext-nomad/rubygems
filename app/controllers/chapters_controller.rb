@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter, only: %i[edit update destroy]
-  before_action :set_course, only: %i[new create edit update destroy]
+  before_action :set_chapter, only: %i[edit update destroy sort]
+  before_action :set_course, only: %i[new edit update destroy sort]
 
   def new
     @chapter = Chapter.new
@@ -32,10 +32,15 @@ class ChaptersController < ApplicationController
     redirect_to course_path(@course), notice: 'Chapter was successfully destroyed.'
   end
 
+  def sort
+    @chapter.update(chapter_params)
+    render body: nil
+  end
+
   private
 
   def set_chapter
-    @chapter = Chapter.find(params[:id])
+    @chapter = Chapter.friendly.find(params[:chapter_id])
   end
 
   def set_course
@@ -43,6 +48,6 @@ class ChaptersController < ApplicationController
   end
 
   def chapter_params
-    params.require(:chapter).permit(:title, :row_order)
+    params.require(:chapter).permit(:title, :row_order_position)
   end
 end
