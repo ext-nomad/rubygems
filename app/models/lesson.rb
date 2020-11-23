@@ -46,10 +46,10 @@ class Lesson < ApplicationRecord
   end
 
   def prev
-    course.lessons.where('row_order < ?', row_order).order(:row_order).last
+    chapter.lessons.where('row_order < ?', row_order).order(:row_order).last
   end
 
   def next
-    course.lessons.where('row_order > ?', row_order).order(:row_order).first
+    chapter.lessons.where('row_order > ?', row_order).order(:row_order).first
   end
 end
