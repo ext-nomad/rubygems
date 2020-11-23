@@ -62,7 +62,7 @@ class CoursesController < ApplicationController
       @course.update_attribute(:approved, true)
       flash[:notice] = 'Course approved and visible'
     end
-    redirect_to @course
+    redirect_to @course, notice: "Course approval: #{@course.approved}"
   end
 
   def publish
@@ -78,13 +78,12 @@ class CoursesController < ApplicationController
   end
 
   def analytics
-    authorize @course, :owner?
+    authorize @course, :analytics?
   end
 
   def show
     authorize @course
     @chapters = @course.chapters.rank(:row_order).includes(:lessons)
-    @lessons = @course.lessons.rank(:row_order)
     @reviews = @course.enrollments.reviewed
   end
 

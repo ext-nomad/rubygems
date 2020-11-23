@@ -1,21 +1,6 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: %i[show edit update destroy delete_video]
 
-  def delete_video
-    authorize @lesson, :edit?
-    @lesson.video.purge
-    @lesson.video_thumbnail.purge
-    redirect_to edit_course_lesson_path(@course, @lesson), notice: 'Video successfully deleted'
-  end
-
-  def sort
-    @course = Course.friendly.find(params[:course_id])
-    lesson = Lesson.friendly.find(params[:lesson_id])
-    authorize lesson, :edit?
-    lesson.update(lesson_params)
-    render body: nil
-  end
-
   def index
     @lessons = Lesson.all
   end
@@ -68,6 +53,21 @@ class LessonsController < ApplicationController
     redirect_to course_path(@course), notice: 'Lesson was successfully destroyed.'
   end
 
+  def sort
+    @course = Course.friendly.find(params[:course_id])
+    lesson = Lesson.friendly.find(params[:lesson_id])
+    authorize lesson, :edit?
+    lesson.update(lesson_params)
+    render body: nil
+  end
+
+  def delete_video
+    authorize @lesson, :edit?
+    @lesson.video.purge
+    @lesson.video_thumbnail.purge
+    redirect_to edit_course_lesson_path(@course, @lesson), notice: 'Video successfully deleted'
+  end
+
   private
 
   def set_lesson
@@ -76,6 +76,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :content, :row_order_position, :video, :video_thumbnail, :chapter_id)
+    params.require(:lesson).permit(:title, :content, :row_order_position, :video, :chapter_id)
   end
 end
