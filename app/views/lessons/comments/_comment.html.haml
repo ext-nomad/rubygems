@@ -1,12 +1,15 @@
 .card.shadow
   .card-header
-    = comment.created_at.strftime('%d/%m %Y %H:%m')
-    (#{time_ago_in_words(comment.created_at)})
-    - if comment.user.present?
-      by
-      = link_to comment.user, user_path(comment.user)
-    - if policy(comment).destroy?
-      = link_to [@course, @lesson, comment], method: :delete, data: { confirm: t('global.confirmation') }, class: 'btn btn-sm btn-danger' do
-        .fa.fa-trash
+    .row.justify-content-between
+      .col-auto
+        = comment.created_at.strftime('%d/%m %Y %H:%m')
+        (#{time_ago_in_words(comment.created_at)})
+        - if comment.user.present?
+          by
+          = link_to comment.user.username, user_path(comment.user)
+      .col-auto
+        - if policy(comment).destroy?
+          = link_to [@course, @lesson, comment], method: :delete, data: { confirm: t('global.confirmation') }, class: 'btn btn-sm btn-danger' do
+            .fa.fa-trash
   .card-body
     = comment.content

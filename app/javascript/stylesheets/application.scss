@@ -11,7 +11,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #f8f0e6;
+  background-color: #f8f0e6 !important;
+  font-family: verdana, arial, helvetica, sans-serif !important;
   a {
     color: rgba(0, 0, 0, 0.75);
     text-decoration: none !important;
@@ -73,6 +74,10 @@ hr {
   }
 }
 
+.card-body.fixed {
+  min-height: 100px;
+  max-height: 100px;
+}
 .table {
   background: white;
 }

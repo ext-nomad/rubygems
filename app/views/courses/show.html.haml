@@ -48,7 +48,7 @@
       %p
   .col-lg-4.order-0.order-lg-1
     .sticky-top
-      = render 'courses/course', course: @course
+      = render 'courses/course_panel', course: @course
     %p
 
 
@@ -56,5 +56,5 @@
 .row
   - @course.similar_courses.each do |course|
     .col-md-6
-      = render 'courses/course', course: course
+      = render 'courses/course_preview', course: course
       %p

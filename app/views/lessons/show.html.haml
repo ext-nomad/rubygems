@@ -39,13 +39,9 @@
     .sticky-top
       %ul.list-group.shadow
         %li.list-group-item
-        
           = link_to course_path(@lesson.course) do
             .fa.fa-graduation-cap
             = @lesson.course.title
-          .float-right
-            .fa.fa-spinner
-            = number_to_percentage(@course.progress(current_user), precision: 0)
         - @chapters.each do |chapter|
           .list-group-item.shadow
             = render 'chapters/chapter_preview', chapter: chapter
