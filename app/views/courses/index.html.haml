@@ -46,9 +46,7 @@
         .row
         = sort_link(@ransack_courses, :created_at, t('.sort.fresh'))
         .row
-        
-        
-        
+
         %hr
         - @tags.each do |tag|
           = link_to controller: controller_name, action: action_name,courses_search: { course_tags_tag_id_eq: tag.id } do
