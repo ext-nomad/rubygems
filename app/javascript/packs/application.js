@@ -3,7 +3,7 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 
-require("stylesheets/custom.scss");
+require("stylesheets/application.scss");
 
 require("jquery");
 require("jquery-ui");
