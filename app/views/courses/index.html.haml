@@ -6,7 +6,7 @@
 %h3
   .text-center.mb-5
     = t('title.courses')
-    .badge.badge-info
+    .badge.badge-info.purple-background
       = @courses.count
     %hr
 
@@ -50,7 +50,7 @@
         %hr
         - @tags.each do |tag|
           = link_to controller: controller_name, action: action_name,courses_search: { course_tags_tag_id_eq: tag.id } do
-            .badge.badge-info
+            .badge.badge-info.purple-background
               = tag.name
               = tag.course_tags_count
       %p

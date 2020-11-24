@@ -1,18 +1,24 @@
+
 .card.shadow
   .card-header
-    .fa.fa-user
-    = link_to enrollment.user.username, user_path(enrollment.user)
-    .fa.fa-clock
-    = time_ago_in_words(enrollment.updated_at)
-    .fa.fa-graduation-cap
-    = link_to enrollment.course, course_path(enrollment.course)
-
-  .card-body
-    .fa.fa-comment
-    %small= enrollment.review
     .text-warning.fa.fa-star
     = enrollment.rating
-  - if current_user
+    .fa.fa-graduation-cap
+    = link_to enrollment.course, course_path(enrollment.course)
+    .row
+    .text-right
+      = time_ago_in_words(enrollment.updated_at)
+      ago, by
+      = link_to enrollment.user.username, user_path(enrollment.user)
+
+
+  = content_tag :div, class: "card-body #{'fixed' if current_page?(root_path) }" do
+    - if current_page?(root_path)
+      %small= enrollment.review.truncate(125)
+    -else
+      = enrollment.review
+  - if !current_page?(root_path) && current_user && policy(enrollment).edit?
     .card-footer
-      - if policy(enrollment).edit?
-        = link_to 'Edit Review', edit_enrollment_path(enrollment)
+      .text-right
+        = link_to 'Edit Review', edit_enrollment_path(enrollment), class: 'btn btn-warning'
+

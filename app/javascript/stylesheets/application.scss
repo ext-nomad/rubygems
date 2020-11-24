@@ -32,12 +32,21 @@ footer {
     }
   }
 }
+
 trix-editor.form-control {
   height: auto;
 }
 
 hr {
   background-color: white;
+}
+
+nav {
+  .navbar-brand {
+    color: white;
+    letter-spacing: -1px;
+    font-weight: bold;
+  }
 }
 
 .alert {
@@ -74,7 +83,7 @@ hr {
   }
 }
 
-.card-body.fixed {
+.fixed {
   min-height: 100px;
   max-height: 100px;
 }
@@ -145,6 +154,21 @@ $custompurple: #563d7c;
   color: #fff;
   background-color: $custompurple;
   border-color: $custompurple;
+}
+
+.purple-text {
+  color: $custompurple;
+}
+
+.purple {
+  color: $custompurple;
+  border-color: $custompurple;
+
+  &:hover {
+    color: #fff;
+    background-color: $custompurple;
+    border-color: $custompurple;
+  }
 }
 
 .parallax {

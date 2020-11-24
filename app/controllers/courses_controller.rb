@@ -62,7 +62,7 @@ class CoursesController < ApplicationController
       @course.update_attribute(:approved, true)
       flash[:notice] = 'Course approved and visible'
     end
-    redirect_to @course, notice: "Course approval: #{@course.approved}"
+    redirect_to @course
   end
 
   def publish

@@ -1,15 +1,15 @@
 %h3.text-center
   = t('title.tags')
-  .badge.badge-info
+  .badge.badge-info.purple-background
     = @tags.count
 .card.shadow
   .card-body
-    - @tags.each do |tag|
-      .row
-      .btn-group
-        = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}), class: "btn btn-lg btn-info mt-1" do
-          = tag.name
-          .badge.badge-light
-            = tag.course_tags_count
-        - if policy(tag).destroy?
-          = link_to t('global.buttons.destroy'), tag, method: :delete, data: { confirm: t('global.confirmation') }, class: "btn btn-lg btn-danger mt-1"
+    .text-center
+      - @tags.each do |tag|
+        .btn-group
+          = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}), class: "btn btn-outline-dark purple mt-1" do
+            = tag.name
+            .badge.badge-dark.purple-background
+              = tag.course_tags_count
+          - if policy(tag).destroy?
+            = link_to t('global.buttons.destroy'), tag, method: :delete, data: { confirm: t('global.confirmation') }, class: "btn btn-danger mt-1"

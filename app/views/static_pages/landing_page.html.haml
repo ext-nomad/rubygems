@@ -71,21 +71,21 @@
 
 .text-center.mb-5
   %h2
-    .fa.fa-tags
-    = t('.tags')
+    .fa.fa-tags.purple-text
+    %b= t('.tags')
   .text-center
     - @popular_tags.each do |tag|
       = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
-        .mt-1.btn.btn-outline-info.mr-1
+        .mt-1.btn.btn-outline-dark.purple.mr-1
           = tag.name
-          %span.badge.badge-info
+          %span.badge.badge-info.purple-background
             = tag.course_tags_count
 %hr.mb-4
 
 - if current_user
   - if current_user.enrollments.any?
     .text-center.mb-4
-      = link_to learning_courses_path, class: 'btn btn-lg btn-outline-dark' do
+      = link_to learning_courses_path, class: 'btn btn-lg btn-outline-dark purple' do
         .fa.fa-user-graduate
         = t('.learning')
     .row
@@ -96,7 +96,7 @@
     %hr.mb-4
   - if current_user.courses.any?
     .text-center.mb-4
-      = link_to teaching_courses_path, class: 'btn btn-lg btn-outline-dark' do
+      = link_to teaching_courses_path, class: 'btn btn-lg btn-outline-dark purple' do
         .fa.fa-chalkboard-teacher
         = t('.teaching')
     .row
@@ -107,7 +107,7 @@
     %hr.mb-4
 
 .text-center.mb-4
-  = link_to courses_path(courses_search: {s: 'enrollments_count desc'}), class: 'btn btn-lg btn-outline-dark' do
+  = link_to courses_path(courses_search: {s: 'enrollments_count desc'}), class: 'btn btn-lg btn-outline-dark purple' do
     .fa.fa-chart-line
     = t('.popular')
 .row
@@ -118,7 +118,7 @@
 %hr.mb-4
 
 .text-center.mb-4
-  = link_to courses_path(courses_search: {s: 'average_rating desc'}), class: 'btn btn-lg btn-outline-dark' do
+  = link_to courses_path(courses_search: {s: 'average_rating desc'}), class: 'btn btn-lg btn-outline-dark purple' do
     .fa.fa-star
     = t('.top')
 .row
@@ -129,7 +129,7 @@
 %hr.mb-4
 
 .text-center.mb-4
-  = link_to courses_path(courses_search: {s: 'created_at desc'}), class: 'btn btn-lg btn-outline-dark' do
+  = link_to courses_path(courses_search: {s: 'created_at desc'}), class: 'btn btn-lg btn-outline-dark purple' do
     .fa.fa-clock
     = t('.latest')
 .row
@@ -139,21 +139,22 @@
       %p
 %hr.mb-4
 
-%h2.text-center
-  .fa.fa-comment
-  = t('.reviews')
-.row
-  - @latest_good_review.each do |enrollment|
-    .col-md-6
-      = render 'enrollments/enrollment', enrollment: enrollment
-      %p
-%br
+- if @latest_good_review.any?
+  %h2.text-center
+    .fa.fa-comment.purple-text
+    %b= t('.reviews')
+  .row
+    - @latest_good_review.each do |enrollment|
+      .col-md-6
+        = render 'enrollments/enrollment', enrollment: enrollment
+        %p
+  %hr.mb-4
 
 .card-group.shadow
   .card
     .card-body
       .text-center
-        .fa.fa-clock
+        .fa.fa-clock.purple-text
         %b= t('.block.pace')
         .row
         %small
@@ -161,7 +162,7 @@
   .card
     .card-body
       .text-center
-        .far.fa-check-circle
+        .far.fa-check-circle.purple-text
         %b= t('.block.learn')
         .row
         %small
@@ -169,7 +170,7 @@
   .card
     .card-body
       .text-center
-        .far.fa-play-circle
+        .far.fa-play-circle.purple-text
         %b= t('.block.video')
         .row
         %small
