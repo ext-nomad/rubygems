@@ -41,12 +41,66 @@ hr {
   background-color: white;
 }
 
+.dropdown-menu {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+
+  z-index: 1030;
+  width: 100%;
+  display: flex;
+  transition: 0.6s all;
+
   .navbar-brand {
     color: white;
     letter-spacing: -1px;
     font-weight: bold;
   }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.sticky {
+  padding: 10px 100px;
+  background-color: white !important;
+}
+
+nav.sticky {
+  box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.4);
+  .nav-link {
+    color: #563d7cde !important;
+    &:hover {
+      color: #563d7c !important;
+    }
+  }
+  .navbar-brand {
+    color: #563d7c !important;
+  }
+}
+
+.spacer {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 30px;
+  background: transparent;
+  z-index: -1;
+  overflow: visible;
 }
 
 .alert {

@@ -76,6 +76,12 @@ $(document).on("turbolinks:load", function () {
     },
   });
 
+  window.addEventListener("scroll", function () {
+    var header = document.querySelector("nav");
+
+    header.classList.toggle("sticky", window.scrollY > 150);
+  });
+
   $("video").bind("contextmenu", function () {
     return false;
   });

@@ -30,15 +30,15 @@
               .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "studentDropdown"}
                 = dropdown_active_link(courses_path) do
                   .fa.fa-graduation-cap
-                  = t('.courses')
+                  %b= t('.courses')
                 = dropdown_active_link(learning_courses_path) do
                   .fa.fa-lock-open
-                  = t('.purchased')
+                  %b= t('.purchased')
                   .badge.badge-danger
                     = current_user.enrollments_count
                 = dropdown_active_link(pending_review_courses_path) do
                   .fa.fa-star
-                  = t('.review')
+                  %b= t('.review')
                   .badge.badge-danger
                     = current_user.enrollments.pending_review.count
 
@@ -50,15 +50,15 @@
               .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "teacherDropdown"}
                 = dropdown_active_link(new_course_path) do
                   .fa.fa-plus
-                  = t('.new')
+                  %b= t('.new')
                 = dropdown_active_link(teaching_courses_path) do
                   .fa.fa-graduation-cap
-                  = t('.created')
+                  %b= t('.created')
                   .badge.badge-danger
                     = current_user.courses_count
                 = dropdown_active_link(my_students_enrollments_path) do
                   .fa.fa-users
-                  = t('.students')
+                  %b= t('.students')
                   .badge.badge-danger
                     = Enrollment.joins(:course).where(courses: {user: current_user}).count
 
@@ -70,28 +70,28 @@
               .dropdown-menu.dropdown-menu-center{"aria-labelledby" => "adminDropdown"}
                 = dropdown_active_link(unapproved_courses_path) do
                   .fa.fa-graduation-cap
-                  = t('.unapproved')
+                  %b= t('.unapproved')
                   .badge.badge-danger
                     = Course.unapproved.count
                 = dropdown_active_link(users_path) do
                   .fa.fa-users
-                  = t('.users')
+                  %b= t('.users')
                   .badge.badge-danger
                     = User.count
                 = dropdown_active_link(enrollments_path) do
                   .fa.fa-lock-open
-                  = t('.enrollments')
+                  %b= t('.enrollments')
                   .badge.badge-danger
                     = Enrollment.count
                 = dropdown_active_link(analytics_path) do
                   .fa.fa-chart-line
-                  = t('.analytics')
+                  %b= t('.analytics')
                 = dropdown_active_link(activity_path) do
                   .fa.fa-bell
-                  = t('.activity')
+                  %b= t('.activity')
                 = dropdown_active_link(tags_path) do
                   .fa.fa-cloud
-                  = t('.tags')
+                  %b= t('.tags')
 
         %ul.navbar-nav.mr-right
           %li.nav-item.dropdown
