@@ -63,5 +63,5 @@
                   = role.to_s
               - if policy(user).edit?
                 = link_to t('user.buttons.edit_roles'), edit_user_path(user), class: 'btn btn-sm btn-warning'
-!= pagy_bootstrap_nav(@pagy)
-%br
+.d-flex.justify-content-center
+  != pagy_bootstrap_nav(@pagy)
