@@ -87,6 +87,12 @@ nav.sticky {
       color: #563d7c !important;
     }
   }
+
+  .navbar-toggler {
+    transition: 0.6s all ease;
+    background-color: #563d7cde;
+  }
+
   .navbar-brand {
     color: #563d7c !important;
   }
