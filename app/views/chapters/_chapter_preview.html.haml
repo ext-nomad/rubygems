@@ -10,9 +10,9 @@
           .fa.fa-edit
         = link_to [@course, chapter], method: :delete, data: { confirm: 'Are you sure?' }, class: 'badge badge-danger' do
           .fa.fa-trash
-
-%h6
-  .fa.fa-tasks
-  = t('courses.show.lesson', count: chapter.lessons_count)
+%ul
+  %h6
+    .fa.fa-tasks
+    = t('courses.show.lesson', count: chapter.lessons_count)
 
 

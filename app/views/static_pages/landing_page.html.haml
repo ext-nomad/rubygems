@@ -3,7 +3,7 @@
   \|
   = t('title.phrase')
 
-.jumbotron.text-center.shadow.parallax
+.jumbotron.text-center.shadow.rounded.parallax
   .h1.display-4.text-shadow
     = t('.phrase')
   .p-4
@@ -140,7 +140,7 @@
 %hr.mb-4
 
 - if @latest_good_review.any?
-  %h2.text-center
+  %h2.text-center.mb-4
     .fa.fa-comment.purple-text
     %b= t('.reviews')
   .row

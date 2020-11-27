@@ -9,7 +9,7 @@
 
 .row
   .col-lg-8.order-1.order-lg-1
-    .jumbotron.shadow
+    .jumbotron.rounded.mb-5.shadow
       %h3
         .fa.fa-graduation-cap
         = @course.title
@@ -24,37 +24,40 @@
       = @course.level
       .p-3
       = @course.description
-    %p
 
-    .list-group.chapter-sortable{:style => "cursor: grab;"}
+
+    .list-group.mb-5.chapter-sortable{:style => "cursor: grab;"}
       - @chapters.each do |chapter|
         = content_tag "div", id: "chapter-#{chapter.id}", data: { id: chapter.id, model_name: chapter.class.name.underscore, update_url: course_chapter_sort_path(@course, chapter)} do
-          .list-group-item.rounded.shadow
+          .list-group-item.mb-4.rounded.shadow
             = render 'chapters/chapter_preview', chapter: chapter
 
             .list-group.lesson-sortable{:style => "cursor: grab; min-height: 10px;"}
               - chapter.lessons.rank(:row_order).each do |lesson|
                 = content_tag "div", id: "lesson-#{lesson.id}", data: { model_name: lesson.class.name.underscore, update_url: course_lesson_sort_path(@course, lesson)} do
-                  .list-group-item
+                  .list-group-item.mb-1
                     = render 'lessons/lesson_preview', lesson: lesson
-        %p
 
-    %h5
-      .fa.fa-comment
+
+    %h5.mb-3
+      .fa.fa-comment.purple
       = t('.review', count: @reviews.count)
 
     - @reviews.each do |enrollment|
       = render 'enrollments/enrollment', enrollment: enrollment
-      %p
+
   .col-lg-4.order-0.order-lg-1
     .sticky-top
       = render 'courses/course_panel', course: @course
-    %p
 
 
-%h4=t('.similar')
+
+.text-center.mt-5
+  %h3.display-4
+    =t('.similar')
+%hr.mb-4
 .row
   - @course.similar_courses.each do |course|
     .col-md-6
       = render 'courses/course_preview', course: course
-      %p
+

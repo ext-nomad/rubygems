@@ -1,9 +1,8 @@
 
-.card.shadow
+.card.rounded.shadow
   .card-header
     .text-warning.fa.fa-star
     = enrollment.rating
-    .fa.fa-graduation-cap
     = link_to enrollment.course, course_path(enrollment.course)
     .row
     .text-right

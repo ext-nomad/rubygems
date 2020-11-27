@@ -47,7 +47,7 @@ hr {
   font-weight: 600;
 }
 
-nav {
+nav:not(.pagy-bootstrap-nav) {
   position: fixed !important;
   top: 0;
   left: 0;
@@ -141,6 +141,15 @@ nav.sticky {
       -moz-transform: translateY(-10px);
     }
   }
+
+  &.rounded {
+    .card-header:first-child {
+      border-radius: 12px 12px 0 0;
+    }
+    .card-footer:last-child {
+      border-radius: 0 0 12px 12px;
+    }
+  }
 }
 
 .fixed {
@@ -176,8 +185,8 @@ nav.sticky {
 }
 
 .rounded {
-  border-radius: 12px;
-  border: 0 none;
+  border-radius: 12px !important;
+  border: 0 none !important;
 }
 
 .nested-fields.container.rounded {
