@@ -4,11 +4,10 @@
   = @course.title
   = t('title.analytics')
 
-= link_to t('title.courses'), courses_path
-\/
-= link_to @course.title, course_path(@course)
-\/
-= link_to t('title.analytics'), analytics_course_path(@course)
+%ol.breadcrumb.rounded
+  %li.breadcrumb-item= link_to t('title.courses'), courses_path
+  %li.breadcrumb-item= link_to @course.title, course_path(@course)
+  %li.breadcrumb-item= link_to t('title.analytics'), analytics_course_path(@course)
 
 %h4.text-center
   = t('.title', t: @course.title)

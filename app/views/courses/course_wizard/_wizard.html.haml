@@ -3,11 +3,10 @@
   \|
   = t('title.editing_course')
 
-= link_to t('title.courses'), courses_path
-\/
-= link_to @course.title, course_path(@course)
-\/
-= link_to t(".steps.#{step}"), course_course_wizard_path(@course, step)
+%ol.breadcrumb.rounded
+  %li.breadcrumb-item= link_to t('title.courses'), courses_path
+  %li.breadcrumb-item= link_to @course.title, course_path(@course)
+  %li.breadcrumb-item= link_to t(".steps.#{step}"), course_course_wizard_path(@course, step)
 
 .card.shadow
   .progress

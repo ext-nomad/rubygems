@@ -6,12 +6,10 @@
   \/
   = t('title.new_chapter')
 
-
-= link_to t('title.courses'), courses_path
-\/
-= link_to @course.title, course_path(@course)
-\/
-= t('title.new_chapter')
+%ol.breadcrumb.rounded
+  %li.breadcrumb-item= link_to t('title.courses'), courses_path
+  %li.breadcrumb-item= link_to @course.title, course_path(@course)
+  %li.breadcrumb-item= t('title.new_chapter')
 
 .card.shadow
   .card-header
