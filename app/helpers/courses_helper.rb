@@ -1,10 +1,9 @@
 module CoursesHelper
   def enrollment_button(course)
-    # logic to buy
     if current_user
       if course.user == current_user
         link_to t('course.buttons.analytics'), analytics_course_path(course), class: 'btn btn-info'
-      elsif course.enrollments.where(user: current_user).any?
+      elsif current_user.bought?(course)
         certificate_button(course)
       elsif course.price.positive?
         link_to number_to_currency(course.price), new_course_enrollment_path(course), class: 'btn btn-success'

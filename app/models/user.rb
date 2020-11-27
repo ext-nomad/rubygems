@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :user_lessons, dependent: :nullify
   has_many :comments, dependent: :nullify
   has_many :students, through: :courses, source: :enrollments
+  has_many :enrolled_courses, through: :enrollments, source: :course
 
   rolify
   devise :database_authenticatable,
@@ -79,6 +80,10 @@ class User < ApplicationRecord
 
   def buy_course(course)
     enrollments.create(course: course, price: course.price)
+  end
+
+  def bought?(course)
+    enrolled_courses.include?(course)
   end
 
   def view_lesson(lesson)
