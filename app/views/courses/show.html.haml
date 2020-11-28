@@ -10,7 +10,7 @@
 
 .row
   .col-lg-8.order-1.order-lg-1
-    .jumbotron.rounded.mb-5.shadow
+    .jumbotron.rounded.mb-5.shadow{:style => "background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(#{rails_blob_url(@course.avatar) if @course.avatar.attached?}); background-repeat: no-repeat; background-size: cover; background-position: center; color: white;"}
       %h3
         .fa.fa-graduation-cap
         = @course.title
