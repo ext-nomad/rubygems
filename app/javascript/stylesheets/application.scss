@@ -220,23 +220,23 @@ $custompurple: #563d7c;
 }
 
 .btn-custom-purple {
-  color: #fff;
-  background-color: $custompurple;
-  border-color: $custompurple;
+  color: #fff !important;
+  background-color: $custompurple !important;
+  border-color: $custompurple !important;
 }
 
 .purple-text {
-  color: $custompurple;
+  color: $custompurple !important;
 }
 
 .purple {
-  color: $custompurple;
-  border-color: $custompurple;
+  color: $custompurple !important;
+  border-color: $custompurple !important;
 
   &:hover {
-    color: #fff;
-    background-color: $custompurple;
-    border-color: $custompurple;
+    color: #fff !important;
+    background-color: $custompurple !important;
+    border-color: $custompurple !important;
   }
 }
 
