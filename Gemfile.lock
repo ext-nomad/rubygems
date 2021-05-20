@@ -196,7 +196,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_magick (4.11.0)
     mini_mime (1.0.2)
     minitest (5.14.3)
@@ -207,7 +209,7 @@ GEM
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
-    nio4r (2.5.4)
+    nio4r (2.5.7)
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.4)
@@ -244,7 +246,7 @@ GEM
       i18n (>= 0.5.0)
       railties (>= 3.0.0)
     public_suffix (4.0.6)
-    puma (4.3.7)
+    puma (4.3.8)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
@@ -450,7 +452,7 @@ DEPENDENCIES
   pagy
   pg (>= 0.18, < 2.0)
   public_activity
-  puma (~> 4.1)
+  puma (~> 4.3)
   pundit
   rails (~> 6.0.3, >= 6.0.3.2)
   rails-erd
